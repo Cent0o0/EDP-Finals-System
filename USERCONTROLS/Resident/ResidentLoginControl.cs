@@ -1,4 +1,4 @@
-﻿using Barangay_E_Service_System;
+using Barangay_E_Service_System;
 using Barangay_E_Service_System.DATA;
 using Microsoft.Data.SqlClient;
 using System;
@@ -25,21 +25,67 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MainForm main = (MainForm)this.FindForm();
-            main.ShowResidentDashboardControl();
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
+
+            // Validate empty fields
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please enter your username and password.", "Missing Information");
+                return;
+            }
+            try
+            {
+                using (SqlConnection conn = DatabaseConnection.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @Password";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string residentID = Convert.ToInt32(reader["ResidentID"]);
+                                string fullName = reader["FullName"].ToString();
+                                string loggedInUsername = reader["Username"].ToString();
+
+                                MessageBox.Show("Login successful!");
+                                MainForm main = (MainForm)this.FindForm();
+                                main.ShowResidentDashboardControl(residentID, fullName, loggedInUsername);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect username or password.", "Login Failed");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to log in. " + ex.Message);
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             MainForm main = (MainForm)this.FindForm();
-            main.ShowRoleSelection();
+            main.ShowResidentLoginControl();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-           
+
             MainForm main = (MainForm)this.FindForm();
             main.ShowResidentRegisterControl();
+        }
+
+        private void ResidentLoginControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

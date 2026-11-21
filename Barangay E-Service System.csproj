@@ -16,6 +16,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="USERCONTROLS\Resident\Profile\ResidentProfileControl.Designer.cs">
+      <DependentUpon>ResidentProfileControl.cs</DependentUpon>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\Profile\ResidentEditProfileControl.Designer.cs">
+      <DependentUpon>ResidentEditProfileControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="USERCONTROLS\Resident\Profile\ResidentProfileControl.resx">
+      <DependentUpon>ResidentProfileControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.8" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace Barangay_E_Service_System.USERCONTROLS.Resident
+namespace Barangay_E_Service_System.USERCONTROLS.Resident
 {
     partial class ResidentRegisterControl
     {
@@ -44,297 +44,452 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            txtFullName = new Guna.UI2.WinForms.Guna2TextBox();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            txtFirstName = new Guna.UI2.WinForms.Guna2TextBox();
+            txtLastName = new Guna.UI2.WinForms.Guna2TextBox();
+            txtMiddleInitial = new Guna.UI2.WinForms.Guna2TextBox();
+            cmbSuffix = new ComboBox();
+            txtContactNumber = new Guna.UI2.WinForms.Guna2TextBox();
             txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
-            txtContact = new Guna.UI2.WinForms.Guna2TextBox();
             txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             txtConfirmPassword = new Guna.UI2.WinForms.Guna2TextBox();
             btnRegister = new Guna.UI2.WinForms.Guna2Button();
             btnBack = new Guna.UI2.WinForms.Guna2Button();
-            lblSubtitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblFirstName = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblLastName = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblMiddleInitial = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblSuffix = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblContactNumber = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblAddress = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblWelcome = new Guna.UI2.WinForms.Guna2HtmlLabel();
             SuspendLayout();
             // 
-            // txtFullName
+            // txtFirstName
             // 
-            txtFullName.BorderColor = Color.Black;
-            txtFullName.CustomizableEdges = customizableEdges1;
-            txtFullName.DefaultText = "";
-            txtFullName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtFullName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtFullName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtFullName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtFullName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtFullName.Font = new Font("Segoe UI", 9F);
-            txtFullName.ForeColor = Color.Black;
-            txtFullName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtFullName.Location = new Point(272, 106);
-            txtFullName.Name = "txtFullName";
-            txtFullName.PlaceholderForeColor = Color.Transparent;
-            txtFullName.PlaceholderText = "";
-            txtFullName.SelectedText = "";
-            txtFullName.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtFullName.Size = new Size(366, 36);
-            txtFullName.TabIndex = 2;
+            txtFirstName.BorderColor = Color.Black;
+            txtFirstName.BorderRadius = 5;
+            txtFirstName.CustomizableEdges = customizableEdges1;
+            txtFirstName.DefaultText = "";
+            txtFirstName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtFirstName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtFirstName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtFirstName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtFirstName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtFirstName.Font = new Font("Arial", 9.75F);
+            txtFirstName.ForeColor = Color.Black;
+            txtFirstName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtFirstName.Location = new Point(462, 130);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.PlaceholderForeColor = Color.Transparent;
+            txtFirstName.PlaceholderText = "";
+            txtFirstName.SelectedText = "";
+            txtFirstName.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtFirstName.Size = new Size(245, 38);
+            txtFirstName.TabIndex = 2;
+            // 
+            // txtLastName
+            // 
+            txtLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtLastName.BorderColor = Color.Black;
+            txtLastName.BorderRadius = 5;
+            txtLastName.CustomizableEdges = customizableEdges3;
+            txtLastName.DefaultText = "";
+            txtLastName.Font = new Font("Arial", 9.75F);
+            txtLastName.ForeColor = Color.Black;
+            txtLastName.Location = new Point(727, 130);
+            txtLastName.Name = "txtLastName";
+            txtLastName.PlaceholderText = "";
+            txtLastName.SelectedText = "";
+            txtLastName.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtLastName.Size = new Size(245, 38);
+            txtLastName.TabIndex = 3;
+            // 
+            // txtMiddleInitial
+            // 
+            txtMiddleInitial.BorderColor = Color.Black;
+            txtMiddleInitial.BorderRadius = 5;
+            txtMiddleInitial.CustomizableEdges = customizableEdges5;
+            txtMiddleInitial.DefaultText = "";
+            txtMiddleInitial.Font = new Font("Arial", 9.75F);
+            txtMiddleInitial.ForeColor = Color.Black;
+            txtMiddleInitial.Location = new Point(730, 196);
+            txtMiddleInitial.MaxLength = 1;
+            txtMiddleInitial.Name = "txtMiddleInitial";
+            txtMiddleInitial.PlaceholderText = "";
+            txtMiddleInitial.SelectedText = "";
+            txtMiddleInitial.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtMiddleInitial.Size = new Size(100, 38);
+            txtMiddleInitial.TabIndex = 4;
+            // 
+            // cmbSuffix
+            // 
+            cmbSuffix.BackColor = Color.White;
+            cmbSuffix.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbSuffix.Font = new Font("Arial", 9.75F);
+            cmbSuffix.FormattingEnabled = true;
+            cmbSuffix.Items.AddRange(new object[] { "", "Jr.", "Sr.", "II", "III", "IV" });
+            cmbSuffix.Location = new Point(848, 203);
+            cmbSuffix.Name = "cmbSuffix";
+            cmbSuffix.Size = new Size(127, 24);
+            cmbSuffix.TabIndex = 5;
+            // 
+            // txtContactNumber
+            // 
+            txtContactNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtContactNumber.BorderColor = Color.Black;
+            txtContactNumber.BorderRadius = 5;
+            txtContactNumber.CustomizableEdges = customizableEdges7;
+            txtContactNumber.DefaultText = "";
+            txtContactNumber.Font = new Font("Arial", 9.75F);
+            txtContactNumber.ForeColor = Color.Black;
+            txtContactNumber.Location = new Point(462, 196);
+            txtContactNumber.Name = "txtContactNumber";
+            txtContactNumber.PlaceholderText = "";
+            txtContactNumber.SelectedText = "";
+            txtContactNumber.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtContactNumber.Size = new Size(245, 38);
+            txtContactNumber.TabIndex = 6;
             // 
             // txtAddress
             // 
+            txtAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtAddress.BorderColor = Color.Black;
-            txtAddress.CustomizableEdges = customizableEdges3;
+            txtAddress.BorderRadius = 5;
+            txtAddress.CustomizableEdges = customizableEdges9;
             txtAddress.DefaultText = "";
-            txtAddress.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtAddress.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtAddress.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtAddress.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtAddress.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtAddress.Font = new Font("Segoe UI", 9F);
+            txtAddress.Font = new Font("Arial", 9.75F);
             txtAddress.ForeColor = Color.Black;
-            txtAddress.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtAddress.Location = new Point(272, 169);
+            txtAddress.Location = new Point(462, 264);
+            txtAddress.MaxLength = 200;
             txtAddress.Name = "txtAddress";
-            txtAddress.PlaceholderForeColor = Color.Transparent;
             txtAddress.PlaceholderText = "";
             txtAddress.SelectedText = "";
-            txtAddress.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtAddress.Size = new Size(366, 36);
-            txtAddress.TabIndex = 3;
-            // 
-            // txtContact
-            // 
-            txtContact.BorderColor = Color.Black;
-            txtContact.CustomizableEdges = customizableEdges5;
-            txtContact.DefaultText = "";
-            txtContact.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtContact.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtContact.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtContact.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtContact.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtContact.Font = new Font("Segoe UI", 9F);
-            txtContact.ForeColor = Color.Black;
-            txtContact.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtContact.Location = new Point(272, 234);
-            txtContact.Name = "txtContact";
-            txtContact.PlaceholderForeColor = Color.Transparent;
-            txtContact.PlaceholderText = "";
-            txtContact.SelectedText = "";
-            txtContact.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtContact.Size = new Size(366, 36);
-            txtContact.TabIndex = 4;
+            txtAddress.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtAddress.Size = new Size(510, 38);
+            txtAddress.TabIndex = 7;
             // 
             // txtPassword
             // 
             txtPassword.BorderColor = Color.Black;
-            txtPassword.CustomizableEdges = customizableEdges7;
+            txtPassword.BorderRadius = 5;
+            txtPassword.CustomizableEdges = customizableEdges11;
             txtPassword.DefaultText = "";
             txtPassword.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPassword.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtPassword.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtPassword.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPassword.Font = new Font("Segoe UI", 9F);
+            txtPassword.Font = new Font("Arial", 9.75F);
             txtPassword.ForeColor = Color.Black;
             txtPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPassword.Location = new Point(273, 364);
+            txtPassword.Location = new Point(462, 398);
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderForeColor = Color.Transparent;
             txtPassword.PlaceholderText = "";
             txtPassword.SelectedText = "";
-            txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtPassword.Size = new Size(366, 36);
-            txtPassword.TabIndex = 5;
+            txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtPassword.Size = new Size(245, 38);
+            txtPassword.TabIndex = 9;
             // 
             // txtConfirmPassword
             // 
+            txtConfirmPassword.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtConfirmPassword.BorderColor = Color.Black;
-            txtConfirmPassword.CustomizableEdges = customizableEdges9;
+            txtConfirmPassword.BorderRadius = 5;
+            txtConfirmPassword.CustomizableEdges = customizableEdges13;
             txtConfirmPassword.DefaultText = "";
             txtConfirmPassword.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtConfirmPassword.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtConfirmPassword.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtConfirmPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtConfirmPassword.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtConfirmPassword.Font = new Font("Segoe UI", 9F);
+            txtConfirmPassword.Font = new Font("Arial", 9.75F);
             txtConfirmPassword.ForeColor = Color.Black;
             txtConfirmPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtConfirmPassword.Location = new Point(273, 426);
+            txtConfirmPassword.Location = new Point(727, 398);
             txtConfirmPassword.Name = "txtConfirmPassword";
-            txtConfirmPassword.PasswordChar = '*';
             txtConfirmPassword.PlaceholderForeColor = Color.Transparent;
             txtConfirmPassword.PlaceholderText = "";
             txtConfirmPassword.SelectedText = "";
-            txtConfirmPassword.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtConfirmPassword.Size = new Size(366, 36);
-            txtConfirmPassword.TabIndex = 6;
+            txtConfirmPassword.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtConfirmPassword.Size = new Size(245, 38);
+            txtConfirmPassword.TabIndex = 10;
             // 
             // btnRegister
             // 
+            btnRegister.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnRegister.BorderRadius = 5;
-            btnRegister.CustomizableEdges = customizableEdges11;
+            btnRegister.CustomizableEdges = customizableEdges15;
             btnRegister.DisabledState.BorderColor = Color.DarkGray;
             btnRegister.DisabledState.CustomBorderColor = Color.DarkGray;
             btnRegister.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnRegister.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnRegister.Font = new Font("Segoe UI", 9F);
+            btnRegister.FillColor = Color.FromArgb(18, 52, 86);
+            btnRegister.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(272, 477);
+            btnRegister.Location = new Point(538, 476);
             btnRegister.Name = "btnRegister";
-            btnRegister.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnRegister.Size = new Size(180, 45);
-            btnRegister.TabIndex = 7;
-            btnRegister.Text = "CREATE ACCOUNT";
+            btnRegister.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnRegister.Size = new Size(367, 45);
+            btnRegister.TabIndex = 11;
+            btnRegister.Text = "Create Account";
             btnRegister.Click += btnRegister_Click;
             // 
             // btnBack
             // 
+            btnBack.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnBack.BorderColor = Color.Transparent;
             btnBack.BorderRadius = 5;
-            btnBack.CustomizableEdges = customizableEdges13;
+            btnBack.CustomizableEdges = customizableEdges17;
             btnBack.DisabledState.BorderColor = Color.DarkGray;
             btnBack.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBack.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnBack.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnBack.Font = new Font("Segoe UI", 9F);
-            btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(458, 477);
+            btnBack.FillColor = Color.Transparent;
+            btnBack.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = Color.FromArgb(18, 52, 86);
+            btnBack.Location = new Point(638, 564);
             btnBack.Name = "btnBack";
-            btnBack.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnBack.Size = new Size(180, 45);
-            btnBack.TabIndex = 8;
-            btnBack.Text = "BACK";
+            btnBack.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnBack.Size = new Size(180, 23);
+            btnBack.TabIndex = 12;
+            btnBack.Text = "Log in here";
             btnBack.Click += btnBack_Click;
             // 
-            // lblSubtitle
+            // lblFirstName
             // 
-            lblSubtitle.Anchor = AnchorStyles.Top;
-            lblSubtitle.BackColor = Color.Transparent;
-            lblSubtitle.Location = new Point(272, 83);
-            lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(57, 17);
-            lblSubtitle.TabIndex = 9;
-            lblSubtitle.Text = "Full Name";
-            lblSubtitle.TextAlignment = ContentAlignment.MiddleCenter;
+            lblFirstName.BackColor = Color.Transparent;
+            lblFirstName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblFirstName.Location = new Point(462, 107);
+            lblFirstName.Name = "lblFirstName";
+            lblFirstName.Size = new Size(71, 18);
+            lblFirstName.TabIndex = 9;
+            lblFirstName.Text = "First Name";
+            lblFirstName.TextAlignment = ContentAlignment.MiddleLeft;
+            // 
+            // lblLastName
+            // 
+            lblLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblLastName.BackColor = Color.Transparent;
+            lblLastName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblLastName.Location = new Point(727, 107);
+            lblLastName.Name = "lblLastName";
+            lblLastName.Size = new Size(70, 18);
+            lblLastName.TabIndex = 10;
+            lblLastName.Text = "Last Name";
+            lblLastName.TextAlignment = ContentAlignment.MiddleLeft;
+            // 
+            // lblMiddleInitial
+            // 
+            lblMiddleInitial.BackColor = Color.Transparent;
+            lblMiddleInitial.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblMiddleInitial.Location = new Point(730, 173);
+            lblMiddleInitial.Name = "lblMiddleInitial";
+            lblMiddleInitial.Size = new Size(22, 18);
+            lblMiddleInitial.TabIndex = 11;
+            lblMiddleInitial.Text = "M.I";
+            lblMiddleInitial.TextAlignment = ContentAlignment.MiddleLeft;
+            // 
+            // lblSuffix
+            // 
+            lblSuffix.BackColor = Color.Transparent;
+            lblSuffix.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblSuffix.Location = new Point(848, 173);
+            lblSuffix.Name = "lblSuffix";
+            lblSuffix.Size = new Size(40, 18);
+            lblSuffix.TabIndex = 20;
+            lblSuffix.Text = "Suffix";
+            lblSuffix.TextAlignment = ContentAlignment.MiddleLeft;
+            // 
+            // lblContactNumber
+            // 
+            lblContactNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblContactNumber.BackColor = Color.Transparent;
+            lblContactNumber.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblContactNumber.Location = new Point(462, 173);
+            lblContactNumber.Name = "lblContactNumber";
+            lblContactNumber.Size = new Size(105, 18);
+            lblContactNumber.TabIndex = 10;
+            lblContactNumber.Text = "Contact Number";
+            lblContactNumber.TextAlignment = ContentAlignment.MiddleLeft;
+            // 
+            // lblAddress
+            // 
+            lblAddress.BackColor = Color.Transparent;
+            lblAddress.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblAddress.Location = new Point(462, 241);
+            lblAddress.Name = "lblAddress";
+            lblAddress.Size = new Size(53, 18);
+            lblAddress.TabIndex = 19;
+            lblAddress.Text = "Address";
+            lblAddress.TextAlignment = ContentAlignment.MiddleLeft;
             // 
             // guna2HtmlLabel1
             // 
-            guna2HtmlLabel1.Anchor = AnchorStyles.Top;
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Location = new Point(272, 341);
+            guna2HtmlLabel1.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            guna2HtmlLabel1.Location = new Point(462, 375);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(53, 17);
+            guna2HtmlLabel1.Size = new Size(64, 18);
             guna2HtmlLabel1.TabIndex = 10;
             guna2HtmlLabel1.Text = "Password";
             guna2HtmlLabel1.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // guna2HtmlLabel2
-            // 
-            guna2HtmlLabel2.Anchor = AnchorStyles.Top;
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Location = new Point(272, 211);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(92, 17);
-            guna2HtmlLabel2.TabIndex = 11;
-            guna2HtmlLabel2.Text = "Contact Number";
-            guna2HtmlLabel2.TextAlignment = ContentAlignment.MiddleCenter;
-            // 
             // guna2HtmlLabel3
             // 
-            guna2HtmlLabel3.Anchor = AnchorStyles.Top;
             guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Location = new Point(273, 276);
+            guna2HtmlLabel3.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            guna2HtmlLabel3.Location = new Point(462, 308);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(56, 17);
+            guna2HtmlLabel3.Size = new Size(67, 18);
             guna2HtmlLabel3.TabIndex = 12;
             guna2HtmlLabel3.Text = "Username";
             guna2HtmlLabel3.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // guna2HtmlLabel4
-            // 
-            guna2HtmlLabel4.Anchor = AnchorStyles.Top;
-            guna2HtmlLabel4.BackColor = Color.Transparent;
-            guna2HtmlLabel4.Location = new Point(272, 148);
-            guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(86, 17);
-            guna2HtmlLabel4.TabIndex = 13;
-            guna2HtmlLabel4.Text = "Address / Street";
-            guna2HtmlLabel4.TextAlignment = ContentAlignment.MiddleCenter;
-            // 
             // txtUsername
             // 
+            txtUsername.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtUsername.BorderColor = Color.Black;
-            txtUsername.CustomizableEdges = customizableEdges15;
+            txtUsername.BorderRadius = 5;
+            txtUsername.CustomizableEdges = customizableEdges19;
             txtUsername.DefaultText = "";
             txtUsername.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtUsername.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtUsername.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtUsername.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsername.Font = new Font("Segoe UI", 9F);
+            txtUsername.Font = new Font("Arial", 9.75F);
             txtUsername.ForeColor = Color.Black;
             txtUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsername.Location = new Point(272, 299);
+            txtUsername.Location = new Point(462, 331);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderForeColor = Color.Transparent;
             txtUsername.PlaceholderText = "";
             txtUsername.SelectedText = "";
-            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            txtUsername.Size = new Size(366, 36);
-            txtUsername.TabIndex = 14;
+            txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            txtUsername.Size = new Size(510, 38);
+            txtUsername.TabIndex = 8;
             // 
             // guna2HtmlLabel5
             // 
-            guna2HtmlLabel5.Anchor = AnchorStyles.Top;
+            guna2HtmlLabel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Location = new Point(273, 406);
+            guna2HtmlLabel5.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            guna2HtmlLabel5.Location = new Point(727, 375);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(100, 17);
+            guna2HtmlLabel5.Size = new Size(118, 18);
             guna2HtmlLabel5.TabIndex = 15;
             guna2HtmlLabel5.Text = "Confirm Password";
             guna2HtmlLabel5.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // guna2CustomGradientPanel1
+            // 
+            guna2CustomGradientPanel1.CustomizableEdges = customizableEdges21;
+            guna2CustomGradientPanel1.Dock = DockStyle.Left;
+            guna2CustomGradientPanel1.FillColor = Color.FromArgb(18, 52, 86);
+            guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(18, 52, 86);
+            guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(18, 52, 86);
+            guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(18, 52, 86);
+            guna2CustomGradientPanel1.Location = new Point(0, 0);
+            guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2CustomGradientPanel1.Size = new Size(350, 650);
+            guna2CustomGradientPanel1.TabIndex = 16;
+            // 
+            // guna2HtmlLabel6
+            // 
+            guna2HtmlLabel6.Anchor = AnchorStyles.Top;
+            guna2HtmlLabel6.BackColor = Color.Transparent;
+            guna2HtmlLabel6.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.ForeColor = SystemColors.ControlDarkDark;
+            guna2HtmlLabel6.Location = new Point(640, 540);
+            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
+            guna2HtmlLabel6.Size = new Size(169, 18);
+            guna2HtmlLabel6.TabIndex = 17;
+            guna2HtmlLabel6.Text = "Already have an account?";
+            guna2HtmlLabel6.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.Anchor = AnchorStyles.Top;
+            lblWelcome.BackColor = Color.Transparent;
+            lblWelcome.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome.Location = new Point(613, 50);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(205, 34);
+            lblWelcome.TabIndex = 18;
+            lblWelcome.Text = "Create Account";
             // 
             // ResidentRegisterControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
+            AutoScrollMinSize = new Size(1100, 650);
+            Controls.Add(lblWelcome);
+            Controls.Add(lblAddress);
+            Controls.Add(txtAddress);
+            Controls.Add(lblSuffix);
+            Controls.Add(cmbSuffix);
+            Controls.Add(guna2HtmlLabel6);
+            Controls.Add(guna2CustomGradientPanel1);
             Controls.Add(guna2HtmlLabel5);
+            Controls.Add(lblLastName);
+            Controls.Add(lblMiddleInitial);
+            Controls.Add(lblContactNumber);
             Controls.Add(txtUsername);
-            Controls.Add(guna2HtmlLabel4);
             Controls.Add(guna2HtmlLabel3);
-            Controls.Add(guna2HtmlLabel2);
             Controls.Add(guna2HtmlLabel1);
-            Controls.Add(lblSubtitle);
+            Controls.Add(lblFirstName);
             Controls.Add(btnBack);
             Controls.Add(btnRegister);
             Controls.Add(txtConfirmPassword);
             Controls.Add(txtPassword);
-            Controls.Add(txtContact);
-            Controls.Add(txtAddress);
-            Controls.Add(txtFullName);
+            Controls.Add(txtMiddleInitial);
+            Controls.Add(txtLastName);
+            Controls.Add(txtContactNumber);
+            Controls.Add(txtFirstName);
             Name = "ResidentRegisterControl";
-            Size = new Size(950, 650);
+            Size = new Size(1100, 650);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2TextBox txtFullName;
+        private Guna.UI2.WinForms.Guna2TextBox txtFirstName;
+        private Guna.UI2.WinForms.Guna2TextBox txtLastName;
+        private Guna.UI2.WinForms.Guna2TextBox txtMiddleInitial;
+        private ComboBox cmbSuffix;
+        private Guna.UI2.WinForms.Guna2TextBox txtContactNumber;
         private Guna.UI2.WinForms.Guna2TextBox txtAddress;
-        private Guna.UI2.WinForms.Guna2TextBox txtContact;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtConfirmPassword;
         private Guna.UI2.WinForms.Guna2Button btnRegister;
         private Guna.UI2.WinForms.Guna2Button btnBack;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblSubtitle;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblFirstName;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblLastName;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblMiddleInitial;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblSuffix;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblContactNumber;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblAddress;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblWelcome;
     }
 }
