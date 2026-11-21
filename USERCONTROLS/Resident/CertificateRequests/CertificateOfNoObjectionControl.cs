@@ -9,6 +9,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
     public partial class CertificateOfNoObjectionControl : UserControl
     {
         private string residentID;
+        private bool isSubmitting;
 
         public CertificateOfNoObjectionControl()
         {
@@ -112,8 +113,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 return;
             }
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmitRequest.Enabled = false;
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this No Objection Certification request?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
+                return;
+            }
+
             try
             {
+                int rowsAffected = 0;
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
@@ -127,19 +149,31 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                         command.Parameters.AddWithValue("@CertificateType", "Certificate of No Objection");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", requestDetails.ToString());
-                        command.ExecuteNonQuery();
+                        rowsAffected = command.ExecuteNonQuery();
                     }
                 }
 
+                if (rowsAffected <= 0)
+                {
+                    MessageBox.Show("Could not submit your No Objection Certification request. Please try again.", "No Objection Certification");
+                    return;
+                }
+
                 MessageBox.Show("Your No Objection Certification request was submitted successfully.", "Request Submitted");
-                txtSubjectActivity.Clear();
-                nudQuantity.Value = 0;
-                txtLocation.Clear();
-                txtPurpose.Clear();
+                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                if (mainForm != null)
+                {
+                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not submit your No Objection Certification request: " + ex.Message, "No Objection Certification");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
             }
         }
     }

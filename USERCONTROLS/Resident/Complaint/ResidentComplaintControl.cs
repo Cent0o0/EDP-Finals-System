@@ -8,6 +8,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
     public partial class ResidentComplaintControl : UserControl
     {
         private string residentID;
+        private bool isSubmitting;
 
         public ResidentComplaintControl()
         {
@@ -50,8 +51,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 return;
             }
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmitComplaint.Enabled = false;
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this complaint report?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmitComplaint.Enabled = true;
+                return;
+            }
+
             try
             {
+                int rowsAffected = 0;
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
@@ -66,8 +88,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         command.Parameters.AddWithValue("@IncidentLocation", incidentLocation);
                         command.Parameters.AddWithValue("@Description", description);
                         command.Parameters.AddWithValue("@IncidentDate", dtpIncidentDate.Value.Date);
-                        command.ExecuteNonQuery();
+                        rowsAffected = command.ExecuteNonQuery();
                     }
+                }
+
+                if (rowsAffected <= 0)
+                {
+                    MessageBox.Show("Could not submit your complaint. Please try again.", "Complaint Submission");
+                    return;
                 }
 
                 MessageBox.Show("Your complaint was submitted successfully.", "Complaint Submitted");
@@ -79,6 +107,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             catch (Exception ex)
             {
                 MessageBox.Show("Could not submit your complaint: " + ex.Message, "Complaint Submission");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmitComplaint.Enabled = true;
             }
         }
     }

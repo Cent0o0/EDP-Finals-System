@@ -8,6 +8,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
     public partial class BarangayClearanceControl : UserControl
     {
         private string residentID;
+        private bool isSubmitting;
 
         public BarangayClearanceControl(string resident)
         {
@@ -90,8 +91,30 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 return;
             }
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmitRequest.Enabled = false;
+
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this Barangay Clearance request?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
+                return;
+            }
+
             try
             {
+                int rowsAffected = 0;
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
@@ -105,20 +128,32 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                         command.Parameters.AddWithValue("@CertificateType", "Barangay Clearance");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", remarks);
-                        command.ExecuteNonQuery();
+                        rowsAffected = command.ExecuteNonQuery();
                     }
                 }
 
-                MessageBox.Show("Your Barangay Clearance request was submitted successfully.", "Request Submitted");
-                cmbPurpose.SelectedIndex = -1;
-                txtOtherPurpose.Clear();
-                txtAdditionalRemarks.Clear();
-                lblOtherPurpose.Visible = false;
-                txtOtherPurpose.Visible = false;
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Your Barangay Clearance request was submitted successfully.", "Request Submitted");
+                    Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                    if (mainForm != null)
+                    {
+                        mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Could not submit your clearance request. Please try again.", "Clearance Request");
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not submit your clearance request: " + ex.Message, "Clearance Request");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
             }
         }
 

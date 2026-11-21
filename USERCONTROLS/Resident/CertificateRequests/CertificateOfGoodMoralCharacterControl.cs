@@ -8,6 +8,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
     public partial class CertificateOfGoodMoralCharacterControl : UserControl
     {
         private string residentID;
+        private bool isSubmitting;
 
         public CertificateOfGoodMoralCharacterControl()
         {
@@ -96,8 +97,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 return;
             }
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmitRequest.Enabled = false;
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this Good Moral Character certificate request?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
+                return;
+            }
+
             try
             {
+                int rowsAffected = 0;
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
@@ -111,20 +133,31 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                         command.Parameters.AddWithValue("@CertificateType", "Certificate of Good Moral Character");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", additionalRemarks);
-                        command.ExecuteNonQuery();
+                        rowsAffected = command.ExecuteNonQuery();
                     }
                 }
 
+                if (rowsAffected <= 0)
+                {
+                    MessageBox.Show("Could not submit your certificate request. Please try again.", "Good Moral Certificate Request");
+                    return;
+                }
+
                 MessageBox.Show("Your Good Moral Character Certificate request was submitted successfully.", "Request Submitted");
-                cmbPurpose.SelectedIndex = -1;
-                txtOtherPurpose.Clear();
-                txtAdditionalRemarks.Clear();
-                lblOtherPurpose.Visible = false;
-                txtOtherPurpose.Visible = false;
+                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                if (mainForm != null)
+                {
+                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not submit your certificate request: " + ex.Message, "Good Moral Certificate Request");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
             }
         }
 

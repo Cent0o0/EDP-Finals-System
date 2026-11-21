@@ -9,6 +9,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
     {
         private string residentID;
         private int equipmentID;
+        private bool isSubmitting;
         public EquipmentReservationControl(string residentID, int equipmentID)
         {
             InitializeComponent();
@@ -99,6 +100,26 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 return;
             }
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmit.Enabled = false;
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this equipment reservation?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmit.Enabled = true;
+                return;
+            }
+
             using (SqlConnection conn = DatabaseConnection.GetConnection())
             {
                 try
@@ -149,6 +170,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 catch (SqlException ex)
                 {
                     MessageBox.Show("Unable to save the reservation. Please check the equipment reservation table and try again.\n\n" + ex.Message);
+                }
+                finally
+                {
+                    isSubmitting = false;
+                    btnSubmit.Enabled = true;
                 }
             }
         }

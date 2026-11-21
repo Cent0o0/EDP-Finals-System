@@ -8,6 +8,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
     public partial class CertificateOfIndigencyControl : UserControl
     {
         private string residentID;
+        private bool isSubmitting;
 
         public CertificateOfIndigencyControl()
         {
@@ -120,8 +121,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 return;
             }
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmitRequest.Enabled = false;
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this Certificate of Indigency request?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
+                return;
+            }
+
             try
             {
+                int rowsAffected = 0;
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
@@ -135,20 +157,31 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                         command.Parameters.AddWithValue("@CertificateType", "Certificate of Indigency");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", additionalRemarks);
-                        command.ExecuteNonQuery();
+                        rowsAffected = command.ExecuteNonQuery();
                     }
                 }
 
+                if (rowsAffected <= 0)
+                {
+                    MessageBox.Show("Could not submit your indigency certificate request. Please try again.", "Certificate of Indigency");
+                    return;
+                }
+
                 MessageBox.Show("Your Certificate of Indigency request was submitted successfully.", "Request Submitted");
-                cmbPurpose.SelectedIndex = -1;
-                txtOtherPurpose.Clear();
-                txtAdditionalRemarks.Clear();
-                lblOtherPurpose.Visible = false;
-                txtOtherPurpose.Visible = false;
+                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                if (mainForm != null)
+                {
+                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not submit your indigency certificate request: " + ex.Message, "Certificate of Indigency");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
             }
         }
     }

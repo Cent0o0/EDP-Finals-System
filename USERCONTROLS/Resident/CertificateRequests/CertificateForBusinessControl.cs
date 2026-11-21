@@ -10,6 +10,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
     public partial class CertificateForBusinessControl : UserControl
     {
         private string residentID;
+        private bool isSubmitting;
 
         public CertificateForBusinessControl()
         {
@@ -109,8 +110,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             businessDetails.Append("Date Established: ");
             businessDetails.Append(dtpDateEstablished.Value.ToString("MMMM yyyy", CultureInfo.InvariantCulture));
 
+            if (isSubmitting)
+            {
+                return;
+            }
+
+            isSubmitting = true;
+            btnSubmitRequest.Enabled = false;
+            DialogResult confirmation = MessageBox.Show(
+                "Do you want to submit this Certificate for Business request?",
+                "Confirm Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmation != DialogResult.Yes)
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
+                return;
+            }
+
             try
             {
+                int rowsAffected = 0;
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
@@ -124,20 +146,31 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                         command.Parameters.AddWithValue("@CertificateType", "Certificate for Business");
                         command.Parameters.AddWithValue("@Purpose", "Business certification");
                         command.Parameters.AddWithValue("@AdditionalRemarks", businessDetails.ToString());
-                        command.ExecuteNonQuery();
+                        rowsAffected = command.ExecuteNonQuery();
                     }
                 }
 
+                if (rowsAffected <= 0)
+                {
+                    MessageBox.Show("Could not submit your business certificate request. Please try again.", "Business Certificate Request");
+                    return;
+                }
+
                 MessageBox.Show("Your Certificate for Business request was submitted successfully.", "Request Submitted");
-                txtBusinessName.Clear();
-                txtBusinessAddress.Clear();
-                txtNatureOfBusiness.Clear();
-                cmbBusinessType.SelectedIndex = -1;
-                dtpDateEstablished.Value = DateTime.Today;
+                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                if (mainForm != null)
+                {
+                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not submit your business certificate request: " + ex.Message, "Business Certificate Request");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmitRequest.Enabled = true;
             }
         }
     }

@@ -97,7 +97,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
         private void LoadCertificateRequests(SqlConnection connection, string residentID, DataTable requestTable)
         {
-            string query = @"SELECT TOP (10) CertificateType AS RequestType, DateRequested, Status
+            string query = @"SELECT CertificateType AS RequestType, DateRequested, Status
                              FROM dbo.CertificateRequests
                              WHERE ResidentID = @ResidentID
                              ORDER BY DateRequested DESC, RequestID DESC";
@@ -111,7 +111,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
         private void LoadComplaintRequests(SqlConnection connection, string residentID, DataTable requestTable)
         {
-            string query = @"SELECT TOP (10) Category, DateSubmitted AS DateRequested, Status
+            string query = @"SELECT Category, DateSubmitted AS DateRequested, Status
                              FROM dbo.Complaints
                              WHERE ResidentID = @ResidentID
                              ORDER BY DateSubmitted DESC, ComplaintID DESC";
@@ -132,13 +132,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             if (requestDateColumn.Length > 0)
             {
                 string safeDateColumn = "[" + requestDateColumn.Replace("]", "]]" ) + "]";
-                query = "SELECT TOP (10) EventName, " + safeDateColumn +
+                query = "SELECT EventName, " + safeDateColumn +
                         " AS DateRequested, Status FROM " + safeTableName + " " +
                         "WHERE ResidentID = @ResidentID ORDER BY " + safeDateColumn + " DESC";
             }
             else
             {
-                query = @"SELECT TOP (10) EventName, CAST(NULL AS datetime2) AS DateRequested, Status
+                query = @"SELECT EventName, CAST(NULL AS datetime2) AS DateRequested, Status
                           FROM " + safeTableName + @"
                           WHERE ResidentID = @ResidentID";
             }
@@ -261,14 +261,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         {
             DataView sortedRequests = new DataView(requestTable);
             sortedRequests.Sort = "DateRequested DESC";
-            DataTable sortedTable = sortedRequests.ToTable();
-
-            while (sortedTable.Rows.Count > 5)
-            {
-                sortedTable.Rows.RemoveAt(sortedTable.Rows.Count - 1);
-            }
-
-            dgvRecentRequests.DataSource = sortedTable;
+            dgvRecentRequests.DataSource = sortedRequests.ToTable();
         }
     }
 }
