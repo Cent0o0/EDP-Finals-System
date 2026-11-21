@@ -1,4 +1,4 @@
-﻿namespace Barangay_E_Service_System
+namespace Barangay_E_Service_System
 {
     partial class MainForm
     {
@@ -29,16 +29,16 @@
             pnlContent.Location = new Point(0, 0);
             pnlContent.Name = "pnlContent";
             pnlContent.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pnlContent.Size = new Size(934, 611);
+            pnlContent.Size = new Size(1100, 650);
             pnlContent.TabIndex = 0;
             // 
             // MainForm
             // 
-            ClientSize = new Size(934, 611);
+            ClientSize = new Size(1100, 650);
             Controls.Add(pnlContent);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Normal;
             ResumeLayout(false);
             // Designer-generated control setup
         }

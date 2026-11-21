@@ -4,19 +4,52 @@
     <Compile Update="FORMS\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="USERCONTROLS\Admin\AdminLoginControl.cs">
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\BarangayClearanceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\CertificateForBusinessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\CertificateOfGoodMoralCharacterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\CertificateOfIndigencyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\CertificateOfNoObjectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\CertificateOfResidencyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\Profile\ResidentEditProfileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\ReserveEquipment\EquipmentReservationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\CertificateRequests\ResidentCertificateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\Complaint\ResidentComplaintControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="USERCONTROLS\Resident\ResidentDashboardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="USERCONTROLS\Resident\ResidentHomeContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="USERCONTROLS\Resident\ResidentLoginControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\Profile\ResidentProfileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="USERCONTROLS\Resident\ResidentRegisterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="USERCONTROLS\Shared\RoleSelectionControl.cs">
+    <Compile Update="USERCONTROLS\Resident\ReserveEquipment\ResidentReservationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

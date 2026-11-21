@@ -1,7 +1,6 @@
-using Barangay_E_Service_System.USERCONTROLS.Admin;
 using Barangay_E_Service_System.USERCONTROLS.Resident;
-using Barangay_E_Service_System.USERCONTROLS.Shared;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Barangay_E_Service_System
@@ -12,34 +11,8 @@ namespace Barangay_E_Service_System
         public MainForm()
         {
             InitializeComponent();
-            ShowRoleSelection();
-        }
-        public void ShowRoleSelection()
-        {
-            pnlContent.Controls.Clear();
-
-            RoleSelectionControl roleControl = new RoleSelectionControl();
-            roleControl.Dock = DockStyle.Fill;
-
-            pnlContent.Controls.Add(roleControl);
-        }
-        public void ShowResidentLogin()
-        {
-            pnlContent.Controls.Clear();
-
-            ResidentLoginControl residentLogin = new ResidentLoginControl();
-            residentLogin.Dock = DockStyle.Fill;
-
-            pnlContent.Controls.Add(residentLogin);
-        }
-        public void ShowAdminLogin()
-        {
-            pnlContent.Controls.Clear();
-
-            AdminLoginControl adminLogin = new AdminLoginControl();
-            adminLogin.Dock = DockStyle.Fill;
-
-            pnlContent.Controls.Add(adminLogin);
+            Font = new Font("Arial", 9.75F);
+            ShowResidentLoginControl();
         }
         public void ShowResidentLoginControl()
         {
@@ -50,11 +23,11 @@ namespace Barangay_E_Service_System
 
             pnlContent.Controls.Add(login);
         }
-        public void ShowResidentDashboardControl()
+        public void ShowResidentDashboardControl(string residentID, string fullName, string username)
         {
             pnlContent.Controls.Clear();
 
-            ResidentDashboardControl residentDashboard = new ResidentDashboardControl();
+            ResidentDashboardControl residentDashboard = new ResidentDashboardControl(residentID, fullName, username);
             residentDashboard.Dock = DockStyle.Fill;
 
             pnlContent.Controls.Add(residentDashboard);
@@ -68,6 +41,25 @@ namespace Barangay_E_Service_System
 
             pnlContent.Controls.Add(residentRegister);
         }
+        public void ShowControl(UserControl control)
+        {
+            pnlContent.Controls.Clear();
+            control.Dock = DockStyle.Fill;
+            pnlContent.Controls.Add(control);
+        }
+
+        public void ShowResidentDashboardContent(UserControl control)
+        {
+            if (pnlContent.Controls.Count > 0 && pnlContent.Controls[0] is ResidentDashboardControl residentDashboard)
+            {
+                residentDashboard.ShowDashboardControl(control);
+            }
+            else
+            {
+                ShowControl(control);
+            }
+        }
+
     }
 }
 

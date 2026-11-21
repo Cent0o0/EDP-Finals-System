@@ -1,0 +1,141 @@
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Guna.UI2.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Bcl.Cryptography.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Data.SqlClient.Internal.Logging.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\System.Management.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\System.Threading.RateLimiting.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.csproj.AssemblyReference.cache
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.MainForm.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentDashboardControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentLoginControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentRegisterControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.csproj.GenerateResource.cache
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.AssemblyInfoInputs.cache
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.AssemblyInfo.cs
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay.B81A9682.Up2Date
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\refint\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay E-Service System.genruntimeconfig.cache
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\ref\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentHomeContentControl.resources
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\responsive-build\Barangay E-Service System.exe
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\responsive-build\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\responsive-build\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\responsive-build\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\responsive-build\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\undo-compile\Barangay E-Service System.exe
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\undo-compile\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\undo-compile\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\undo-compile\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\work\undo-compile\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentReservationControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentComplaintControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests.BarangayClearanceControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests.CertificateForBusinessControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests.CertificateOfGoodMoralCharacterControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests.CertificateOfIndigencyControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests.CertificateOfNoObjectionControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests.CertificateOfResidencyControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.EquipmentReservationControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\Barangay E-Service System.exe
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentProfileControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\bin\Debug\net10.0-windows\Barangay E-Service System.exe
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\db-login-fix\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\db-login-fix\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\db-login-fix\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\db-login-fix\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-display-edit\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-display-edit\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-display-edit\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-display-edit\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-address\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-address\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-address\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-address\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-fields\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-fields\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-fields\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-fields\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-verify\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-verify\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-verify\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-verify\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-combo\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-combo\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-combo\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\resident-suffix-combo\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\clearance-request\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\clearance-request\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\clearance-request\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\clearance-request\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-view\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-view\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-view\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-view\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\Baranggay E-Service System\obj\Debug\net10.0-windows\Barangay_E_Service_System.USERCONTROLS.Resident.ResidentEditProfileControl.resources
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-parameters\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-parameters\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-parameters\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-parameters\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\simple-sql-parameters\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\simple-sql-parameters\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\simple-sql-parameters\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\simple-sql-parameters\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-save\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-save\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-save\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-save\Barangay E-Service System.pdb
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-nochange\Barangay E-Service System.deps.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-nochange\Barangay E-Service System.runtimeconfig.json
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-nochange\Barangay E-Service System.dll
+C:\Users\Lenovo-pc\OneDrive\Desktop\EDP FINALS SYSTEM\Baranggay E-Service System\.build-check\profile-confirm-nochange\Barangay E-Service System.pdb

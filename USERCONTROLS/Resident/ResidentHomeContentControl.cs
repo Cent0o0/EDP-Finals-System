@@ -1,0 +1,274 @@
+using System;
+using System.Data;
+using System.Windows.Forms;
+using Barangay_E_Service_System.DATA;
+using Microsoft.Data.SqlClient;
+
+namespace Barangay_E_Service_System.USERCONTROLS.Resident
+{
+    public partial class ResidentHomeContentControl : UserControl
+    {
+        public ResidentHomeContentControl()
+        {
+            InitializeComponent();
+        }
+
+        public ResidentHomeContentControl(string residentID) : this()
+        {
+            LoadResidentRequests(residentID);
+        }
+
+        private void LoadResidentRequests(string residentID)
+        {
+            try
+            {
+                using (SqlConnection connection = DatabaseConnection.GetConnection())
+                {
+                    connection.Open();
+                    string reservationTableName = FindEquipmentReservationTable(connection);
+                    LoadRequestCounts(connection, residentID, reservationTableName);
+
+                    DataTable requestRows = CreateRequestTable();
+                    LoadCertificateRequests(connection, residentID, requestRows);
+                    LoadComplaintRequests(connection, residentID, requestRows);
+                    if (reservationTableName.Length > 0)
+                    {
+                        LoadEquipmentRequests(connection, residentID, requestRows, reservationTableName);
+                    }
+                    DisplayRecentRequests(requestRows);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not load your dashboard requests: " + ex.Message, "Resident Dashboard");
+            }
+        }
+
+        private void LoadRequestCounts(SqlConnection connection, string residentID, string reservationTableName)
+        {
+            string equipmentTable = "";
+            if (reservationTableName.Length > 0)
+            {
+                equipmentTable = " + (SELECT COUNT(*) FROM dbo.[" + reservationTableName.Replace("]", "]]" ) + "] WHERE ResidentID = @ResidentID)";
+            }
+
+            string pendingEquipment = "";
+            string approvedEquipment = "";
+            if (reservationTableName.Length > 0)
+            {
+                string safeTableName = "dbo.[" + reservationTableName.Replace("]", "]]" ) + "]";
+                pendingEquipment = " + (SELECT COUNT(*) FROM " + safeTableName + " WHERE ResidentID = @ResidentID AND Status = 'Pending')";
+                approvedEquipment = " + (SELECT COUNT(*) FROM " + safeTableName + " WHERE ResidentID = @ResidentID AND Status = 'Approved')";
+            }
+
+            string query = "SELECT " +
+                           "(SELECT COUNT(*) FROM dbo.CertificateRequests WHERE ResidentID = @ResidentID) + " +
+                           "(SELECT COUNT(*) FROM dbo.Complaints WHERE ResidentID = @ResidentID)" + equipmentTable + " AS TotalCount, " +
+                           "(SELECT COUNT(*) FROM dbo.CertificateRequests WHERE ResidentID = @ResidentID AND Status = 'Pending') + " +
+                           "(SELECT COUNT(*) FROM dbo.Complaints WHERE ResidentID = @ResidentID AND Status = 'Pending')" + pendingEquipment + " AS PendingCount, " +
+                           "(SELECT COUNT(*) FROM dbo.CertificateRequests WHERE ResidentID = @ResidentID AND Status = 'Approved') + " +
+                           "(SELECT COUNT(*) FROM dbo.Complaints WHERE ResidentID = @ResidentID AND Status = 'Approved')" + approvedEquipment + " AS ApprovedCount";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ResidentID", residentID);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        lblTotalCount.Text = reader["TotalCount"].ToString();
+                        lblPendingCount.Text = reader["PendingCount"].ToString();
+                        lblApprovedCount.Text = reader["ApprovedCount"].ToString();
+                    }
+                }
+            }
+        }
+
+        private DataTable CreateRequestTable()
+        {
+            DataTable requestTable = new DataTable();
+            requestTable.Columns.Add("RequestType", typeof(string));
+            DataColumn requestedDateColumn = requestTable.Columns.Add("DateRequested", typeof(DateTime));
+            requestedDateColumn.AllowDBNull = true;
+            requestTable.Columns.Add("Status", typeof(string));
+            return requestTable;
+        }
+
+        private void LoadCertificateRequests(SqlConnection connection, string residentID, DataTable requestTable)
+        {
+            string query = @"SELECT TOP (10) CertificateType AS RequestType, DateRequested, Status
+                             FROM dbo.CertificateRequests
+                             WHERE ResidentID = @ResidentID
+                             ORDER BY DateRequested DESC, RequestID DESC";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ResidentID", residentID);
+                AddRowsToRequestTable(command, requestTable, "");
+            }
+        }
+
+        private void LoadComplaintRequests(SqlConnection connection, string residentID, DataTable requestTable)
+        {
+            string query = @"SELECT TOP (10) Category, DateSubmitted AS DateRequested, Status
+                             FROM dbo.Complaints
+                             WHERE ResidentID = @ResidentID
+                             ORDER BY DateSubmitted DESC, ComplaintID DESC";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ResidentID", residentID);
+                AddRowsToRequestTable(command, requestTable, "Complaint: ");
+            }
+        }
+
+        private void LoadEquipmentRequests(SqlConnection connection, string residentID, DataTable requestTable, string tableName)
+        {
+            string requestDateColumn = FindEquipmentRequestDateColumn(connection, tableName);
+            string safeTableName = "dbo.[" + tableName.Replace("]", "]]" ) + "]";
+            string query;
+
+            if (requestDateColumn.Length > 0)
+            {
+                string safeDateColumn = "[" + requestDateColumn.Replace("]", "]]" ) + "]";
+                query = "SELECT TOP (10) EventName, " + safeDateColumn +
+                        " AS DateRequested, Status FROM " + safeTableName + " " +
+                        "WHERE ResidentID = @ResidentID ORDER BY " + safeDateColumn + " DESC";
+            }
+            else
+            {
+                query = @"SELECT TOP (10) EventName, CAST(NULL AS datetime2) AS DateRequested, Status
+                          FROM " + safeTableName + @"
+                          WHERE ResidentID = @ResidentID";
+            }
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ResidentID", residentID);
+                AddRowsToRequestTable(command, requestTable, "Equipment: ");
+            }
+        }
+
+        private string FindEquipmentReservationTable(SqlConnection connection)
+        {
+            string query = @"SELECT TOP (1) TABLE_NAME
+                             FROM INFORMATION_SCHEMA.TABLES
+                             WHERE TABLE_SCHEMA = 'dbo'
+                               AND TABLE_NAME IN ('EquipmentReservation', 'EquipmentReservations')
+                             ORDER BY CASE TABLE_NAME
+                                 WHEN 'EquipmentReservation' THEN 0
+                                 WHEN 'EquipmentReservations' THEN 1
+                                 ELSE 2
+                             END";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                object result = command.ExecuteScalar();
+                if (result == null || result == DBNull.Value)
+                {
+                    return "";
+                }
+
+                return (string)result;
+            }
+        }
+
+        private string FindEquipmentRequestDateColumn(SqlConnection connection, string tableName)
+        {
+            string query = @"SELECT TOP (1) COLUMN_NAME
+                             FROM INFORMATION_SCHEMA.COLUMNS
+                             WHERE TABLE_SCHEMA = 'dbo'
+                               AND TABLE_NAME = @TableName
+                               AND COLUMN_NAME IN ('DateRequested', 'DateSubmitted', 'CreatedAt', 'CreatedDate', 'RequestDate', 'RequestedAt', 'SubmittedAt')
+                               AND DATA_TYPE IN ('date', 'datetime', 'datetime2', 'smalldatetime', 'datetimeoffset')
+                             ORDER BY CASE COLUMN_NAME
+                                 WHEN 'DateRequested' THEN 0
+                                 WHEN 'DateSubmitted' THEN 1
+                                 WHEN 'CreatedAt' THEN 2
+                                 WHEN 'CreatedDate' THEN 3
+                                 WHEN 'RequestDate' THEN 4
+                                 WHEN 'RequestedAt' THEN 5
+                                 WHEN 'SubmittedAt' THEN 6
+                                 ELSE 7
+                             END";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@TableName", tableName);
+                object result = command.ExecuteScalar();
+                if (result == null || result == DBNull.Value)
+                {
+                    return "";
+                }
+
+                string columnName = (string)result;
+                if (columnName == null)
+                {
+                    return "";
+                }
+
+                return columnName;
+            }
+        }
+
+        private void AddRowsToRequestTable(SqlCommand command, DataTable requestTable, string requestTypePrefix)
+        {
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    string requestType = GetReaderText(reader, 0);
+                    DateTime requestedDate = DateTime.MinValue;
+                    bool hasRequestedDate = reader[1] != DBNull.Value;
+
+                    if (hasRequestedDate)
+                    {
+                        requestedDate = Convert.ToDateTime(reader.GetValue(1));
+                    }
+
+                    string status = GetReaderText(reader, 2);
+                    DataRow requestRow = requestTable.NewRow();
+                    requestRow["RequestType"] = requestTypePrefix + requestType;
+
+                    if (hasRequestedDate)
+                    {
+                        requestRow["DateRequested"] = requestedDate;
+                    }
+                    else
+                    {
+                        requestRow["DateRequested"] = DBNull.Value;
+                    }
+
+                    requestRow["Status"] = status;
+                    requestTable.Rows.Add(requestRow);
+                }
+            }
+        }
+
+        private string GetReaderText(SqlDataReader reader, int columnIndex)
+        {
+            object value = reader.GetValue(columnIndex);
+            if (value == null || value == DBNull.Value)
+            {
+                return "";
+            }
+
+            return (string)value;
+        }
+
+        private void DisplayRecentRequests(DataTable requestTable)
+        {
+            DataView sortedRequests = new DataView(requestTable);
+            sortedRequests.Sort = "DateRequested DESC";
+            DataTable sortedTable = sortedRequests.ToTable();
+
+            while (sortedTable.Rows.Count > 5)
+            {
+                sortedTable.Rows.RemoveAt(sortedTable.Rows.Count - 1);
+            }
+
+            dgvRecentRequests.DataSource = sortedTable;
+        }
+    }
+}
