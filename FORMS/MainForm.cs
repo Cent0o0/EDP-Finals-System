@@ -14,6 +14,10 @@ namespace Barangay_E_Service_System
             Font = new Font("Arial", 9.75F);
             ShowResidentLoginControl();
         }
+        public void ShowResidentLogin()
+        {
+            ShowResidentLoginControl();
+        }
         public void ShowResidentLoginControl()
         {
             pnlContent.Controls.Clear();

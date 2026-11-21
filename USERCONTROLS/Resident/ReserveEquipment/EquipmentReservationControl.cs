@@ -132,6 +132,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Your equipment reservation has been submitted.");
+
+                            MainForm mainForm = FindForm() as MainForm;
+                            if (mainForm != null)
+                            {
+                                ResidentReservationControl reservationPage = new ResidentReservationControl(residentID);
+                                mainForm.ShowResidentDashboardContent(reservationPage);
+                            }
                         }
                         else
                         {
