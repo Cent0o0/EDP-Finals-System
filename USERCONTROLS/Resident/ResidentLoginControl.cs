@@ -39,16 +39,16 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 using (SqlConnection conn = DatabaseConnection.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @Password";
+                    string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @PasswordHash";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
-                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@PasswordHash", password);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                string residentID = Convert.ToInt32(reader["ResidentID"]);
+                                string residentID = Convert.ToInt32(reader["ResidentID"]).ToString();
                                 string fullName = reader["FullName"].ToString();
                                 string loggedInUsername = reader["Username"].ToString();
 

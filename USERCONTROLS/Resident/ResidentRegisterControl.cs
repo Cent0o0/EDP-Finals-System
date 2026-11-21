@@ -156,34 +156,31 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                             return;
                         }
                     }
-                    // Save the account
-                    string insertQuery = @"SET XACT_ABORT ON;
-                                           BEGIN TRANSACTION;
 
-                                           DECLARE @NextResidentNumber INT;
-                                           SELECT @NextResidentNumber = ISNULL(MAX(TRY_CONVERT(INT, SUBSTRING(ResidentID, 9, 20))), 0) + 1
-                                           FROM dbo.Residents WITH (UPDLOCK, HOLDLOCK);
+                    string insertQuery = @"INSERT INTO dbo.Residents
+                                           (FullName, Address, ContactNumber, Username, PasswordHash,
+                                            FirstName, LastName, MiddleInitial, Suffix)
+                                           VALUES
+                                           (@FullName, @Address, @ContactNumber, @Username, @PasswordHash,
+                                            @FirstName, @LastName, @MiddleInitial, @Suffix);";
 
-                                           DECLARE @ResidentID NVARCHAR(20);
-                                           SET @ResidentID = N'BRG-RES-' + RIGHT(N'00' + CONVERT(NVARCHAR(20), @NextResidentNumber), 2);
-
-                                           INSERT INTO dbo.Residents (ResidentID, FullName, FirstName, LastName, MiddleInitial, Suffix, Address, ContactNumber, Username, PasswordHash)
-                                           VALUES (@ResidentID, @FullName, @FirstName, @LastName, @MiddleInitial, @Suffix, @Address, @ContactNumber, @Username, @PasswordHash);
-
-                                           COMMIT TRANSACTION;";
-
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@FullName", fullName);
-                        cmd.Parameters.AddWithValue("@FirstName", firstName);
-                        cmd.Parameters.AddWithValue("@LastName", lastName);
-                        cmd.Parameters.AddWithValue("@MiddleInitial", middleInitial);
-                        cmd.Parameters.AddWithValue("@Suffix", suffix);
-                        cmd.Parameters.AddWithValue("@Address", address);
-                        cmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
-                        cmd.Parameters.AddWithValue("@Username", username);
-                        cmd.Parameters.AddWithValue("@PasswordHash", txtPassword.Text);
-                        cmd.ExecuteNonQuery();
+                        insertCmd.Parameters.AddWithValue("@FullName", fullName);
+                        insertCmd.Parameters.AddWithValue("@Address", address);
+                        insertCmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                        insertCmd.Parameters.AddWithValue("@Username", username);
+                        insertCmd.Parameters.AddWithValue("@PasswordHash", txtPassword.Text);
+                        insertCmd.Parameters.AddWithValue("@FirstName", firstName);
+                        insertCmd.Parameters.AddWithValue("@LastName", lastName);
+                        insertCmd.Parameters.AddWithValue("@MiddleInitial", middleInitial);
+                        insertCmd.Parameters.AddWithValue("@Suffix", suffix);
+
+                        int rowsInserted = insertCmd.ExecuteNonQuery();
+                        if (rowsInserted != 1)
+                        {
+                            throw new InvalidOperationException("Registration did not insert exactly one resident.");
+                        }
                     }
                 }
                 MessageBox.Show("Account created successfully!");
