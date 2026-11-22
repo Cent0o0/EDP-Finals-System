@@ -24,6 +24,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlHeader = new Panel();
             lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblSubtitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -42,7 +46,12 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblSuffixValue = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblLastNameValue = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblFirstNameValue = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            pnlDeleteAccount = new Guna.UI2.WinForms.Guna2Panel();
+            btnDeleteAccount = new Guna.UI2.WinForms.Guna2Button();
+            lblDeleteAccountDescription = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblDeleteAccountTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlHeader.SuspendLayout();
+            pnlDeleteAccount.SuspendLayout();
             SuspendLayout();
             // 
             // pnlHeader
@@ -265,6 +274,63 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblFirstNameValue.Text = null;
             lblFirstNameValue.TextAlignment = ContentAlignment.MiddleLeft;
             // 
+            // pnlDeleteAccount
+            // 
+            pnlDeleteAccount.BorderColor = Color.Red;
+            pnlDeleteAccount.BorderRadius = 5;
+            pnlDeleteAccount.BorderThickness = 1;
+            pnlDeleteAccount.Controls.Add(btnDeleteAccount);
+            pnlDeleteAccount.Controls.Add(lblDeleteAccountDescription);
+            pnlDeleteAccount.Controls.Add(lblDeleteAccountTitle);
+            pnlDeleteAccount.CustomizableEdges = customizableEdges5;
+            pnlDeleteAccount.FillColor = Color.White;
+            pnlDeleteAccount.Location = new Point(20, 491);
+            pnlDeleteAccount.Name = "pnlDeleteAccount";
+            pnlDeleteAccount.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            pnlDeleteAccount.Size = new Size(830, 137);
+            pnlDeleteAccount.TabIndex = 12;
+            // 
+            // btnDeleteAccount
+            // 
+            btnDeleteAccount.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDeleteAccount.BackColor = Color.Transparent;
+            btnDeleteAccount.BorderRadius = 5;
+            btnDeleteAccount.CustomizableEdges = customizableEdges3;
+            btnDeleteAccount.DisabledState.BorderColor = Color.DarkGray;
+            btnDeleteAccount.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnDeleteAccount.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnDeleteAccount.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnDeleteAccount.FillColor = Color.Red;
+            btnDeleteAccount.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeleteAccount.ForeColor = Color.White;
+            btnDeleteAccount.Location = new Point(547, 82);
+            btnDeleteAccount.Name = "btnDeleteAccount";
+            btnDeleteAccount.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnDeleteAccount.Size = new Size(225, 45);
+            btnDeleteAccount.TabIndex = 13;
+            btnDeleteAccount.Text = "Delete Account";
+            btnDeleteAccount.Click += btnDeleteAccount_Click;
+            // 
+            // lblDeleteAccountDescription
+            // 
+            lblDeleteAccountDescription.AutoSize = false;
+            lblDeleteAccountDescription.BackColor = Color.Transparent;
+            lblDeleteAccountDescription.Location = new Point(20, 59);
+            lblDeleteAccountDescription.Name = "lblDeleteAccountDescription";
+            lblDeleteAccountDescription.Size = new Size(870, 17);
+            lblDeleteAccountDescription.TabIndex = 1;
+            lblDeleteAccountDescription.Text = "Permanently delete your account and all related records. This action cannot be undone.";
+            // 
+            // lblDeleteAccountTitle
+            // 
+            lblDeleteAccountTitle.BackColor = Color.Transparent;
+            lblDeleteAccountTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDeleteAccountTitle.Location = new Point(20, 18);
+            lblDeleteAccountTitle.Name = "lblDeleteAccountTitle";
+            lblDeleteAccountTitle.Size = new Size(190, 23);
+            lblDeleteAccountTitle.TabIndex = 0;
+            lblDeleteAccountTitle.Text = "Delete Personal Account";
+            // 
             // ResidentProfileControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -272,6 +338,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             AutoScroll = true;
             AutoScrollMinSize = new Size(871, 650);
             BackColor = Color.White;
+            Controls.Add(pnlDeleteAccount);
             Controls.Add(lblFirstNameValue);
             Controls.Add(lblLastNameValue);
             Controls.Add(lblMiddleInitialValue);
@@ -292,6 +359,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             Size = new Size(871, 650);
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
+            pnlDeleteAccount.ResumeLayout(false);
+            pnlDeleteAccount.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -311,5 +380,9 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         private Guna.UI2.WinForms.Guna2HtmlLabel lblSuffixValue;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblLastNameValue;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblFirstNameValue;
+        private Guna.UI2.WinForms.Guna2Panel pnlDeleteAccount;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblDeleteAccountDescription;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblDeleteAccountTitle;
+        private Guna.UI2.WinForms.Guna2Button btnDeleteAccount;
     }
 }
