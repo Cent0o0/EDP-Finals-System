@@ -247,6 +247,21 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         }
                     }
 
+                    string contactCheckQuery = "SELECT COUNT(*) FROM dbo.Residents WHERE LTRIM(RTRIM(ContactNumber)) = @ContactNumber AND ResidentID <> @ResidentID";
+                    using (SqlCommand contactCheckCommand = new SqlCommand(contactCheckQuery, connection))
+                    {
+                        contactCheckCommand.Parameters.AddWithValue("@ContactNumber", txtContactNumber.Text.Trim());
+                        contactCheckCommand.Parameters.AddWithValue("@ResidentID", residentID);
+
+                        int contactCount = (int)contactCheckCommand.ExecuteScalar();
+                        if (contactCount > 0)
+                        {
+                            MessageBox.Show("That contact number is already in use.");
+                            txtContactNumber.Focus();
+                            return;
+                        }
+                    }
+
                     string fullName = txtFirstName.Text.Trim() + " ";
                     if (middleInitial.Length > 0)
                     {

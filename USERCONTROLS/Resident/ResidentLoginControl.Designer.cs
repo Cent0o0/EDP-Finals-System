@@ -138,7 +138,7 @@
             btnRegister.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnRegister.FillColor = Color.Transparent;
             btnRegister.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            btnRegister.ForeColor = Color.Black;
+            btnRegister.ForeColor = Color.FromArgb(18, 52, 86);
             btnRegister.Location = new Point(207, 429);
             btnRegister.Name = "btnRegister";
             btnRegister.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -228,7 +228,7 @@
             btnForgot.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnForgot.FillColor = Color.Transparent;
             btnForgot.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnForgot.ForeColor = Color.Black;
+            btnForgot.ForeColor = Color.FromArgb(18, 52, 86);
             btnForgot.Location = new Point(314, 358);
             btnForgot.Name = "btnForgot";
             btnForgot.ShadowDecoration.CustomizableEdges = customizableEdges14;

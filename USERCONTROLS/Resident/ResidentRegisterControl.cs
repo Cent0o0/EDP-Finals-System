@@ -157,6 +157,19 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         }
                     }
 
+                    string contactCheckQuery = "SELECT COUNT(*) FROM dbo.Residents WHERE LTRIM(RTRIM(ContactNumber)) = @ContactNumber";
+                    using (SqlCommand contactCheckCmd = new SqlCommand(contactCheckQuery, conn))
+                    {
+                        contactCheckCmd.Parameters.AddWithValue("@ContactNumber", contactNumber);
+                        int contactCount = (int)contactCheckCmd.ExecuteScalar();
+                        if (contactCount > 0)
+                        {
+                            MessageBox.Show("This contact number is already registered.");
+                            txtContactNumber.Focus();
+                            return;
+                        }
+                    }
+
                     string insertQuery = @"INSERT INTO dbo.Residents
                                            (FullName, Address, ContactNumber, Username, PasswordHash,
                                             FirstName, LastName, MiddleInitial, Suffix)
