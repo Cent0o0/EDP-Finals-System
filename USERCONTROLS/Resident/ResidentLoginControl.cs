@@ -83,9 +83,21 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             main.ShowResidentRegisterControl();
         }
 
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            MainForm main = (MainForm)this.FindForm();
+            main.ShowResidentForgotPasswordControl();
+        }
+
         private void ResidentLoginControl_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnForgot_Click(object sender, EventArgs e)
+        {
+            MainForm main = (MainForm)this.FindForm();
+            main.ShowResidentForgotPasswordControl();
         }
     }
 }

@@ -45,6 +45,26 @@ namespace Barangay_E_Service_System
 
             pnlContent.Controls.Add(residentRegister);
         }
+
+        public void ShowResidentForgotPasswordControl()
+        {
+            pnlContent.Controls.Clear();
+
+            USERCONTROLS.Resident.ForgotPasswordControl forgotPasswordControl = new USERCONTROLS.Resident.ForgotPasswordControl();
+            forgotPasswordControl.Dock = DockStyle.Fill;
+
+            pnlContent.Controls.Add(forgotPasswordControl);
+        }
+
+        public void ShowResidentChangePasswordControl(string residentID)
+        {
+            pnlContent.Controls.Clear();
+
+            USERCONTROLS.Resident.ChangePasswordControl changePasswordControl = new USERCONTROLS.Resident.ChangePasswordControl(residentID);
+            changePasswordControl.Dock = DockStyle.Fill;
+
+            pnlContent.Controls.Add(changePasswordControl);
+        }
         public void ShowControl(UserControl control)
         {
             pnlContent.Controls.Clear();

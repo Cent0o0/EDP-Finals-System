@@ -18,6 +18,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="USERCONTROLS\Resident\Forgot Password and Change\ForgotPasswordControl.Designer.cs">
+      <DependentUpon>ForgotPasswordControl.cs</DependentUpon>
+    </Compile>
+    <Compile Update="USERCONTROLS\Resident\Forgot Password and Change\ChangePasswordControl.Designer.cs">
+      <DependentUpon>ChangePasswordControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="USERCONTROLS\Resident\Forgot Password and Change\ForgotPasswordControl.resx">
+      <DependentUpon>ForgotPasswordControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="USERCONTROLS\Resident\Forgot Password and Change\ChangePasswordControl.resx">
+      <DependentUpon>ChangePasswordControl.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Update="USERCONTROLS\Resident\Profile\ResidentProfileControl.Designer.cs">
       <DependentUpon>ResidentProfileControl.cs</DependentUpon>
     </Compile>
