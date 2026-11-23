@@ -68,6 +68,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
         }
 
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string eventName = txtEventName.Text.Trim();
@@ -101,45 +102,47 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmit.Enabled = false;
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this equipment reservation?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
 
-            if (confirmation != DialogResult.Yes)
+            try
             {
-                isSubmitting = false;
-                btnSubmit.Enabled = true;
-                return;
-            }
+                DialogResult confirmation = MessageBox.Show(
+                    "Do you want to submit this equipment reservation?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
-            using (SqlConnection conn = DatabaseConnection.GetConnection())
-            {
-                try
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
+                using (SqlConnection conn = DatabaseConnection.GetConnection())
                 {
                     conn.Open();
-                    string tableName = FindEquipmentReservationTable(conn);
-                    if (tableName.Length == 0)
+
+                    // Generate Reference ID
+                    string referenceQuery = @"SELECT NEXT VALUE FOR dbo.ReservationReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, conn))
                     {
-                        MessageBox.Show("The equipment reservation table was not found. Check its name in SSMS before submitting.", "Reservation Table Not Found");
-                        return;
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
                     }
 
-                    string safeTableName = "dbo.[" + tableName.Replace("]", "]]" ) + "]";
-                    string query = "INSERT INTO " + safeTableName + @"
-                                    (ResidentID, EquipmentID, Quantity, EventName, EventDate, Purpose, Status)
-                                    VALUES
-                                    (@ResidentID, @EquipmentID, @Quantity, @EventName, @EventDate, @Purpose, @Status)";
+                    referenceID = "RSV-" + nextNumber.ToString("D3");
+
+                    // Save reservation
+                    string query = @"INSERT INTO dbo.EquipmentReservations (ReferenceID, ResidentID, EquipmentID, Quantity, EventName, EventDate, Purpose, Status)VALUES (@ReferenceID, @ResidentID, @EquipmentID, @Quantity, @EventName, @EventDate, @Purpose, @Status)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@ReferenceID", referenceID);
                         cmd.Parameters.AddWithValue("@ResidentID", residentID);
                         cmd.Parameters.AddWithValue("@EquipmentID", equipmentID);
                         cmd.Parameters.AddWithValue("@Quantity", Convert.ToInt32(numQuantity.Value));
@@ -152,9 +155,9 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Your equipment reservation has been submitted.");
-
+                            MessageBox.Show("Your equipment reservation has been submitted successfully.\n\n" + "Reference ID: " + referenceID,"Reservation Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             MainForm mainForm = FindForm() as MainForm;
+
                             if (mainForm != null)
                             {
                                 ResidentReservationControl reservationPage = new ResidentReservationControl(residentID);
@@ -167,41 +170,16 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         }
                     }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Unable to save the reservation. Please check the equipment reservation table and try again.\n\n" + ex.Message);
-                }
-                finally
-                {
-                    isSubmitting = false;
-                    btnSubmit.Enabled = true;
-                }
             }
-        }
-
-        private string FindEquipmentReservationTable(SqlConnection connection)
-        {
-            string query = @"SELECT TOP (1) TABLE_NAME
-                             FROM INFORMATION_SCHEMA.TABLES
-                             WHERE TABLE_SCHEMA = 'dbo'
-                               AND TABLE_NAME IN ('EquipmentReservation', 'EquipmentReservations')
-                             ORDER BY CASE TABLE_NAME
-                                 WHEN 'EquipmentReservation' THEN 0
-                                 WHEN 'EquipmentReservations' THEN 1
-                                 ELSE 2
-                             END";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
+            catch (Exception ex)
             {
-                object result = command.ExecuteScalar();
-                if (result == null || result == DBNull.Value)
-                {
-                    return "";
-                }
-
-                return (string)result;
+                MessageBox.Show("Unable to save the reservation: " + ex.Message,"Reservation Submission");
+            }
+            finally
+            {
+                isSubmitting = false;
+                btnSubmit.Enabled = true;
             }
         }
-
     }
 }

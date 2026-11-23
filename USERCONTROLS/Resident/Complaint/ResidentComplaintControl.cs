@@ -19,7 +19,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         {
             residentID = resident;
         }
-
         private void btnSubmitComplaint_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(residentID))
@@ -36,6 +35,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
 
             string incidentLocation = txtIncidentLocation.Text.Trim();
+
             if (incidentLocation.Length == 0)
             {
                 MessageBox.Show("Please enter the incident location.", "Incident Location Required");
@@ -44,6 +44,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
 
             string description = txtDescription.Text.Trim();
+
             if (description.Length == 0)
             {
                 MessageBox.Show("Please describe the complaint.", "Description Required");
@@ -52,53 +53,55 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmitComplaint.Enabled = false;
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this complaint report?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmation != DialogResult.Yes)
-            {
-                isSubmitting = false;
-                btnSubmitComplaint.Enabled = true;
-                return;
-            }
 
             try
             {
-                int rowsAffected = 0;
+                DialogResult confirmation = MessageBox.Show("Do you want to submit this complaint report?", "Confirm Submission",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"INSERT INTO dbo.Complaints
-                                     (ResidentID, Category, IncidentLocation, Description, IncidentDate)
-                                     VALUES (@ResidentID, @Category, @IncidentLocation, @Description, @IncidentDate)";
+
+                    // Generate the next Complaint Reference ID
+                    string referenceQuery = @"SELECT NEXT VALUE FOR dbo.ComplaintReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, connection))
+                    {
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
+                    }
+
+                    referenceID = "CMP-" + nextNumber.ToString("D3");
+
+                    // Insert the complaint with its Reference ID
+                    string query = @" INSERT INTO dbo.Complaints (ReferenceID, ResidentID, Category, IncidentLocation, Description, IncidentDate) VALUES (@ReferenceID, @ResidentID, @Category, @IncidentLocation, @Description, @IncidentDate)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
                         command.Parameters.AddWithValue("@ResidentID", residentID);
                         command.Parameters.AddWithValue("@Category", cmbCategory.Text.Trim());
                         command.Parameters.AddWithValue("@IncidentLocation", incidentLocation);
                         command.Parameters.AddWithValue("@Description", description);
                         command.Parameters.AddWithValue("@IncidentDate", dtpIncidentDate.Value.Date);
-                        rowsAffected = command.ExecuteNonQuery();
+
+                        command.ExecuteNonQuery();
                     }
                 }
 
-                if (rowsAffected <= 0)
-                {
-                    MessageBox.Show("Could not submit your complaint. Please try again.", "Complaint Submission");
-                    return;
-                }
+                MessageBox.Show("Your complaint was submitted successfully.\n\n" +"Reference ID: " + referenceID,"Complaint Submitted", MessageBoxButtons.OK,MessageBoxIcon.Information);
 
-                MessageBox.Show("Your complaint was submitted successfully.", "Complaint Submitted");
                 cmbCategory.SelectedIndex = -1;
                 txtIncidentLocation.Clear();
                 txtDescription.Clear();
@@ -106,7 +109,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not submit your complaint: " + ex.Message, "Complaint Submission");
+                MessageBox.Show("Could not submit your complaint: " + ex.Message,"Complaint Submission");
             }
             finally
             {
@@ -114,5 +117,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 btnSubmitComplaint.Enabled = true;
             }
         }
+
     }
 }
+

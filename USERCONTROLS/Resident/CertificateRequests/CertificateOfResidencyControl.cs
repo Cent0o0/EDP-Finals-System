@@ -65,6 +65,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
         }
 
+
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
             if (!dtpDateStartedResiding.Checked)
@@ -83,6 +84,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             string purpose = cmbPurpose.Text.Trim();
             string otherPurpose = txtOtherPurpose.Text.Trim();
+
             if (purpose == "Other" && otherPurpose.Length == 0)
             {
                 MessageBox.Show("Please specify the other purpose for the certificate.", "Other Purpose Required");
@@ -90,16 +92,21 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 return;
             }
 
-            string requestDetails = "Date Started Residing: " + dtpDateStartedResiding.Value.ToString("MMMM d, yyyy");
+            string requestDetails = "Date Started Residing: " +
+                dtpDateStartedResiding.Value.ToString("MMMM d, yyyy");
+
             if (purpose == "Other")
             {
-                requestDetails = requestDetails + Environment.NewLine + "Other Purpose: " + otherPurpose;
+                requestDetails = requestDetails +
+                    Environment.NewLine + "Other Purpose: " + otherPurpose;
             }
 
             string remarks = txtAdditionalRemarks.Text.Trim();
+
             if (remarks.Length > 0)
             {
-                requestDetails = requestDetails + Environment.NewLine + "Additional Remarks: " + remarks;
+                requestDetails = requestDetails +
+                    Environment.NewLine + "Additional Remarks: " + remarks;
             }
 
             if (requestDetails.Length > 1000)
@@ -110,61 +117,82 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmitRequest.Enabled = false;
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this Certificate of Residency request?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmation != DialogResult.Yes)
-            {
-                isSubmitting = false;
-                btnSubmitRequest.Enabled = true;
-                return;
-            }
 
             try
             {
-                int rowsAffected = 0;
+                DialogResult confirmation = MessageBox.Show(
+                    "Do you want to submit this Certificate of Residency request?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"INSERT INTO dbo.CertificateRequests
-                                     (ResidentID, CertificateType, Purpose, AdditionalRemarks)
-                                     VALUES (@ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
+
+                    // Generate the next shared Certificate Reference ID
+                    string referenceQuery = @"
+                SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, connection))
+                    {
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
+                    }
+
+                    referenceID = "CRT-" + nextNumber.ToString("D3");
+
+                    // Insert the Certificate of Residency request
+                    string query = @"
+                INSERT INTO dbo.CertificateRequests
+                (ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks)
+                VALUES
+                (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
                         command.Parameters.AddWithValue("@ResidentID", residentID);
                         command.Parameters.AddWithValue("@CertificateType", "Certificate of Residency");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", requestDetails);
-                        rowsAffected = command.ExecuteNonQuery();
+
+                        command.ExecuteNonQuery();
                     }
                 }
 
-                if (rowsAffected <= 0)
-                {
-                    MessageBox.Show("Could not submit your residency certificate request. Please try again.", "Certificate of Residency");
-                    return;
-                }
+                MessageBox.Show(
+                    "Your Certificate of Residency request was submitted successfully.\n\n" +
+                    "Reference ID: " + referenceID,
+                    "Request Submitted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                MessageBox.Show("Your Certificate of Residency request was submitted successfully.", "Request Submitted");
-                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                Barangay_E_Service_System.MainForm mainForm =
+                    FindForm() as Barangay_E_Service_System.MainForm;
+
                 if (mainForm != null)
                 {
-                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                    mainForm.ShowResidentDashboardContent(
+                        new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not submit your residency certificate request: " + ex.Message, "Certificate of Residency");
+                MessageBox.Show(
+                    "Could not submit your residency certificate request: " + ex.Message,
+                    "Certificate of Residency");
             }
             finally
             {
@@ -172,5 +200,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 btnSubmitRequest.Enabled = true;
             }
         }
+
     }
 }

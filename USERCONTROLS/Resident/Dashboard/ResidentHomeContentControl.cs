@@ -1,3 +1,4 @@
+
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -25,16 +26,19 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
+
                     string reservationTableName = FindEquipmentReservationTable(connection);
                     LoadRequestCounts(connection, residentID, reservationTableName);
 
                     DataTable requestRows = CreateRequestTable();
                     LoadCertificateRequests(connection, residentID, requestRows);
                     LoadComplaintRequests(connection, residentID, requestRows);
+
                     if (reservationTableName.Length > 0)
                     {
                         LoadEquipmentRequests(connection, residentID, requestRows, reservationTableName);
                     }
+
                     DisplayRecentRequests(requestRows);
                 }
             }
@@ -47,16 +51,18 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         private void LoadRequestCounts(SqlConnection connection, string residentID, string reservationTableName)
         {
             string equipmentTable = "";
+
             if (reservationTableName.Length > 0)
             {
-                equipmentTable = " + (SELECT COUNT(*) FROM dbo.[" + reservationTableName.Replace("]", "]]" ) + "] WHERE ResidentID = @ResidentID)";
+                equipmentTable = " + (SELECT COUNT(*) FROM dbo.[" + reservationTableName.Replace("]", "]]") + "] WHERE ResidentID = @ResidentID)";
             }
 
             string pendingEquipment = "";
             string approvedEquipment = "";
+
             if (reservationTableName.Length > 0)
             {
-                string safeTableName = "dbo.[" + reservationTableName.Replace("]", "]]" ) + "]";
+                string safeTableName = "dbo.[" + reservationTableName.Replace("]", "]]") + "]";
                 pendingEquipment = " + (SELECT COUNT(*) FROM " + safeTableName + " WHERE ResidentID = @ResidentID AND Status = 'Pending')";
                 approvedEquipment = " + (SELECT COUNT(*) FROM " + safeTableName + " WHERE ResidentID = @ResidentID AND Status = 'Approved')";
             }
@@ -88,16 +94,20 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         private DataTable CreateRequestTable()
         {
             DataTable requestTable = new DataTable();
+            requestTable.Columns.Add("ReferenceID", typeof(string));
             requestTable.Columns.Add("RequestType", typeof(string));
+
             DataColumn requestedDateColumn = requestTable.Columns.Add("DateRequested", typeof(DateTime));
             requestedDateColumn.AllowDBNull = true;
+
             requestTable.Columns.Add("Status", typeof(string));
+
             return requestTable;
         }
 
         private void LoadCertificateRequests(SqlConnection connection, string residentID, DataTable requestTable)
         {
-            string query = @"SELECT CertificateType AS RequestType, DateRequested, Status
+            string query = @"SELECT ReferenceID, CertificateType AS RequestType, DateRequested, Status
                              FROM dbo.CertificateRequests
                              WHERE ResidentID = @ResidentID
                              ORDER BY DateRequested DESC, RequestID DESC";
@@ -111,7 +121,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
         private void LoadComplaintRequests(SqlConnection connection, string residentID, DataTable requestTable)
         {
-            string query = @"SELECT Category, DateSubmitted AS DateRequested, Status
+            string query = @"SELECT ReferenceID, Category, DateSubmitted AS DateRequested, Status
                              FROM dbo.Complaints
                              WHERE ResidentID = @ResidentID
                              ORDER BY DateSubmitted DESC, ComplaintID DESC";
@@ -126,21 +136,17 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         private void LoadEquipmentRequests(SqlConnection connection, string residentID, DataTable requestTable, string tableName)
         {
             string requestDateColumn = FindEquipmentRequestDateColumn(connection, tableName);
-            string safeTableName = "dbo.[" + tableName.Replace("]", "]]" ) + "]";
+            string safeTableName = "dbo.[" + tableName.Replace("]", "]]") + "]";
             string query;
 
             if (requestDateColumn.Length > 0)
             {
-                string safeDateColumn = "[" + requestDateColumn.Replace("]", "]]" ) + "]";
-                query = "SELECT EventName, " + safeDateColumn +
-                        " AS DateRequested, Status FROM " + safeTableName + " " +
-                        "WHERE ResidentID = @ResidentID ORDER BY " + safeDateColumn + " DESC";
+                string safeDateColumn = "[" + requestDateColumn.Replace("]", "]]") + "]";
+                query = "SELECT ReferenceID, EventName, " + safeDateColumn + " AS DateRequested, Status FROM " + safeTableName + " WHERE ResidentID = @ResidentID ORDER BY " + safeDateColumn + " DESC";
             }
             else
             {
-                query = @"SELECT EventName, CAST(NULL AS datetime2) AS DateRequested, Status
-                          FROM " + safeTableName + @"
-                          WHERE ResidentID = @ResidentID";
+                query = "SELECT ReferenceID, EventName, CAST(NULL AS datetime2) AS DateRequested, Status FROM " + safeTableName + " WHERE ResidentID = @ResidentID";
             }
 
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -165,6 +171,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 object result = command.ExecuteScalar();
+
                 if (result == null || result == DBNull.Value)
                 {
                     return "";
@@ -197,12 +204,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             {
                 command.Parameters.AddWithValue("@TableName", tableName);
                 object result = command.ExecuteScalar();
+
                 if (result == null || result == DBNull.Value)
                 {
                     return "";
                 }
 
                 string columnName = (string)result;
+
                 if (columnName == null)
                 {
                     return "";
@@ -218,29 +227,24 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             {
                 while (reader.Read())
                 {
-                    string requestType = GetReaderText(reader, 0);
+                    string referenceID = GetReaderText(reader, 0);
+                    string requestType = GetReaderText(reader, 1);
                     DateTime requestedDate = DateTime.MinValue;
-                    bool hasRequestedDate = reader[1] != DBNull.Value;
+                    bool hasRequestedDate = reader[2] != DBNull.Value;
 
                     if (hasRequestedDate)
                     {
-                        requestedDate = Convert.ToDateTime(reader.GetValue(1));
+                        requestedDate = Convert.ToDateTime(reader.GetValue(2));
                     }
 
-                    string status = GetReaderText(reader, 2);
+                    string status = GetReaderText(reader, 3);
+
                     DataRow requestRow = requestTable.NewRow();
+                    requestRow["ReferenceID"] = referenceID;
                     requestRow["RequestType"] = requestTypePrefix + requestType;
-
-                    if (hasRequestedDate)
-                    {
-                        requestRow["DateRequested"] = requestedDate;
-                    }
-                    else
-                    {
-                        requestRow["DateRequested"] = DBNull.Value;
-                    }
-
+                    requestRow["DateRequested"] = hasRequestedDate ? (object)requestedDate : DBNull.Value;
                     requestRow["Status"] = status;
+
                     requestTable.Rows.Add(requestRow);
                 }
             }
@@ -249,14 +253,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         private string GetReaderText(SqlDataReader reader, int columnIndex)
         {
             object value = reader.GetValue(columnIndex);
+
             if (value == null || value == DBNull.Value)
             {
                 return "";
             }
 
-            return (string)value;
-        }
-
+            return value.ToString();
+        }s
         private void DisplayRecentRequests(DataTable requestTable)
         {
             DataView sortedRequests = new DataView(requestTable);

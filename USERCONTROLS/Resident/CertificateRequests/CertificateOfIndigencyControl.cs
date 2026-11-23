@@ -77,6 +77,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
         }
 
+
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
             if (txtFullName.Text.Trim().Length == 0 || txtAddress.Text.Trim().Length == 0)
@@ -94,6 +95,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             string purpose = cmbPurpose.Text.Trim();
             string otherPurpose = txtOtherPurpose.Text.Trim();
+
             if (purpose == "Other" && otherPurpose.Length == 0)
             {
                 MessageBox.Show("Please specify the other purpose for the certificate.", "Other Purpose Required");
@@ -102,11 +104,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             string additionalRemarks = txtAdditionalRemarks.Text.Trim();
+
             if (purpose == "Other")
             {
                 if (additionalRemarks.Length > 0)
                 {
-                    additionalRemarks = "Other Purpose: " + otherPurpose + Environment.NewLine + "Additional Remarks: " + additionalRemarks;
+                    additionalRemarks = "Other Purpose: " + otherPurpose +
+                        Environment.NewLine + "Additional Remarks: " + additionalRemarks;
                 }
                 else
                 {
@@ -122,61 +126,82 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmitRequest.Enabled = false;
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this Certificate of Indigency request?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmation != DialogResult.Yes)
-            {
-                isSubmitting = false;
-                btnSubmitRequest.Enabled = true;
-                return;
-            }
 
             try
             {
-                int rowsAffected = 0;
+                DialogResult confirmation = MessageBox.Show(
+                    "Do you want to submit this Certificate of Indigency request?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"INSERT INTO dbo.CertificateRequests
-                                     (ResidentID, CertificateType, Purpose, AdditionalRemarks)
-                                     VALUES (@ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
+
+                    // Generate the next shared Certificate Reference ID
+                    string referenceQuery = @"
+                SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, connection))
+                    {
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
+                    }
+
+                    referenceID = "CRT-" + nextNumber.ToString("D3");
+
+                    // Save the Certificate of Indigency request
+                    string query = @"
+                INSERT INTO dbo.CertificateRequests
+                (ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks)
+                VALUES
+                (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
                         command.Parameters.AddWithValue("@ResidentID", residentID);
                         command.Parameters.AddWithValue("@CertificateType", "Certificate of Indigency");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", additionalRemarks);
-                        rowsAffected = command.ExecuteNonQuery();
+
+                        command.ExecuteNonQuery();
                     }
                 }
 
-                if (rowsAffected <= 0)
-                {
-                    MessageBox.Show("Could not submit your indigency certificate request. Please try again.", "Certificate of Indigency");
-                    return;
-                }
+                MessageBox.Show(
+                    "Your Certificate of Indigency request was submitted successfully.\n\n" +
+                    "Reference ID: " + referenceID,
+                    "Request Submitted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                MessageBox.Show("Your Certificate of Indigency request was submitted successfully.", "Request Submitted");
-                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                Barangay_E_Service_System.MainForm mainForm =
+                    FindForm() as Barangay_E_Service_System.MainForm;
+
                 if (mainForm != null)
                 {
-                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                    mainForm.ShowResidentDashboardContent(
+                        new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not submit your indigency certificate request: " + ex.Message, "Certificate of Indigency");
+                MessageBox.Show(
+                    "Could not submit your indigency certificate request: " + ex.Message,
+                    "Certificate of Indigency");
             }
             finally
             {
@@ -184,5 +209,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 btnSubmitRequest.Enabled = true;
             }
         }
+
     }
 }
+

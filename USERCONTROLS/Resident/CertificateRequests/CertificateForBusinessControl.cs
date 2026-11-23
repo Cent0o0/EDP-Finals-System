@@ -67,6 +67,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
         }
 
+
         private void btnSubmitRequest_Click(object sender, System.EventArgs e)
         {
             string businessName = txtBusinessName.Text.Trim();
@@ -111,61 +112,82 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             businessDetails.Append(dtpDateEstablished.Value.ToString("MMMM yyyy", CultureInfo.InvariantCulture));
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmitRequest.Enabled = false;
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this Certificate for Business request?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmation != DialogResult.Yes)
-            {
-                isSubmitting = false;
-                btnSubmitRequest.Enabled = true;
-                return;
-            }
 
             try
             {
-                int rowsAffected = 0;
+                DialogResult confirmation = MessageBox.Show(
+                    "Do you want to submit this Certificate for Business request?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"INSERT INTO dbo.CertificateRequests
-                                     (ResidentID, CertificateType, Purpose, AdditionalRemarks)
-                                     VALUES (@ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
+
+                    // Generate the next shared Certificate Reference ID
+                    string referenceQuery = @"
+                SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, connection))
+                    {
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
+                    }
+
+                    referenceID = "CRT-" + nextNumber.ToString("D3");
+
+                    // Save the business certificate request
+                    string query = @"
+                INSERT INTO dbo.CertificateRequests
+                (ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks)
+                VALUES
+                (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
                         command.Parameters.AddWithValue("@ResidentID", residentID);
                         command.Parameters.AddWithValue("@CertificateType", "Certificate for Business");
                         command.Parameters.AddWithValue("@Purpose", "Business certification");
                         command.Parameters.AddWithValue("@AdditionalRemarks", businessDetails.ToString());
-                        rowsAffected = command.ExecuteNonQuery();
+
+                        command.ExecuteNonQuery();
                     }
                 }
 
-                if (rowsAffected <= 0)
-                {
-                    MessageBox.Show("Could not submit your business certificate request. Please try again.", "Business Certificate Request");
-                    return;
-                }
+                MessageBox.Show(
+                    "Your Certificate for Business request was submitted successfully.\n\n" +
+                    "Reference ID: " + referenceID,
+                    "Request Submitted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                MessageBox.Show("Your Certificate for Business request was submitted successfully.", "Request Submitted");
-                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                Barangay_E_Service_System.MainForm mainForm =
+                    FindForm() as Barangay_E_Service_System.MainForm;
+
                 if (mainForm != null)
                 {
-                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                    mainForm.ShowResidentDashboardContent(
+                        new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not submit your business certificate request: " + ex.Message, "Business Certificate Request");
+                MessageBox.Show(
+                    "Could not submit your business certificate request: " + ex.Message,
+                    "Business Certificate Request");
             }
             finally
             {
@@ -173,5 +195,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 btnSubmitRequest.Enabled = true;
             }
         }
+
     }
 }

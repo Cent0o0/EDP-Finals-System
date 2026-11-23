@@ -55,23 +55,17 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
 
             if (dgvResidents.Columns[e.ColumnIndex].Name == "btnView")
             {
-                string residentID = dgvResidents.Rows[e.RowIndex]
-                    .Cells["ResidentID"].Value?.ToString();
+                string residentID = dgvResidents.Rows[e.RowIndex].Cells["ResidentID"].Value?.ToString();
 
-                string fullName = dgvResidents.Rows[e.RowIndex]
-                    .Cells["FullName"].Value?.ToString();
+                string fullName = dgvResidents.Rows[e.RowIndex].Cells["FullName"].Value?.ToString();
 
-                string username = dgvResidents.Rows[e.RowIndex]
-                    .Cells["Username"].Value?.ToString();
+                string username = dgvResidents.Rows[e.RowIndex].Cells["Username"].Value?.ToString();
 
-                string contact = dgvResidents.Rows[e.RowIndex]
-                    .Cells["ContactNumber"].Value?.ToString();
+                string contact = dgvResidents.Rows[e.RowIndex].Cells["ContactNumber"].Value?.ToString();
 
-                string address = dgvResidents.Rows[e.RowIndex]
-                    .Cells["Address"].Value?.ToString();
+                string address = dgvResidents.Rows[e.RowIndex].Cells["Address"].Value?.ToString();
 
-                string dateRegistered = dgvResidents.Rows[e.RowIndex]
-                    .Cells["RegistrationDate"].Value?.ToString();
+                string dateRegistered = dgvResidents.Rows[e.RowIndex].Cells["RegistrationDate"].Value?.ToString();
 
                 MessageBox.Show($"Resident ID: {residentID}\n" + $"Full Name: {fullName}\n" + $"Username: {username}\n" + $"Contact Number: {contact}\n" + $"Address: {address}\n" + $"Date Registered: {dateRegistered}", "Resident Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

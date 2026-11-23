@@ -52,6 +52,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
         }
 
+
+
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
             if (cmbPurpose.SelectedIndex < 0)
@@ -72,18 +74,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             string remarks = txtAdditionalRemarks.Text.Trim();
+
             if (purpose == "Other")
             {
-                if (remarks.Length > 0)
-                {
-                    remarks = "Other Purpose: " + otherPurpose + Environment.NewLine + "Additional Remarks: " + remarks;
-                }
-                else
-                {
-                    remarks = "Other Purpose: " + otherPurpose;
-                }
-            }
-
+                remarks = remarks.Length > 0
+                    ? "Other Purpose: " + otherPurpose + Environment.NewLine +
+                      "Additional Remarks: " + remarks
+                    : "Other Purpose: " + otherPurpose;
+            }   
             if (remarks.Length > 1000)
             {
                 MessageBox.Show("The purpose details and additional remarks must be 1000 characters or fewer.", "Request Details");
@@ -92,63 +90,70 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmitRequest.Enabled = false;
 
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this Barangay Clearance request?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmation != DialogResult.Yes)
-            {
-                isSubmitting = false;
-                btnSubmitRequest.Enabled = true;
-                return;
-            }
-
             try
             {
-                int rowsAffected = 0;
+                DialogResult confirmation = MessageBox.Show(
+                    "Do you want to submit this Barangay Clearance request?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"INSERT INTO dbo.CertificateRequests
-                                     (ResidentID, CertificateType, Purpose, AdditionalRemarks)
-                                     VALUES (@ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
+
+                    // Generate the next Reference ID
+
+                    string referenceQuery = @"SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, connection))
+                    {
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
+                    }
+
+                    referenceID = "CRT-" + nextNumber.ToString("D3");
+
+
+                    // Insert the clearance request
+                    string query = @"INSERT INTO dbo.CertificateRequests (ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks)VALUES (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
                         command.Parameters.AddWithValue("@ResidentID", residentID);
                         command.Parameters.AddWithValue("@CertificateType", "Barangay Clearance");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", remarks);
-                        rowsAffected = command.ExecuteNonQuery();
+
+                        command.ExecuteNonQuery();
                     }
                 }
 
-                if (rowsAffected > 0)
+                MessageBox.Show("Your Barangay Clearance request was submitted successfully.\n\n" + "Reference ID: " + referenceID,"Request Submitted",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+
+                if (mainForm != null)
                 {
-                    MessageBox.Show("Your Barangay Clearance request was submitted successfully.", "Request Submitted");
-                    Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
-                    if (mainForm != null)
-                    {
-                        mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Could not submit your clearance request. Please try again.", "Clearance Request");
+                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not submit your clearance request: " + ex.Message, "Clearance Request");
+                MessageBox.Show("Could not submit your clearance request: " + ex.Message,"Clearance Request");
             }
             finally
             {
@@ -156,6 +161,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 btnSubmitRequest.Enabled = true;
             }
         }
+
+
 
         private void cmbPurpose_SelectedIndexChanged(object sender, EventArgs e)
         {

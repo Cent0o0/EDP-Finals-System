@@ -84,5 +84,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             complaintManagement.Dock = DockStyle.Fill;
             pnlDashboardContent.Controls.Add(complaintManagement);
         }
+
+        private void pnlSidebar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

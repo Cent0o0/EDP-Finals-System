@@ -7,9 +7,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
     {
         private System.ComponentModel.IContainer components = null;
         private Guna.UI2.WinForms.Guna2DataGridView dgvRecentRequests;
-        private DataGridViewTextBoxColumn colRequestType;
-        private DataGridViewTextBoxColumn colDateRequested;
-        private DataGridViewTextBoxColumn colStatus;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblRecentRequests;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel pnlPending;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblPendingCount;
@@ -38,17 +35,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dgvRecentRequests = new Guna.UI2.WinForms.Guna2DataGridView();
-            colRequestType = new DataGridViewTextBoxColumn();
-            colDateRequested = new DataGridViewTextBoxColumn();
-            colStatus = new DataGridViewTextBoxColumn();
             lblRecentRequests = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlPending = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             lblPendingCount = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -62,6 +56,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             pnlWelcome = new Panel();
             lblSubtitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblWelcome = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            colStatus = new DataGridViewTextBoxColumn();
+            colDateRequested = new DataGridViewTextBoxColumn();
+            colRequestType = new DataGridViewTextBoxColumn();
+            ReferenceID = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvRecentRequests).BeginInit();
             pnlPending.SuspendLayout();
             pnlApproved.SuspendLayout();
@@ -90,7 +88,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             dgvRecentRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvRecentRequests.ColumnHeadersHeight = 35;
             dgvRecentRequests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvRecentRequests.Columns.AddRange(new DataGridViewColumn[] { colRequestType, colDateRequested, colStatus });
+            dgvRecentRequests.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, colRequestType, colDateRequested, colStatus });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -101,13 +99,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             dgvRecentRequests.DefaultCellStyle = dataGridViewCellStyle4;
             dgvRecentRequests.GridColor = Color.FromArgb(226, 232, 240);
-            dgvRecentRequests.Location = new Point(40, 357);
+            dgvRecentRequests.Location = new Point(22, 357);
             dgvRecentRequests.MultiSelect = false;
             dgvRecentRequests.Name = "dgvRecentRequests";
             dgvRecentRequests.ReadOnly = true;
             dgvRecentRequests.RowHeadersVisible = false;
             dgvRecentRequests.RowTemplate.Height = 30;
-            dgvRecentRequests.Size = new Size(791, 258);
+            dgvRecentRequests.Size = new Size(824, 258);
             dgvRecentRequests.TabIndex = 0;
             dgvRecentRequests.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvRecentRequests.ThemeStyle.BackColor = Color.Gainsboro;
@@ -119,42 +117,15 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             dgvRecentRequests.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dgvRecentRequests.ThemeStyle.RowsStyle.Height = 30;
             // 
-            // colRequestType
-            // 
-            colRequestType.DataPropertyName = "RequestType";
-            colRequestType.FillWeight = 40F;
-            colRequestType.HeaderText = "Request Type";
-            colRequestType.Name = "colRequestType";
-            colRequestType.ReadOnly = true;
-            // 
-            // colDateRequested
-            // 
-            colDateRequested.DataPropertyName = "DateRequested";
-            dataGridViewCellStyle3.Format = "MMM d, yyyy h:mm tt";
-            dataGridViewCellStyle3.NullValue = "Not recorded";
-            colDateRequested.DefaultCellStyle = dataGridViewCellStyle3;
-            colDateRequested.FillWeight = 30F;
-            colDateRequested.HeaderText = "Date Requested";
-            colDateRequested.Name = "colDateRequested";
-            colDateRequested.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            colStatus.DataPropertyName = "Status";
-            colStatus.FillWeight = 30F;
-            colStatus.HeaderText = "Status";
-            colStatus.Name = "colStatus";
-            colStatus.ReadOnly = true;
-            // 
             // lblRecentRequests
             // 
             lblRecentRequests.BackColor = Color.Transparent;
             lblRecentRequests.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRecentRequests.Location = new Point(40, 325);
             lblRecentRequests.Name = "lblRecentRequests";
-            lblRecentRequests.Size = new Size(164, 26);
+            lblRecentRequests.Size = new Size(161, 26);
             lblRecentRequests.TabIndex = 1;
-            lblRecentRequests.Text = "Recent Requests";
+            lblRecentRequests.Text = "Recent Activities";
             // 
             // pnlPending
             // 
@@ -301,6 +272,41 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblWelcome.TabIndex = 0;
             lblWelcome.Text = "Welcome to the Resident Portal!";
             // 
+            // colStatus
+            // 
+            colStatus.DataPropertyName = "Status";
+            colStatus.FillWeight = 20.3045712F;
+            colStatus.HeaderText = "Status";
+            colStatus.Name = "colStatus";
+            colStatus.ReadOnly = true;
+            // 
+            // colDateRequested
+            // 
+            colDateRequested.DataPropertyName = "DateRequested";
+            dataGridViewCellStyle3.Format = "MMM d, yyyy h:mm tt";
+            dataGridViewCellStyle3.NullValue = "Not recorded";
+            colDateRequested.DefaultCellStyle = dataGridViewCellStyle3;
+            colDateRequested.FillWeight = 42.3807945F;
+            colDateRequested.HeaderText = "Date Requested";
+            colDateRequested.Name = "colDateRequested";
+            colDateRequested.ReadOnly = true;
+            // 
+            // colRequestType
+            // 
+            colRequestType.DataPropertyName = "RequestType";
+            colRequestType.FillWeight = 79.21102F;
+            colRequestType.HeaderText = "Request Type";
+            colRequestType.Name = "colRequestType";
+            colRequestType.ReadOnly = true;
+            // 
+            // ReferenceID
+            // 
+            ReferenceID.DataPropertyName = "ReferenceID";
+            ReferenceID.FillWeight = 58.1036339F;
+            ReferenceID.HeaderText = "Reference ID";
+            ReferenceID.Name = "ReferenceID";
+            ReferenceID.ReadOnly = true;
+            // 
             // ResidentHomeContentControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -327,5 +333,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private DataGridViewTextBoxColumn ReferenceID;
+        private DataGridViewTextBoxColumn colRequestType;
+        private DataGridViewTextBoxColumn colDateRequested;
+        private DataGridViewTextBoxColumn colStatus;
     }
 }

@@ -81,6 +81,7 @@
             pnlSidebar.ShadowDecoration.CustomizableEdges = customizableEdges16;
             pnlSidebar.Size = new Size(229, 650);
             pnlSidebar.TabIndex = 1;
+            pnlSidebar.Paint += pnlSidebar_Paint;
             // 
             // btnResident
             // 
@@ -125,7 +126,7 @@
             btnLogout.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLogout.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnLogout.FillColor = Color.FromArgb(18, 52, 86);
-            btnLogout.Font = new Font("Arial Black", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.White;
             btnLogout.Location = new Point(0, 468);
             btnLogout.Name = "btnLogout";
@@ -145,7 +146,7 @@
             btnProfile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnProfile.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnProfile.FillColor = Color.FromArgb(18, 52, 86);
-            btnProfile.Font = new Font("Arial Black", 9.75F, FontStyle.Bold);
+            btnProfile.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnProfile.ForeColor = Color.White;
             btnProfile.Location = new Point(0, 408);
             btnProfile.Name = "btnProfile";

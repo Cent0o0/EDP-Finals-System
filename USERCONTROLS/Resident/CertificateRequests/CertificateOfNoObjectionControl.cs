@@ -66,6 +66,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
         }
 
+
         private void btnSubmitRequest_Click(object sender, EventArgs e)
         {
             if (txtFullName.Text.Trim().Length == 0 || txtAddress.Text.Trim().Length == 0)
@@ -75,6 +76,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             string subjectActivity = txtSubjectActivity.Text.Trim();
+
             if (subjectActivity.Length == 0)
             {
                 MessageBox.Show("Please enter the subject or activity for this request.", "Subject or Activity Required");
@@ -83,6 +85,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             string location = txtLocation.Text.Trim();
+
             if (location.Length == 0)
             {
                 MessageBox.Show("Please enter the location of the activity.", "Activity Location Required");
@@ -91,6 +94,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             string purpose = txtPurpose.Text.Trim();
+
             if (purpose.Length == 0)
             {
                 MessageBox.Show("Please enter the purpose of the request.", "Purpose Required");
@@ -100,10 +104,12 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             StringBuilder requestDetails = new StringBuilder();
             requestDetails.AppendLine("Subject / Activity: " + subjectActivity);
+
             if (nudQuantity.Value > 0)
             {
                 requestDetails.AppendLine("Quantity: " + nudQuantity.Value.ToString());
             }
+
             requestDetails.Append("Location of Activity: ");
             requestDetails.Append(location);
 
@@ -114,61 +120,82 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
 
             if (isSubmitting)
-            {
                 return;
-            }
 
             isSubmitting = true;
             btnSubmitRequest.Enabled = false;
-            DialogResult confirmation = MessageBox.Show(
-                "Do you want to submit this No Objection Certification request?",
-                "Confirm Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmation != DialogResult.Yes)
-            {
-                isSubmitting = false;
-                btnSubmitRequest.Enabled = true;
-                return;
-            }
 
             try
             {
-                int rowsAffected = 0;
+                DialogResult confirmation = MessageBox.Show(
+                    "Do you want to submit this No Objection Certification request?",
+                    "Confirm Submission",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmation != DialogResult.Yes)
+                    return;
+
+                string referenceID;
+
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"INSERT INTO dbo.CertificateRequests
-                                     (ResidentID, CertificateType, Purpose, AdditionalRemarks)
-                                     VALUES (@ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
+
+                    // Generate the next shared Certificate Reference ID
+                    string referenceQuery = @"
+                SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+
+                    int nextNumber;
+
+                    using (SqlCommand referenceCommand =
+                        new SqlCommand(referenceQuery, connection))
+                    {
+                        nextNumber = Convert.ToInt32(referenceCommand.ExecuteScalar());
+                    }
+
+                    referenceID = "CRT-" + nextNumber.ToString("D3");
+
+                    // Save the No Objection Certification request
+                    string query = @"
+                INSERT INTO dbo.CertificateRequests
+                (ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks)
+                VALUES
+                (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
                         command.Parameters.AddWithValue("@ResidentID", residentID);
                         command.Parameters.AddWithValue("@CertificateType", "Certificate of No Objection");
                         command.Parameters.AddWithValue("@Purpose", purpose);
                         command.Parameters.AddWithValue("@AdditionalRemarks", requestDetails.ToString());
-                        rowsAffected = command.ExecuteNonQuery();
+
+                        command.ExecuteNonQuery();
                     }
                 }
 
-                if (rowsAffected <= 0)
-                {
-                    MessageBox.Show("Could not submit your No Objection Certification request. Please try again.", "No Objection Certification");
-                    return;
-                }
+                MessageBox.Show(
+                    "Your No Objection Certification request was submitted successfully.\n\n" +
+                    "Reference ID: " + referenceID,
+                    "Request Submitted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                MessageBox.Show("Your No Objection Certification request was submitted successfully.", "Request Submitted");
-                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
+                Barangay_E_Service_System.MainForm mainForm =
+                    FindForm() as Barangay_E_Service_System.MainForm;
+
                 if (mainForm != null)
                 {
-                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                    mainForm.ShowResidentDashboardContent(
+                        new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not submit your No Objection Certification request: " + ex.Message, "No Objection Certification");
+                MessageBox.Show(
+                    "Could not submit your No Objection Certification request: " + ex.Message,
+                    "No Objection Certification");
             }
             finally
             {
@@ -176,5 +203,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 btnSubmitRequest.Enabled = true;
             }
         }
+
     }
 }
