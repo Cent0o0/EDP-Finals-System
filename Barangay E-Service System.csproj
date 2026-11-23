@@ -13,8 +13,6 @@
     <Folder Include="SERVICES\" />
     <Folder Include="MODELS\" />
     <Folder Include="REPOSITORIES\" />
-    <Folder Include="USERCONTROLS\Admin\" />
-    <Folder Include="USERCONTROLS\Shared\" />
   </ItemGroup>
 
   <ItemGroup>

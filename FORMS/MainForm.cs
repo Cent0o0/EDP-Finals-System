@@ -1,3 +1,4 @@
+using Barangay_E_Service_System.USERCONTROLS.Admin;
 using Barangay_E_Service_System.USERCONTROLS.Resident;
 using System;
 using System.Drawing;
@@ -82,6 +83,15 @@ namespace Barangay_E_Service_System
             {
                 ShowControl(control);
             }
+        }
+        public void ShowAdminDashboardControl()
+        {
+            pnlContent.Controls.Clear();
+
+            AdminDashboardControl adminDashboard = new AdminDashboardControl();
+            adminDashboard.Dock = DockStyle.Fill;
+
+            pnlContent.Controls.Add(adminDashboard);
         }
 
     }

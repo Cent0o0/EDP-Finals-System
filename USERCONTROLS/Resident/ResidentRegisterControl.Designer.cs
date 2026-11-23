@@ -236,7 +236,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnRegister.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnRegister.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnRegister.FillColor = Color.FromArgb(18, 52, 86);
-            btnRegister.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRegister.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.White;
             btnRegister.Location = new Point(538, 476);
             btnRegister.Name = "btnRegister";
@@ -257,7 +257,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnBack.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnBack.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnBack.FillColor = Color.Transparent;
-            btnBack.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.FromArgb(18, 52, 86);
             btnBack.Location = new Point(638, 564);
             btnBack.Name = "btnBack";
@@ -270,10 +270,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblFirstName
             // 
             lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblFirstName.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblFirstName.Location = new Point(462, 107);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(71, 18);
+            lblFirstName.Size = new Size(74, 17);
             lblFirstName.TabIndex = 9;
             lblFirstName.Text = "First Name";
             lblFirstName.TextAlignment = ContentAlignment.MiddleLeft;
@@ -282,10 +282,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLastName.BackColor = Color.Transparent;
-            lblLastName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblLastName.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblLastName.Location = new Point(727, 107);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(70, 18);
+            lblLastName.Size = new Size(72, 17);
             lblLastName.TabIndex = 10;
             lblLastName.Text = "Last Name";
             lblLastName.TextAlignment = ContentAlignment.MiddleLeft;
@@ -293,10 +293,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblMiddleInitial
             // 
             lblMiddleInitial.BackColor = Color.Transparent;
-            lblMiddleInitial.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblMiddleInitial.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblMiddleInitial.Location = new Point(730, 173);
             lblMiddleInitial.Name = "lblMiddleInitial";
-            lblMiddleInitial.Size = new Size(22, 18);
+            lblMiddleInitial.Size = new Size(22, 17);
             lblMiddleInitial.TabIndex = 11;
             lblMiddleInitial.Text = "M.I";
             lblMiddleInitial.TextAlignment = ContentAlignment.MiddleLeft;
@@ -304,10 +304,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblSuffix
             // 
             lblSuffix.BackColor = Color.Transparent;
-            lblSuffix.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblSuffix.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblSuffix.Location = new Point(848, 173);
             lblSuffix.Name = "lblSuffix";
-            lblSuffix.Size = new Size(40, 18);
+            lblSuffix.Size = new Size(39, 17);
             lblSuffix.TabIndex = 20;
             lblSuffix.Text = "Suffix";
             lblSuffix.TextAlignment = ContentAlignment.MiddleLeft;
@@ -316,10 +316,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblContactNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblContactNumber.BackColor = Color.Transparent;
-            lblContactNumber.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblContactNumber.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblContactNumber.Location = new Point(462, 173);
             lblContactNumber.Name = "lblContactNumber";
-            lblContactNumber.Size = new Size(105, 18);
+            lblContactNumber.Size = new Size(110, 17);
             lblContactNumber.TabIndex = 10;
             lblContactNumber.Text = "Contact Number";
             lblContactNumber.TextAlignment = ContentAlignment.MiddleLeft;
@@ -327,10 +327,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblAddress
             // 
             lblAddress.BackColor = Color.Transparent;
-            lblAddress.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblAddress.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAddress.Location = new Point(462, 241);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(53, 18);
+            lblAddress.Size = new Size(56, 17);
             lblAddress.TabIndex = 19;
             lblAddress.Text = "Address";
             lblAddress.TextAlignment = ContentAlignment.MiddleLeft;
@@ -338,10 +338,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            guna2HtmlLabel1.Font = new Font("Arial Rounded MT Bold", 9.75F);
             guna2HtmlLabel1.Location = new Point(462, 375);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(64, 18);
+            guna2HtmlLabel1.Size = new Size(67, 17);
             guna2HtmlLabel1.TabIndex = 10;
             guna2HtmlLabel1.Text = "Password";
             guna2HtmlLabel1.TextAlignment = ContentAlignment.MiddleCenter;
@@ -349,10 +349,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // guna2HtmlLabel3
             // 
             guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            guna2HtmlLabel3.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.Location = new Point(462, 308);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(67, 18);
+            guna2HtmlLabel3.Size = new Size(70, 17);
             guna2HtmlLabel3.TabIndex = 12;
             guna2HtmlLabel3.Text = "Username";
             guna2HtmlLabel3.TextAlignment = ContentAlignment.MiddleCenter;
@@ -385,10 +385,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             guna2HtmlLabel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            guna2HtmlLabel5.Font = new Font("Arial Rounded MT Bold", 9.75F);
             guna2HtmlLabel5.Location = new Point(727, 375);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(118, 18);
+            guna2HtmlLabel5.Size = new Size(122, 17);
             guna2HtmlLabel5.TabIndex = 15;
             guna2HtmlLabel5.Text = "Confirm Password";
             guna2HtmlLabel5.TextAlignment = ContentAlignment.MiddleCenter;
@@ -411,11 +411,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             guna2HtmlLabel6.Anchor = AnchorStyles.Top;
             guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel6.ForeColor = SystemColors.ControlDarkDark;
             guna2HtmlLabel6.Location = new Point(640, 540);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(169, 18);
+            guna2HtmlLabel6.Size = new Size(169, 17);
             guna2HtmlLabel6.TabIndex = 17;
             guna2HtmlLabel6.Text = "Already have an account?";
             guna2HtmlLabel6.TextAlignment = ContentAlignment.MiddleCenter;
@@ -424,10 +424,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblWelcome.Anchor = AnchorStyles.Top;
             lblWelcome.BackColor = Color.Transparent;
-            lblWelcome.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome.Font = new Font("Arial Rounded MT Bold", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblWelcome.Location = new Point(613, 50);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(205, 34);
+            lblWelcome.Size = new Size(209, 34);
             lblWelcome.TabIndex = 18;
             lblWelcome.Text = "Create Account";
             // 

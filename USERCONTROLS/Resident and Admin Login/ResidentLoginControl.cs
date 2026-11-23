@@ -28,7 +28,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
 
-            // Validate empty fields
+            // Validate empty fields users
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please enter your username and password.", "Missing Information");
@@ -39,6 +39,31 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 using (SqlConnection conn = DatabaseConnection.GetConnection())
                 {
                     conn.Open();
+
+                    // Check Admin account first
+                    string adminQuery = @"SELECT AdminID FROM dbo.Admins WHERE Username = @Username AND PasswordHash = @Password AND IsActive = 1";
+                    bool isAdmin;
+
+                    using (SqlCommand adminCmd = new SqlCommand(adminQuery, conn))
+                    {
+                        adminCmd.Parameters.AddWithValue("@Username", username);
+                        adminCmd.Parameters.AddWithValue("@Password", password);
+
+                        using (SqlDataReader adminReader = adminCmd.ExecuteReader())
+                        {
+                            isAdmin = adminReader.Read();
+                        }
+                    }
+
+                    if (isAdmin)
+                    {
+                        MessageBox.Show("Admin login successful!");
+
+                        MainForm main = (MainForm)this.FindForm();
+                        main.ShowAdminDashboardControl();
+
+                        return;
+                    }
                     string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @PasswordHash";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
