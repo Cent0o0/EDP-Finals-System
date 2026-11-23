@@ -10,12 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SERVICES\" />
-    <Folder Include="MODELS\" />
-    <Folder Include="REPOSITORIES\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Update="USERCONTROLS\Admin\AdminHomeContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="USERCONTROLS\Admin\AdminHomeContentControl.Designer.cs">
+      <DependentUpon>AdminHomeContentControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="USERCONTROLS\Admin\AdminHomeContentControl.resx">
+      <DependentUpon>AdminHomeContentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Update="USERCONTROLS\Resident\Forgot Password and Change\ForgotPasswordControl.Designer.cs">
       <DependentUpon>ForgotPasswordControl.cs</DependentUpon>
     </Compile>

@@ -64,11 +64,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
                         return;
                     }
-                    string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @PasswordHash";
+                    string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @Password";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Username", username);
-                        cmd.Parameters.AddWithValue("@PasswordHash", password);
+                        cmd.Parameters.AddWithValue("@Password", password);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
