@@ -56,7 +56,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
         private void ShowCertificateManagementControl()
         {
             pnlDashboardContent.Controls.Clear();
-            CertificateManagementControl certificateManagement = new CertificateManagementControl();
+            AdminAllActivitiesControl certificateManagement = new AdminAllActivitiesControl();
             certificateManagement.Dock = DockStyle.Fill;
             pnlDashboardContent.Controls.Add(certificateManagement);
         }
@@ -71,18 +71,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             EquipmentReservationManagementControl reservationManagement = new EquipmentReservationManagementControl();
             reservationManagement.Dock = DockStyle.Fill;
             pnlDashboardContent.Controls.Add(reservationManagement);
-        }
-
-        private void btnComplaints_Click(object sender, EventArgs e)
-        {
-            ShowComplaintManagementControl();
-        }
-        private void ShowComplaintManagementControl()
-        {
-            pnlDashboardContent.Controls.Clear();
-            ComplaintManagementControl complaintManagement = new ComplaintManagementControl();
-            complaintManagement.Dock = DockStyle.Fill;
-            pnlDashboardContent.Controls.Add(complaintManagement);
         }
 
         private void pnlSidebar_Paint(object sender, PaintEventArgs e)

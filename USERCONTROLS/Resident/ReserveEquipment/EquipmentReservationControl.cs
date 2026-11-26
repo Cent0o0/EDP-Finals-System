@@ -18,6 +18,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             this.equipmentID = equipmentID;
 
             dtpEventDate.MinDate = DateTime.Today;
+            dtpReturnDate.MinDate = DateTime.Today;
+            dtpReturnDate.Value = DateTime.Today.AddDays(1);
             LoadEquipmentDetails();
         }
         private void LoadEquipmentDetails()
@@ -100,6 +102,12 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 MessageBox.Show("Please select today or a future event date.");
                 return;
             }
+            if (dtpReturnDate.Value.Date <= dtpEventDate.Value.Date)
+            {
+                MessageBox.Show("Return date must be after the event date.");
+                dtpReturnDate.Focus();
+                return;
+            }
 
             if (isSubmitting)
                 return;
@@ -109,11 +117,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
             try
             {
-                DialogResult confirmation = MessageBox.Show(
-                    "Do you want to submit this equipment reservation?",
-                    "Confirm Submission",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult confirmation = MessageBox.Show("Do you want to submit this equipment reservation?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmation != DialogResult.Yes)
                     return;
@@ -138,7 +142,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                     referenceID = "RSV-" + nextNumber.ToString("D3");
 
                     // Save reservation
-                    string query = @"INSERT INTO dbo.EquipmentReservations (ReferenceID, ResidentID, EquipmentID, Quantity, EventName, EventDate, Purpose, Status)VALUES (@ReferenceID, @ResidentID, @EquipmentID, @Quantity, @EventName, @EventDate, @Purpose, @Status)";
+                    string query = @"INSERT INTO dbo.EquipmentReservations (ReferenceID, ResidentID, EquipmentID, Quantity, EventName, EventDate, ReturnDate, Purpose, Status) VALUES (@ReferenceID, @ResidentID, @EquipmentID, @Quantity, @EventName, @EventDate, @ReturnDate, @Purpose, @Status)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -148,6 +152,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         cmd.Parameters.AddWithValue("@Quantity", Convert.ToInt32(numQuantity.Value));
                         cmd.Parameters.AddWithValue("@EventName", eventName);
                         cmd.Parameters.AddWithValue("@EventDate", dtpEventDate.Value.Date);
+                        cmd.Parameters.AddWithValue("@ReturnDate", dtpReturnDate.Value.Date);
                         cmd.Parameters.AddWithValue("@Purpose", purpose);
                         cmd.Parameters.AddWithValue("@Status", "Pending");
 
@@ -155,7 +160,16 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Your equipment reservation has been submitted successfully.\n\n" + "Reference ID: " + referenceID,"Reservation Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string dashboardQuery = @"INSERT INTO dbo.AllResidentRequests (ReferenceID, RequestType, DateSubmitted, Status) SELECT ReferenceID, 'Equipment: ' + EventName, DateRequested, Status FROM dbo.EquipmentReservations WHERE ReferenceID = @ReferenceID";
+
+                            using (SqlCommand dashboardCommand = new SqlCommand(dashboardQuery, conn))
+                            {
+                                dashboardCommand.Parameters.AddWithValue("@ReferenceID", referenceID);
+                                dashboardCommand.ExecuteNonQuery();
+                            }
+
+                            MessageBox.Show("Your equipment reservation has been submitted successfully.\n\n" + "Reference ID: " + referenceID, "Reservation Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                             MainForm mainForm = FindForm() as MainForm;
 
                             if (mainForm != null)

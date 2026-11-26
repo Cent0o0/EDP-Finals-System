@@ -133,11 +133,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             try
             {
-                DialogResult confirmation = MessageBox.Show(
-                    "Do you want to submit this Certificate of Indigency request?",
-                    "Confirm Submission",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult confirmation = MessageBox.Show("Do you want to submit this Certificate of Indigency request?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmation != DialogResult.Yes)
                     return;
@@ -179,6 +175,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
                         command.ExecuteNonQuery();
                     }
+                    string dashboardQuery = @"INSERT INTO dbo.AllResidentRequests (ReferenceID, RequestType, DateSubmitted, Status) SELECT ReferenceID, CertificateType, DateRequested, Status FROM dbo.CertificateRequests WHERE ReferenceID = @ReferenceID";
+
+                    using (SqlCommand dashboardCommand = new SqlCommand(dashboardQuery, connection))
+                    {
+                        dashboardCommand.Parameters.AddWithValue("@ReferenceID", referenceID);
+                        dashboardCommand.ExecuteNonQuery();
+                    }
                 }
 
                 MessageBox.Show(
@@ -199,9 +202,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Could not submit your indigency certificate request: " + ex.Message,
-                    "Certificate of Indigency");
+                MessageBox.Show("Could not submit your indigency certificate request: " + ex.Message, "Certificate of Indigency");
             }
             finally
             {

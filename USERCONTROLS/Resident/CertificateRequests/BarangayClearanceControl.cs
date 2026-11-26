@@ -97,11 +97,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             try
             {
-                DialogResult confirmation = MessageBox.Show(
-                    "Do you want to submit this Barangay Clearance request?",
-                    "Confirm Submission",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult confirmation = MessageBox.Show("Do you want to submit this Barangay Clearance request?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmation != DialogResult.Yes)
                     return;
@@ -139,6 +135,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                         command.Parameters.AddWithValue("@AdditionalRemarks", remarks);
 
                         command.ExecuteNonQuery();
+                    }
+                    string dashboardQuery = @"INSERT INTO dbo.AllResidentRequests (ReferenceID, RequestType, DateSubmitted, Status) SELECT ReferenceID, CertificateType, DateRequested, Status FROM dbo.CertificateRequests WHERE ReferenceID = @ReferenceID";
+
+                    using (SqlCommand dashboardCommand = new SqlCommand(dashboardQuery, connection))
+                    {
+                        dashboardCommand.Parameters.AddWithValue("@ReferenceID", referenceID);
+                        dashboardCommand.ExecuteNonQuery();
                     }
                 }
 

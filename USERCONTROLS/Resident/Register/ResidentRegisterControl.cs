@@ -66,7 +66,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
             if (txtUsername.Text.Trim().Length < 4)
             {
-                MessageBox.Show("Username must be at least 4 characters."); txtUsername.Focus();
+                MessageBox.Show("Username must be at least 4 characters.");
+                txtUsername.Focus();
                 return;
             }
             if (txtPassword.Text.Length < 8)
@@ -77,7 +78,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtPassword.Text, @"[^a-zA-Z0-9]"))
             {
-                MessageBox.Show("Password must contain at least one symbol"); txtPassword.Focus();
+                MessageBox.Show("Password must contain at least one symbol");
+                txtPassword.Focus();
                 return;
             }
             // Check passwords

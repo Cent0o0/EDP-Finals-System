@@ -124,11 +124,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             try
             {
-                DialogResult confirmation = MessageBox.Show(
-                    "Do you want to submit this Certificate of Residency request?",
-                    "Confirm Submission",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult confirmation = MessageBox.Show("Do you want to submit this Certificate of Residency request?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmation != DialogResult.Yes)
                     return;
@@ -140,8 +136,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                     connection.Open();
 
                     // Generate the next shared Certificate Reference ID
-                    string referenceQuery = @"
-                SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+                    string referenceQuery = @"SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
 
                     int nextNumber;
 
@@ -170,6 +165,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
                         command.ExecuteNonQuery();
                     }
+                    string dashboardQuery = @"INSERT INTO dbo.AllResidentRequests (ReferenceID, RequestType, DateSubmitted, Status) SELECT ReferenceID, CertificateType, DateRequested, Status FROM dbo.CertificateRequests WHERE ReferenceID = @ReferenceID";
+
+                    using (SqlCommand dashboardCommand = new SqlCommand(dashboardQuery, connection))
+                    {
+                        dashboardCommand.Parameters.AddWithValue("@ReferenceID", referenceID);
+                        dashboardCommand.ExecuteNonQuery();
+                    }
                 }
 
                 MessageBox.Show(
@@ -190,9 +192,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Could not submit your residency certificate request: " + ex.Message,
-                    "Certificate of Residency");
+                MessageBox.Show("Could not submit your residency certificate request: " + ex.Message, "Certificate of Residency");
             }
             finally
             {

@@ -91,8 +91,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             txtFirstName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtFirstName.Location = new Point(462, 130);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.PlaceholderForeColor = Color.Transparent;
-            txtFirstName.PlaceholderText = "";
+            txtFirstName.PlaceholderForeColor = Color.DimGray;
+            txtFirstName.PlaceholderText = "Enter your first name";
             txtFirstName.SelectedText = "";
             txtFirstName.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtFirstName.Size = new Size(245, 38);

@@ -29,9 +29,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                 using (SqlConnection connection = DatabaseConnection.GetConnection())
                 {
                     connection.Open();
-                    string query = @"SELECT FullName, Address, ContactNumber
-                                     FROM dbo.Residents
-                                     WHERE ResidentID = @ResidentID";
+                    string query = @"SELECT FullName, Address, ContactNumber FROM dbo.Residents WHERE ResidentID = @ResidentID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -109,11 +107,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
             try
             {
-                DialogResult confirmation = MessageBox.Show(
-                    "Do you want to submit this Good Moral Character certificate request?",
-                    "Confirm Submission",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult confirmation = MessageBox.Show("Do you want to submit this Good Moral Character certificate request?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirmation != DialogResult.Yes)
                     return;
@@ -125,8 +119,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                     connection.Open();
 
                     // Generate the next shared Certificate Reference ID
-                    string referenceQuery = @"
-                SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
+                    string referenceQuery = @"SELECT NEXT VALUE FOR dbo.CertificateReferenceSequence";
 
                     int nextNumber;
 
@@ -139,11 +132,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
                     referenceID = "CRT-" + nextNumber.ToString("D3");
 
                     // Save the certificate request
-                    string query = @"
-                INSERT INTO dbo.CertificateRequests
-                (ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks)
-                VALUES
-                (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
+                    string query = @"INSERT INTO dbo.CertificateRequests(ReferenceID, ResidentID, CertificateType, Purpose, AdditionalRemarks) VALUES (@ReferenceID, @ResidentID, @CertificateType, @Purpose, @AdditionalRemarks)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -155,29 +144,27 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
                         command.ExecuteNonQuery();
                     }
+                    string dashboardQuery = @"INSERT INTO dbo.AllResidentRequests (ReferenceID, RequestType, DateSubmitted, Status) SELECT ReferenceID, CertificateType, DateRequested, Status FROM dbo.CertificateRequests WHERE ReferenceID = @ReferenceID";
+
+                    using (SqlCommand dashboardCommand = new SqlCommand(dashboardQuery, connection))
+                    {
+                        dashboardCommand.Parameters.AddWithValue("@ReferenceID", referenceID);
+                        dashboardCommand.ExecuteNonQuery();
+                    }
                 }
 
-                MessageBox.Show(
-                    "Your Good Moral Character Certificate request was submitted successfully.\n\n" +
-                    "Reference ID: " + referenceID,
-                    "Request Submitted",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Your Good Moral Character Certificate request was submitted successfully.\n\n" + "Reference ID: " + referenceID,"Request Submitted",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
-                Barangay_E_Service_System.MainForm mainForm =
-                    FindForm() as Barangay_E_Service_System.MainForm;
+                Barangay_E_Service_System.MainForm mainForm = FindForm() as Barangay_E_Service_System.MainForm;
 
                 if (mainForm != null)
                 {
-                    mainForm.ShowResidentDashboardContent(
-                        new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
+                    mainForm.ShowResidentDashboardContent(new Barangay_E_Service_System.USERCONTROLS.Resident.ResidentCertificateControl(residentID));
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Could not submit your certificate request: " + ex.Message,
-                    "Good Moral Certificate Request");
+                MessageBox.Show("Could not submit your certificate request: " + ex.Message, "Good Moral Certificate Request");
             }
             finally
             {

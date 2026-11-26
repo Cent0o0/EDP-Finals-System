@@ -76,7 +76,7 @@
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderForeColor = Color.Transparent;
-            txtPassword.PlaceholderText = "";
+            txtPassword.PlaceholderText = "Enter your password";
             txtPassword.SelectedText = "";
             txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtPassword.Size = new Size(366, 38);
@@ -100,7 +100,7 @@
             txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderForeColor = Color.Transparent;
-            txtUsername.PlaceholderText = "";
+            txtUsername.PlaceholderText = "Enter your username";
             txtUsername.SelectedText = "";
             txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtUsername.Size = new Size(366, 38);

@@ -40,11 +40,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Unable to load resident records.\n" + ex.Message,
-                    "Resident Management",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Unable to load resident records.\n" + ex.Message, "Resident Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

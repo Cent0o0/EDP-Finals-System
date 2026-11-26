@@ -6,7 +6,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
     partial class AdminHomeContentControl
     {
         private System.ComponentModel.IContainer components = null;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvRecentRequests;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvRecentActivities;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblRecentRequests;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel pnlPending;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblPendingCount;
@@ -51,13 +51,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            dgvRecentRequests = new Guna.UI2.WinForms.Guna2DataGridView();
+            dgvRecentActivities = new Guna.UI2.WinForms.Guna2DataGridView();
             ReferenceID = new DataGridViewTextBoxColumn();
             RequestType = new DataGridViewTextBoxColumn();
             DateSubmitted = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             btnView = new DataGridViewButtonColumn();
-            btnAction = new DataGridViewComboBoxColumn();
+            cmbAction = new DataGridViewComboBoxColumn();
             lblRecentRequests = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlPending = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             lblPendingCount = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -73,20 +73,20 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             lblWelcome = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlDashboardContent = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblTotalResidents = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblTotalCert = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2CustomGradientPanel3 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblTotalReserve = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblTotalComplaint = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            ((System.ComponentModel.ISupportInitialize)dgvRecentRequests).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecentActivities).BeginInit();
             pnlPending.SuspendLayout();
             pnlApproved.SuspendLayout();
             pnlTotalRequests.SuspendLayout();
@@ -97,16 +97,16 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             guna2CustomGradientPanel4.SuspendLayout();
             SuspendLayout();
             // 
-            // dgvRecentRequests
+            // dgvRecentActivities
             // 
-            dgvRecentRequests.AllowUserToAddRows = false;
-            dgvRecentRequests.AllowUserToDeleteRows = false;
-            dgvRecentRequests.AllowUserToResizeColumns = false;
-            dgvRecentRequests.AllowUserToResizeRows = false;
+            dgvRecentActivities.AllowUserToAddRows = false;
+            dgvRecentActivities.AllowUserToDeleteRows = false;
+            dgvRecentActivities.AllowUserToResizeColumns = false;
+            dgvRecentActivities.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dgvRecentRequests.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvRecentRequests.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dgvRecentRequests.BackgroundColor = Color.Gainsboro;
+            dgvRecentActivities.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvRecentActivities.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dgvRecentActivities.BackgroundColor = Color.Gainsboro;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 52, 86);
             dataGridViewCellStyle2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -115,10 +115,9 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(18, 52, 86);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvRecentRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvRecentRequests.ColumnHeadersHeight = 35;
-            dgvRecentRequests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvRecentRequests.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, RequestType, DateSubmitted, Status, btnView, btnAction });
+            dgvRecentActivities.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvRecentActivities.ColumnHeadersHeight = 35;
+            dgvRecentActivities.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, RequestType, DateSubmitted, Status, btnView, cmbAction });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -127,66 +126,65 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvRecentRequests.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvRecentRequests.GridColor = Color.FromArgb(226, 232, 240);
-            dgvRecentRequests.Location = new Point(22, 504);
-            dgvRecentRequests.MultiSelect = false;
-            dgvRecentRequests.Name = "dgvRecentRequests";
-            dgvRecentRequests.ReadOnly = true;
-            dgvRecentRequests.RowHeadersVisible = false;
-            dgvRecentRequests.RowTemplate.Height = 30;
-            dgvRecentRequests.Size = new Size(826, 292);
-            dgvRecentRequests.TabIndex = 0;
-            dgvRecentRequests.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            dgvRecentRequests.ThemeStyle.BackColor = Color.Gainsboro;
-            dgvRecentRequests.ThemeStyle.GridColor = Color.FromArgb(226, 232, 240);
-            dgvRecentRequests.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 52, 86);
-            dgvRecentRequests.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dgvRecentRequests.ThemeStyle.HeaderStyle.Height = 35;
-            dgvRecentRequests.ThemeStyle.ReadOnly = true;
-            dgvRecentRequests.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dgvRecentRequests.ThemeStyle.RowsStyle.Height = 30;
+            dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvRecentActivities.GridColor = Color.FromArgb(226, 232, 240);
+            dgvRecentActivities.Location = new Point(22, 422);
+            dgvRecentActivities.MultiSelect = false;
+            dgvRecentActivities.Name = "dgvRecentActivities";
+            dgvRecentActivities.RowHeadersVisible = false;
+            dgvRecentActivities.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvRecentActivities.RowTemplate.Height = 30;
+            dgvRecentActivities.Size = new Size(826, 376);
+            dgvRecentActivities.TabIndex = 0;
+            dgvRecentActivities.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            dgvRecentActivities.ThemeStyle.BackColor = Color.Gainsboro;
+            dgvRecentActivities.ThemeStyle.GridColor = Color.FromArgb(226, 232, 240);
+            dgvRecentActivities.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 52, 86);
+            dgvRecentActivities.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dgvRecentActivities.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvRecentActivities.ThemeStyle.HeaderStyle.Height = 35;
+            dgvRecentActivities.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvRecentActivities.ThemeStyle.RowsStyle.Height = 30;
+            dgvRecentActivities.CellContentClick += dgvRecentActivities_CellContentClick;
             // 
             // ReferenceID
             // 
+            ReferenceID.DataPropertyName = "ReferenceID";
             ReferenceID.HeaderText = "Reference ID";
             ReferenceID.Name = "ReferenceID";
-            ReferenceID.ReadOnly = true;
             // 
             // RequestType
             // 
+            RequestType.DataPropertyName = "RequestType";
             RequestType.HeaderText = "Request Type";
             RequestType.Name = "RequestType";
-            RequestType.ReadOnly = true;
             // 
             // DateSubmitted
             // 
             DateSubmitted.DataPropertyName = "DateSubmitted";
             DateSubmitted.HeaderText = "Date Submitted";
             DateSubmitted.Name = "DateSubmitted";
-            DateSubmitted.ReadOnly = true;
             // 
             // Status
             // 
+            Status.DataPropertyName = "Status";
             Status.HeaderText = "Status";
             Status.Name = "Status";
-            Status.ReadOnly = true;
             // 
             // btnView
             // 
             btnView.HeaderText = "View";
             btnView.Name = "btnView";
-            btnView.ReadOnly = true;
             btnView.Text = "View";
+            btnView.UseColumnTextForButtonValue = true;
             // 
-            // btnAction
+            // cmbAction
             // 
-            btnAction.HeaderText = "Action";
-            btnAction.Items.AddRange(new object[] { "Approve", "Reject" });
-            btnAction.Name = "btnAction";
-            btnAction.ReadOnly = true;
-            btnAction.Resizable = DataGridViewTriState.True;
-            btnAction.ToolTipText = "Approve / Reject";
+            cmbAction.HeaderText = "Action";
+            cmbAction.Items.AddRange(new object[] { "Approve", "Reject" });
+            cmbAction.Name = "cmbAction";
+            cmbAction.Resizable = DataGridViewTriState.True;
+            cmbAction.ToolTipText = "Approve / Reject";
             // 
             // lblRecentRequests
             // 
@@ -209,17 +207,17 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             pnlPending.FillColor2 = Color.Gainsboro;
             pnlPending.FillColor3 = Color.Gainsboro;
             pnlPending.FillColor4 = Color.Gainsboro;
-            pnlPending.Location = new Point(681, 105);
+            pnlPending.Location = new Point(678, 105);
             pnlPending.Name = "pnlPending";
             pnlPending.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pnlPending.Size = new Size(150, 150);
+            pnlPending.Size = new Size(170, 118);
             pnlPending.TabIndex = 2;
             // 
             // lblPendingCount
             // 
             lblPendingCount.BackColor = Color.Transparent;
             lblPendingCount.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPendingCount.Location = new Point(65, 62);
+            lblPendingCount.Location = new Point(78, 47);
             lblPendingCount.Name = "lblPendingCount";
             lblPendingCount.Size = new Size(18, 34);
             lblPendingCount.TabIndex = 3;
@@ -230,7 +228,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             lblPending.BackColor = Color.Transparent;
             lblPending.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPending.Location = new Point(44, 9);
+            lblPending.Location = new Point(49, 9);
             lblPending.Name = "lblPending";
             lblPending.Size = new Size(67, 21);
             lblPending.TabIndex = 4;
@@ -247,17 +245,17 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             pnlApproved.FillColor2 = Color.Gainsboro;
             pnlApproved.FillColor3 = Color.Gainsboro;
             pnlApproved.FillColor4 = Color.Gainsboro;
-            pnlApproved.Location = new Point(464, 105);
+            pnlApproved.Location = new Point(459, 105);
             pnlApproved.Name = "pnlApproved";
             pnlApproved.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            pnlApproved.Size = new Size(150, 150);
+            pnlApproved.Size = new Size(183, 118);
             pnlApproved.TabIndex = 5;
             // 
             // lblApprovedCount
             // 
             lblApprovedCount.BackColor = Color.Transparent;
             lblApprovedCount.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblApprovedCount.Location = new Point(63, 62);
+            lblApprovedCount.Location = new Point(76, 47);
             lblApprovedCount.Name = "lblApprovedCount";
             lblApprovedCount.Size = new Size(18, 34);
             lblApprovedCount.TabIndex = 6;
@@ -268,7 +266,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             lblApproved.BackColor = Color.Transparent;
             lblApproved.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblApproved.Location = new Point(34, 9);
+            lblApproved.Location = new Point(50, 9);
             lblApproved.Name = "lblApproved";
             lblApproved.Size = new Size(78, 21);
             lblApproved.TabIndex = 7;
@@ -284,17 +282,17 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             pnlTotalRequests.FillColor2 = Color.Gainsboro;
             pnlTotalRequests.FillColor3 = Color.Gainsboro;
             pnlTotalRequests.FillColor4 = Color.Gainsboro;
-            pnlTotalRequests.Location = new Point(242, 105);
+            pnlTotalRequests.Location = new Point(238, 105);
             pnlTotalRequests.Name = "pnlTotalRequests";
             pnlTotalRequests.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            pnlTotalRequests.Size = new Size(150, 150);
+            pnlTotalRequests.Size = new Size(165, 118);
             pnlTotalRequests.TabIndex = 8;
             // 
             // lblTotalCount
             // 
             lblTotalCount.BackColor = Color.Transparent;
             lblTotalCount.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalCount.Location = new Point(64, 62);
+            lblTotalCount.Location = new Point(69, 47);
             lblTotalCount.Name = "lblTotalCount";
             lblTotalCount.Size = new Size(18, 34);
             lblTotalCount.TabIndex = 9;
@@ -305,7 +303,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             lblTotalRequests.BackColor = Color.Transparent;
             lblTotalRequests.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalRequests.Location = new Point(16, 9);
+            lblTotalRequests.Location = new Point(23, 9);
             lblTotalRequests.Name = "lblTotalRequests";
             lblTotalRequests.Size = new Size(118, 21);
             lblTotalRequests.TabIndex = 10;
@@ -360,7 +358,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // guna2CustomGradientPanel1
             // 
             guna2CustomGradientPanel1.BackColor = Color.White;
-            guna2CustomGradientPanel1.Controls.Add(guna2HtmlLabel1);
+            guna2CustomGradientPanel1.Controls.Add(lblTotalResidents);
             guna2CustomGradientPanel1.Controls.Add(guna2HtmlLabel2);
             guna2CustomGradientPanel1.CustomizableEdges = customizableEdges9;
             guna2CustomGradientPanel1.FillColor = Color.Gainsboro;
@@ -370,25 +368,25 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             guna2CustomGradientPanel1.Location = new Point(22, 105);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2CustomGradientPanel1.Size = new Size(150, 150);
+            guna2CustomGradientPanel1.Size = new Size(167, 118);
             guna2CustomGradientPanel1.TabIndex = 11;
             // 
-            // guna2HtmlLabel1
+            // lblTotalResidents
             // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel1.Location = new Point(64, 62);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(18, 34);
-            guna2HtmlLabel1.TabIndex = 9;
-            guna2HtmlLabel1.Text = "0";
-            guna2HtmlLabel1.TextAlignment = ContentAlignment.MiddleCenter;
+            lblTotalResidents.BackColor = Color.Transparent;
+            lblTotalResidents.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalResidents.Location = new Point(70, 47);
+            lblTotalResidents.Name = "lblTotalResidents";
+            lblTotalResidents.Size = new Size(18, 34);
+            lblTotalResidents.TabIndex = 9;
+            lblTotalResidents.Text = "0";
+            lblTotalResidents.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel2.Location = new Point(16, 9);
+            guna2HtmlLabel2.Location = new Point(18, 9);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new Size(122, 21);
             guna2HtmlLabel2.TabIndex = 10;
@@ -398,7 +396,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel3.Location = new Point(22, 472);
+            guna2HtmlLabel3.Location = new Point(22, 390);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new Size(161, 26);
             guna2HtmlLabel3.TabIndex = 12;
@@ -408,35 +406,35 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             guna2CustomGradientPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2CustomGradientPanel2.BackColor = Color.White;
-            guna2CustomGradientPanel2.Controls.Add(guna2HtmlLabel4);
+            guna2CustomGradientPanel2.Controls.Add(lblTotalCert);
             guna2CustomGradientPanel2.Controls.Add(guna2HtmlLabel5);
             guna2CustomGradientPanel2.CustomizableEdges = customizableEdges11;
             guna2CustomGradientPanel2.FillColor = Color.Gainsboro;
             guna2CustomGradientPanel2.FillColor2 = Color.Gainsboro;
             guna2CustomGradientPanel2.FillColor3 = Color.Gainsboro;
             guna2CustomGradientPanel2.FillColor4 = Color.Gainsboro;
-            guna2CustomGradientPanel2.Location = new Point(22, 320);
+            guna2CustomGradientPanel2.Location = new Point(21, 270);
             guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
             guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2CustomGradientPanel2.Size = new Size(211, 125);
+            guna2CustomGradientPanel2.Size = new Size(211, 104);
             guna2CustomGradientPanel2.TabIndex = 5;
             // 
-            // guna2HtmlLabel4
+            // lblTotalCert
             // 
-            guna2HtmlLabel4.BackColor = Color.Transparent;
-            guna2HtmlLabel4.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel4.Location = new Point(82, 53);
-            guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(18, 34);
-            guna2HtmlLabel4.TabIndex = 3;
-            guna2HtmlLabel4.Text = "0";
-            guna2HtmlLabel4.TextAlignment = ContentAlignment.MiddleCenter;
+            lblTotalCert.BackColor = Color.Transparent;
+            lblTotalCert.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalCert.Location = new Point(87, 48);
+            lblTotalCert.Name = "lblTotalCert";
+            lblTotalCert.Size = new Size(18, 34);
+            lblTotalCert.TabIndex = 3;
+            lblTotalCert.Text = "0";
+            lblTotalCert.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // guna2HtmlLabel5
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel5.Location = new Point(58, 9);
+            guna2HtmlLabel5.Location = new Point(70, 9);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(80, 21);
             guna2HtmlLabel5.TabIndex = 4;
@@ -446,29 +444,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             guna2CustomGradientPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2CustomGradientPanel3.BackColor = Color.White;
-            guna2CustomGradientPanel3.Controls.Add(guna2HtmlLabel6);
+            guna2CustomGradientPanel3.Controls.Add(lblTotalReserve);
             guna2CustomGradientPanel3.Controls.Add(guna2HtmlLabel7);
             guna2CustomGradientPanel3.CustomizableEdges = customizableEdges13;
             guna2CustomGradientPanel3.FillColor = Color.Gainsboro;
             guna2CustomGradientPanel3.FillColor2 = Color.Gainsboro;
             guna2CustomGradientPanel3.FillColor3 = Color.Gainsboro;
             guna2CustomGradientPanel3.FillColor4 = Color.Gainsboro;
-            guna2CustomGradientPanel3.Location = new Point(322, 320);
+            guna2CustomGradientPanel3.Location = new Point(321, 270);
             guna2CustomGradientPanel3.Name = "guna2CustomGradientPanel3";
             guna2CustomGradientPanel3.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2CustomGradientPanel3.Size = new Size(211, 125);
+            guna2CustomGradientPanel3.Size = new Size(211, 104);
             guna2CustomGradientPanel3.TabIndex = 6;
             // 
-            // guna2HtmlLabel6
+            // lblTotalReserve
             // 
-            guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel6.Location = new Point(92, 53);
-            guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(18, 34);
-            guna2HtmlLabel6.TabIndex = 3;
-            guna2HtmlLabel6.Text = "0";
-            guna2HtmlLabel6.TextAlignment = ContentAlignment.MiddleCenter;
+            lblTotalReserve.BackColor = Color.Transparent;
+            lblTotalReserve.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalReserve.Location = new Point(92, 36);
+            lblTotalReserve.Name = "lblTotalReserve";
+            lblTotalReserve.Size = new Size(18, 34);
+            lblTotalReserve.TabIndex = 3;
+            lblTotalReserve.Text = "0";
+            lblTotalReserve.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // guna2HtmlLabel7
             // 
@@ -484,29 +482,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             guna2CustomGradientPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             guna2CustomGradientPanel4.BackColor = Color.White;
-            guna2CustomGradientPanel4.Controls.Add(guna2HtmlLabel8);
+            guna2CustomGradientPanel4.Controls.Add(lblTotalComplaint);
             guna2CustomGradientPanel4.Controls.Add(guna2HtmlLabel9);
             guna2CustomGradientPanel4.CustomizableEdges = customizableEdges15;
             guna2CustomGradientPanel4.FillColor = Color.Gainsboro;
             guna2CustomGradientPanel4.FillColor2 = Color.Gainsboro;
             guna2CustomGradientPanel4.FillColor3 = Color.Gainsboro;
             guna2CustomGradientPanel4.FillColor4 = Color.Gainsboro;
-            guna2CustomGradientPanel4.Location = new Point(640, 320);
+            guna2CustomGradientPanel4.Location = new Point(639, 270);
             guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
             guna2CustomGradientPanel4.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2CustomGradientPanel4.Size = new Size(211, 125);
+            guna2CustomGradientPanel4.Size = new Size(211, 104);
             guna2CustomGradientPanel4.TabIndex = 7;
             // 
-            // guna2HtmlLabel8
+            // lblTotalComplaint
             // 
-            guna2HtmlLabel8.BackColor = Color.Transparent;
-            guna2HtmlLabel8.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel8.Location = new Point(96, 53);
-            guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            guna2HtmlLabel8.Size = new Size(18, 34);
-            guna2HtmlLabel8.TabIndex = 3;
-            guna2HtmlLabel8.Text = "0";
-            guna2HtmlLabel8.TextAlignment = ContentAlignment.MiddleCenter;
+            lblTotalComplaint.BackColor = Color.Transparent;
+            lblTotalComplaint.Font = new Font("Arial", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalComplaint.Location = new Point(96, 36);
+            lblTotalComplaint.Name = "lblTotalComplaint";
+            lblTotalComplaint.Size = new Size(18, 34);
+            lblTotalComplaint.TabIndex = 3;
+            lblTotalComplaint.Text = "0";
+            lblTotalComplaint.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // guna2HtmlLabel9
             // 
@@ -522,7 +520,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             guna2HtmlLabel10.BackColor = Color.Transparent;
             guna2HtmlLabel10.Font = new Font("Arial", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel10.Location = new Point(22, 276);
+            guna2HtmlLabel10.Location = new Point(21, 234);
             guna2HtmlLabel10.Name = "guna2HtmlLabel10";
             guna2HtmlLabel10.Size = new Size(167, 26);
             guna2HtmlLabel10.TabIndex = 13;
@@ -544,10 +542,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             Controls.Add(pnlApproved);
             Controls.Add(pnlTotalRequests);
             Controls.Add(pnlWelcome);
-            Controls.Add(dgvRecentRequests);
+            Controls.Add(dgvRecentActivities);
             Name = "AdminHomeContentControl";
             Size = new Size(871, 819);
-            ((System.ComponentModel.ISupportInitialize)dgvRecentRequests).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecentActivities).EndInit();
             pnlPending.ResumeLayout(false);
             pnlPending.PerformLayout();
             pnlApproved.ResumeLayout(false);
@@ -569,18 +567,18 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
         }
 
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTotalResidents;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel pnlDashboardContent;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTotalCert;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTotalReserve;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTotalComplaint;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel9;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel10;
         private DataGridViewTextBoxColumn ReferenceID;
@@ -588,6 +586,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
         private DataGridViewTextBoxColumn DateSubmitted;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewButtonColumn btnView;
-        private DataGridViewComboBoxColumn btnAction;
+        private DataGridViewComboBoxColumn cmbAction;
     }
 }

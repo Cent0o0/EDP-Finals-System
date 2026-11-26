@@ -9,6 +9,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 {
     public partial class ResidentHomeContentControl : UserControl
     {
+        private string residentID;
         public ResidentHomeContentControl()
         {
             InitializeComponent();
@@ -16,6 +17,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
         public ResidentHomeContentControl(string residentID) : this()
         {
+   
+            this.residentID = residentID;
             LoadResidentRequests(residentID);
         }
 
@@ -260,12 +263,120 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             }
 
             return value.ToString();
-        }s
+        }
         private void DisplayRecentRequests(DataTable requestTable)
         {
             DataView sortedRequests = new DataView(requestTable);
             sortedRequests.Sort = "DateRequested DESC";
             dgvRecentRequests.DataSource = sortedRequests.ToTable();
         }
+
+
+        private void dgvRecentRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            if (dgvRecentRequests.Columns[e.ColumnIndex].Name != "btnView")
+                return;
+
+            string referenceID = dgvRecentRequests.Rows[e.RowIndex]
+                .Cells["ReferenceID"].Value?.ToString();
+
+            if (string.IsNullOrEmpty(referenceID))
+                return;
+
+            string query;
+
+            if (referenceID.StartsWith("CRT-"))
+            {
+                query = @"
+            SELECT ReferenceID, CertificateType, Purpose,
+                   DateRequested, AdditionalRemarks, Status
+            FROM dbo.CertificateRequests
+            WHERE ReferenceID = @ReferenceID
+            AND ResidentID = @ResidentID";
+            }
+            else if (referenceID.StartsWith("CMP-"))
+            {
+                query = @"
+            SELECT ReferenceID, Category, IncidentLocation,
+                   Description, IncidentDate, DateSubmitted, Status
+            FROM dbo.Complaints
+            WHERE ReferenceID = @ReferenceID
+            AND ResidentID = @ResidentID";
+            }
+            else if (referenceID.StartsWith("RSV-"))
+            {
+                query = @"
+            SELECT ER.ReferenceID, E.EquipmentName, ER.Quantity,
+                   ER.EventName, ER.EventDate, ER.ReturnDate,
+                   ER.Purpose, ER.DateRequested, ER.Status
+            FROM dbo.EquipmentReservations ER
+            INNER JOIN dbo.Equipment E ON ER.EquipmentID = E.EquipmentID
+            WHERE ER.ReferenceID = @ReferenceID
+            AND ER.ResidentID = @ResidentID";
+            }
+            else
+            {
+                MessageBox.Show("Unknown request type.");
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection connection = DatabaseConnection.GetConnection())
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ReferenceID", referenceID);
+                        command.Parameters.AddWithValue("@ResidentID", residentID);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string details = "";
+
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    string value = reader.IsDBNull(i)
+                                        ? "N/A"
+                                        : reader[i].ToString();
+
+                                    if (!reader.IsDBNull(i) && reader[i] is DateTime)
+                                    {
+                                        value = Convert.ToDateTime(reader[i])
+                                            .ToString("dd/MM/yyyy");
+                                    }
+
+                                    details += reader.GetName(i) + ": " +
+                                               value + Environment.NewLine;
+                                }
+
+                                MessageBox.Show(
+                                    details,
+                                    "My Request Details - " + referenceID,
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Request details not found.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Unable to load request details: " + ex.Message,
+                    "My Request Details");
+            }
+        }
+
     }
 }

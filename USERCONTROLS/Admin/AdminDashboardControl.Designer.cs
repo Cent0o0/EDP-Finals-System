@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -40,20 +40,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlSidebar = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             btnResident = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnLogout = new Guna.UI2.WinForms.Guna2Button();
-            btnProfile = new Guna.UI2.WinForms.Guna2Button();
-            btnComplaints = new Guna.UI2.WinForms.Guna2Button();
             btnReservation = new Guna.UI2.WinForms.Guna2Button();
-            btnCertificate = new Guna.UI2.WinForms.Guna2Button();
+            btnActivities = new Guna.UI2.WinForms.Guna2Button();
             btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             pnlDashboardContent = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             pnlSidebar.SuspendLayout();
@@ -64,12 +58,10 @@
             pnlSidebar.Controls.Add(btnResident);
             pnlSidebar.Controls.Add(guna2HtmlLabel2);
             pnlSidebar.Controls.Add(btnLogout);
-            pnlSidebar.Controls.Add(btnProfile);
-            pnlSidebar.Controls.Add(btnComplaints);
             pnlSidebar.Controls.Add(btnReservation);
-            pnlSidebar.Controls.Add(btnCertificate);
+            pnlSidebar.Controls.Add(btnActivities);
             pnlSidebar.Controls.Add(btnDashboard);
-            pnlSidebar.CustomizableEdges = customizableEdges15;
+            pnlSidebar.CustomizableEdges = customizableEdges11;
             pnlSidebar.Dock = DockStyle.Left;
             pnlSidebar.FillColor = Color.FromArgb(18, 52, 86);
             pnlSidebar.FillColor2 = Color.FromArgb(18, 52, 86);
@@ -78,7 +70,7 @@
             pnlSidebar.ForeColor = SystemColors.ControlLight;
             pnlSidebar.Location = new Point(0, 0);
             pnlSidebar.Name = "pnlSidebar";
-            pnlSidebar.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            pnlSidebar.ShadowDecoration.CustomizableEdges = customizableEdges12;
             pnlSidebar.Size = new Size(229, 650);
             pnlSidebar.TabIndex = 1;
             pnlSidebar.Paint += pnlSidebar_Paint;
@@ -128,7 +120,7 @@
             btnLogout.FillColor = Color.FromArgb(18, 52, 86);
             btnLogout.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(0, 468);
+            btnLogout.Location = new Point(0, 354);
             btnLogout.Name = "btnLogout";
             btnLogout.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnLogout.Size = new Size(227, 60);
@@ -137,49 +129,10 @@
             btnLogout.TextAlign = HorizontalAlignment.Left;
             btnLogout.Click += btnLogout_Click;
             // 
-            // btnProfile
-            // 
-            btnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnProfile.CustomizableEdges = customizableEdges5;
-            btnProfile.DisabledState.BorderColor = Color.DarkGray;
-            btnProfile.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnProfile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnProfile.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnProfile.FillColor = Color.FromArgb(18, 52, 86);
-            btnProfile.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnProfile.ForeColor = Color.White;
-            btnProfile.Location = new Point(0, 408);
-            btnProfile.Name = "btnProfile";
-            btnProfile.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnProfile.Size = new Size(227, 60);
-            btnProfile.TabIndex = 7;
-            btnProfile.Text = "PROFILE";
-            btnProfile.TextAlign = HorizontalAlignment.Left;
-            // 
-            // btnComplaints
-            // 
-            btnComplaints.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnComplaints.CustomizableEdges = customizableEdges7;
-            btnComplaints.DisabledState.BorderColor = Color.DarkGray;
-            btnComplaints.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnComplaints.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnComplaints.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnComplaints.FillColor = Color.FromArgb(18, 52, 86);
-            btnComplaints.Font = new Font("Arial Black", 9.75F, FontStyle.Bold);
-            btnComplaints.ForeColor = Color.White;
-            btnComplaints.Location = new Point(0, 348);
-            btnComplaints.Name = "btnComplaints";
-            btnComplaints.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnComplaints.Size = new Size(227, 60);
-            btnComplaints.TabIndex = 6;
-            btnComplaints.Text = "COMPLAINT MANAGEMENT";
-            btnComplaints.TextAlign = HorizontalAlignment.Left;
-            btnComplaints.Click += btnComplaints_Click;
-            // 
             // btnReservation
             // 
             btnReservation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnReservation.CustomizableEdges = customizableEdges9;
+            btnReservation.CustomizableEdges = customizableEdges5;
             btnReservation.DisabledState.BorderColor = Color.DarkGray;
             btnReservation.DisabledState.CustomBorderColor = Color.DarkGray;
             btnReservation.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -189,37 +142,37 @@
             btnReservation.ForeColor = Color.White;
             btnReservation.Location = new Point(0, 288);
             btnReservation.Name = "btnReservation";
-            btnReservation.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnReservation.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnReservation.Size = new Size(227, 60);
             btnReservation.TabIndex = 5;
             btnReservation.Text = "EQUIPMENT RESERVE";
             btnReservation.TextAlign = HorizontalAlignment.Left;
             btnReservation.Click += btnReservation_Click;
             // 
-            // btnCertificate
+            // btnActivities
             // 
-            btnCertificate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnCertificate.CustomizableEdges = customizableEdges11;
-            btnCertificate.DisabledState.BorderColor = Color.DarkGray;
-            btnCertificate.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnCertificate.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnCertificate.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnCertificate.FillColor = Color.FromArgb(18, 52, 86);
-            btnCertificate.Font = new Font("Arial Black", 9.75F, FontStyle.Bold);
-            btnCertificate.ForeColor = Color.White;
-            btnCertificate.Location = new Point(0, 228);
-            btnCertificate.Name = "btnCertificate";
-            btnCertificate.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnCertificate.Size = new Size(227, 60);
-            btnCertificate.TabIndex = 4;
-            btnCertificate.Text = "CERTIFICATE REQUEST";
-            btnCertificate.TextAlign = HorizontalAlignment.Left;
-            btnCertificate.Click += btnCertificate_Click;
+            btnActivities.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnActivities.CustomizableEdges = customizableEdges7;
+            btnActivities.DisabledState.BorderColor = Color.DarkGray;
+            btnActivities.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnActivities.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnActivities.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnActivities.FillColor = Color.FromArgb(18, 52, 86);
+            btnActivities.Font = new Font("Arial Black", 9.75F, FontStyle.Bold);
+            btnActivities.ForeColor = Color.White;
+            btnActivities.Location = new Point(0, 228);
+            btnActivities.Name = "btnActivities";
+            btnActivities.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnActivities.Size = new Size(227, 60);
+            btnActivities.TabIndex = 4;
+            btnActivities.Text = "ALL ACTIVITIES";
+            btnActivities.TextAlign = HorizontalAlignment.Left;
+            btnActivities.Click += btnCertificate_Click;
             // 
             // btnDashboard
             // 
             btnDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnDashboard.CustomizableEdges = customizableEdges13;
+            btnDashboard.CustomizableEdges = customizableEdges9;
             btnDashboard.DisabledState.BorderColor = Color.DarkGray;
             btnDashboard.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDashboard.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -227,9 +180,9 @@
             btnDashboard.FillColor = Color.FromArgb(18, 52, 86);
             btnDashboard.Font = new Font("Arial Black", 9.75F, FontStyle.Bold);
             btnDashboard.ForeColor = Color.White;
-            btnDashboard.Location = new Point(0, 99);
+            btnDashboard.Location = new Point(1, 99);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnDashboard.Size = new Size(227, 60);
             btnDashboard.TabIndex = 3;
             btnDashboard.Text = "DASHBOARD";
@@ -238,11 +191,11 @@
             // 
             // pnlDashboardContent
             // 
-            pnlDashboardContent.CustomizableEdges = customizableEdges17;
+            pnlDashboardContent.CustomizableEdges = customizableEdges13;
             pnlDashboardContent.Dock = DockStyle.Fill;
             pnlDashboardContent.Location = new Point(229, 0);
             pnlDashboardContent.Name = "pnlDashboardContent";
-            pnlDashboardContent.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            pnlDashboardContent.ShadowDecoration.CustomizableEdges = customizableEdges14;
             pnlDashboardContent.Size = new Size(871, 650);
             pnlDashboardContent.TabIndex = 3;
             // 
@@ -263,10 +216,8 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel pnlSidebar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
-        private Guna.UI2.WinForms.Guna2Button btnProfile;
-        private Guna.UI2.WinForms.Guna2Button btnComplaints;
         private Guna.UI2.WinForms.Guna2Button btnReservation;
-        private Guna.UI2.WinForms.Guna2Button btnCertificate;
+        private Guna.UI2.WinForms.Guna2Button btnActivities;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel pnlDashboardContent;
         private Guna.UI2.WinForms.Guna2Button btnResident;

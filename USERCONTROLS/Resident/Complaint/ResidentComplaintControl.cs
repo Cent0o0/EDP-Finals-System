@@ -98,6 +98,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
                         command.ExecuteNonQuery();
                     }
+                    string dashboardQuery = @"INSERT INTO dbo.AllResidentRequests(ReferenceID, RequestType, DateSubmitted, Status) SELECT ReferenceID, 'Complaint: ' + Category, DateSubmitted, Status FROM dbo.Complaints WHERE ReferenceID = @ReferenceID";
+
+                    using (SqlCommand dashboardCommand = new SqlCommand(dashboardQuery, connection))
+                    {
+                        dashboardCommand.Parameters.AddWithValue("@ReferenceID", referenceID);
+                        dashboardCommand.ExecuteNonQuery();
+                    }
                 }
 
                 MessageBox.Show("Your complaint was submitted successfully.\n\n" +"Reference ID: " + referenceID,"Complaint Submitted", MessageBoxButtons.OK,MessageBoxIcon.Information);

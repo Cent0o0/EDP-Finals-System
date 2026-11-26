@@ -53,6 +53,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblPurpose = new Label();
             txtPurpose = new Guna.UI2.WinForms.Guna2TextBox();
             btnSubmit = new Guna.UI2.WinForms.Guna2Button();
+            label1 = new Label();
+            dtpReturnDate = new DateTimePicker();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numQuantity).BeginInit();
             SuspendLayout();
@@ -224,6 +226,26 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnSubmit.Text = "Submit Reservation";
             btnSubmit.Click += btnSubmit_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            label1.Location = new Point(433, 252);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 16);
+            label1.TabIndex = 12;
+            label1.Text = "Return Date";
+            // 
+            // dtpReturnDate
+            // 
+            dtpReturnDate.Font = new Font("Arial", 10F);
+            dtpReturnDate.Format = DateTimePickerFormat.Short;
+            dtpReturnDate.Location = new Point(432, 274);
+            dtpReturnDate.MinDate = new DateTime(2026, 11, 17, 0, 0, 0, 0);
+            dtpReturnDate.Name = "dtpReturnDate";
+            dtpReturnDate.Size = new Size(350, 23);
+            dtpReturnDate.TabIndex = 11;
+            // 
             // EquipmentReservationControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -231,6 +253,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             AutoScroll = true;
             AutoScrollMinSize = new Size(871, 590);
             BackColor = Color.White;
+            Controls.Add(label1);
+            Controls.Add(dtpReturnDate);
             Controls.Add(lblEquipmentName);
             Controls.Add(lblAvailableQuantity);
             Controls.Add(lblQuantity);
@@ -251,5 +275,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private Label label1;
+        private DateTimePicker dtpReturnDate;
     }
 }
