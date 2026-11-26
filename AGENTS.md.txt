@@ -1,0 +1,21 @@
+1. Reuse Existing Design, UserControls, and Theme
+- Inspect MAIN FORM\MainForm.Designer.cs and existing controls in USERCONTROLS\Admin and USERCONTROLS\Resident before making any changes.
+- Reuse existing UserControl components, layout patterns, buttons, text boxes, labels, panels, and DataGridView styles rather than creating duplicate elements from scratch.
+- Match the exact BackColor, ForeColor, Font, FlatStyle, FlatAppearance, BorderStyle, Size, and Padding already established in the project.
+- Do not introduce new hardcoded RGB/hex colors (e.g., Color.FromArgb(...)); reuse only existing project colors.
+
+2. Strict File Separation
+- Do not instantiate, position, or style UI controls inside .cs code-behind files (such as MainForm.cs or AdminDashboardControl.cs). Reserve .cs files strictly for event handlers, navigation logic, and database operations (DATABASE\DatabaseConnection.cs).
+- Place all UI control declarations and layout properties exclusively inside the corresponding .Designer.cs file within the InitializeComponent() method.
+
+3. Visual Studio Designer Compatibility
+- Inside InitializeComponent(), use only standard WinForms designer-serializable statements (Controls.Add(), SuspendLayout(), ResumeLayout(), and property assignments).
+- Do not include if statements, loops, helper methods, or dynamic calculations inside InitializeComponent(), as doing so breaks the Visual Studio Designer.
+- Declare all control fields cleanly at the bottom of the .Designer.cs file.
+
+4. Responsive Layout Structure
+- Avoid rigid hardcoded Location = new Point(x, y) coordinates, particularly inside UserControl views that dock into MainForm.
+- Use TableLayoutPanel, FlowLayoutPanel, Panel, SplitContainer, along with Dock and Anchor properties for responsive alignment.
+
+5. Execution and Environment Control
+- Do not execute dotnet run, launch the compiled application, or open external windows on my machine unless explicitly instructed.
