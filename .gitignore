@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 bin/
 obj/
 .vs/
@@ -368,3 +369,17 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 >>>>>>> origin/main
+=======
+.vs/
+.build-check/
+.dotnet-cli/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.tmp
+*.log
+*.mdf
+*.ldf
+packages/
+>>>>>>> 3b5f7a6 (Updated Folder)
