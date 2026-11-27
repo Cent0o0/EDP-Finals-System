@@ -1,0 +1,330 @@
+﻿/*
+    BARANGAY E-SERVICE SYSTEM
+    DATABASE SETUP SCRIPT
+
+    Run once on a new/empty SQL Server database.
+    This script creates the database, tables, sequences, indexes,
+    the default admin account, and sample equipment inventory.
+
+    IMPORTANT:
+      - The script does not drop or overwrite an existing database.
+      - CREATE DATABASE will fail if BarangayEServiceDB already exists.
+      - For Azure SQL Database, create the database in Azure Portal first,
+        connect directly to BarangayEServiceDB, and run from the USE section
+        onward (Azure SQL Database does not support USE to switch databases).
+      - The default admin password is stored as plain text because requested.
+        Use only if the C# login compares plain-text passwords.
+      - No sample rows are inserted into AllResidentRequests.
+      - No resident account or personal resident information is included.
+*/
+
+/*
+    BASIC DATABASE CREATION
+
+    Run this script while connected to SQL Server's master database.
+    This creates the database, then selects it for the schema commands below.
+
+    Note: CREATE DATABASE will return an error if the database already exists.
+    For Azure SQL Database, create the database in Azure Portal first, then
+    connect directly to it and run the schema section.
+*/
+
+CREATE DATABASE BarangayEServiceDB;
+GO
+
+USE BarangayEServiceDB;
+GO
+
+/* =========================================================
+   1. REFERENCE NUMBER SEQUENCES
+   ========================================================= */
+
+-- Generates the numeric portion of certificate-request reference numbers.
+-- NEXT VALUE FOR dbo.CertificateReferenceSequence returns 1, then 2, then 3, etc.
+-- Your C# code can use this sequence when creating a new certificate request.
+CREATE SEQUENCE dbo.CertificateReferenceSequence
+    AS INT
+    START WITH 1
+    INCREMENT BY 1;
+GO
+
+-- Generates sequential numbers for complaint reference numbers.
+-- Use NEXT VALUE FOR dbo.ComplaintReferenceSequence when a complaint is submitted.
+CREATE SEQUENCE dbo.ComplaintReferenceSequence
+    AS INT
+    START WITH 1
+    INCREMENT BY 1;
+GO
+
+-- Generates sequential numbers for equipment-reservation reference numbers.
+-- Use NEXT VALUE FOR dbo.ReservationReferenceSequence when a reservation is submitted.
+CREATE SEQUENCE dbo.ReservationReferenceSequence
+    AS INT
+    START WITH 1
+    INCREMENT BY 1;
+GO
+
+/* =========================================================
+   2. TABLES (PARENT TABLES FIRST, THEN REQUEST TABLES)
+   ========================================================= */
+
+-- Stores barangay staff/admin login accounts.
+-- PasswordHash must contain a securely generated password hash, never a plain password.
+-- IsActive allows an administrator account to be disabled without deleting its record.
+CREATE TABLE dbo.Admins
+(
+    AdminID      INT IDENTITY(1,1) NOT NULL,
+    FullName     NVARCHAR(100) NOT NULL,
+    Username     NVARCHAR(50) NOT NULL,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    CreatedAt    DATETIME2(7) NOT NULL
+        CONSTRAINT DF_Admins_CreatedAt DEFAULT (SYSDATETIME()),
+    IsActive     BIT NOT NULL
+        CONSTRAINT DF_Admins_IsActive DEFAULT (1),
+
+    CONSTRAINT PK_Admins PRIMARY KEY CLUSTERED (AdminID),
+    CONSTRAINT UQ_Admins_Username UNIQUE (Username)
+);
+GO
+
+-- Stores resident profiles and login details.
+-- ResidentID is the internal primary key used by request tables.
+-- Username is unique so two residents cannot register with the same username.
+-- PasswordHash must contain a secure hash, not the original password.
+-- FirstName, LastName, MiddleInitial, and Suffix support separate name display/search.
+CREATE TABLE dbo.Residents
+(
+    ResidentID    INT IDENTITY(1,1) NOT NULL,
+    FullName      VARCHAR(100) NOT NULL,
+    Address       VARCHAR(200) NOT NULL,
+    ContactNumber VARCHAR(20) NOT NULL,
+    Username      VARCHAR(50) NOT NULL,
+    PasswordHash  VARCHAR(200) NOT NULL,
+    CreatedAt     DATETIME NULL
+        CONSTRAINT DF_Residents_CreatedAt DEFAULT (GETDATE()),
+    FirstName     VARCHAR(50) NOT NULL
+        CONSTRAINT DF_Residents_FirstName DEFAULT (''),
+    LastName      VARCHAR(50) NOT NULL
+        CONSTRAINT DF_Residents_LastName DEFAULT (''),
+    MiddleInitial VARCHAR(5) NULL,
+    Suffix        VARCHAR(10) NULL,
+
+    CONSTRAINT PK_Residents PRIMARY KEY CLUSTERED (ResidentID),
+    CONSTRAINT UQ_Residents_Username UNIQUE (Username)
+);
+GO
+
+-- Stores the barangay equipment inventory available for reservation.
+-- TotalQuantity is the total number owned; AvailableQuantity is the number
+-- currently available to reserve. IsActive can hide/disable an item from new requests.
+CREATE TABLE dbo.Equipment
+(
+    EquipmentID       INT IDENTITY(1,1) NOT NULL,
+    EquipmentName     NVARCHAR(100) NOT NULL,
+    TotalQuantity     INT NOT NULL
+        CONSTRAINT DF_Equipment_TotalQuantity DEFAULT (0),
+    AvailableQuantity INT NOT NULL
+        CONSTRAINT DF_Equipment_AvailableQuantity DEFAULT (0),
+    Description       NVARCHAR(255) NULL,
+    IsActive          BIT NOT NULL
+        CONSTRAINT DF_Equipment_IsActive DEFAULT (1),
+
+    CONSTRAINT PK_Equipment PRIMARY KEY CLUSTERED (EquipmentID)
+);
+GO
+
+-- Stores a combined list of resident requests for an overall request/history view.
+-- ReferenceID identifies the request; RequestType describes its category;
+-- DateSubmitted records when it was filed; Status tracks its current progress.
+CREATE TABLE dbo.AllResidentRequests
+(
+    ReferenceID  VARCHAR(30) NOT NULL,
+    RequestType  VARCHAR(100) NOT NULL,
+    DateSubmitted DATETIME NOT NULL,
+    Status       VARCHAR(30) NOT NULL,
+
+    CONSTRAINT PK_AllResidentRequests PRIMARY KEY CLUSTERED (ReferenceID)
+);
+GO
+
+-- Stores requests for barangay certificates (for example, barangay clearance).
+-- ResidentID links each request to the resident who submitted it.
+-- CertificateType, Purpose, and AdditionalRemarks describe what the resident needs.
+-- Status tracks processing; ReferenceID is the request's public tracking code.
+CREATE TABLE dbo.CertificateRequests
+(
+    RequestID         INT IDENTITY(1,1) NOT NULL,
+    ResidentID        INT NOT NULL,
+    CertificateType   NVARCHAR(100) NOT NULL,
+    DateRequested     DATETIME2(7) NOT NULL
+        CONSTRAINT DF_CertificateRequests_DateRequested DEFAULT (SYSDATETIME()),
+    Status            NVARCHAR(20) NOT NULL
+        CONSTRAINT DF_CertificateRequests_Status DEFAULT (N'Pending'),
+    Purpose           NVARCHAR(200) NULL,
+    AdditionalRemarks NVARCHAR(1000) NULL,
+    ReferenceID       VARCHAR(30) NULL,
+
+    CONSTRAINT PK_CertificateRequests PRIMARY KEY CLUSTERED (RequestID),
+    CONSTRAINT FK_CertificateRequests_Residents
+        FOREIGN KEY (ResidentID) REFERENCES dbo.Residents (ResidentID)
+);
+GO
+
+-- Stores complaints or incident reports submitted by residents.
+-- ResidentID identifies the reporting resident.
+-- Category, IncidentLocation, Description, and IncidentDate describe the incident.
+-- Status and DateSubmitted support the admin's complaint-monitoring workflow.
+-- ReferenceID is the tracking code shown to the resident.
+CREATE TABLE dbo.Complaints
+(
+    ComplaintID      INT IDENTITY(1,1) NOT NULL,
+    ResidentID       INT NOT NULL,
+    Category         NVARCHAR(100) NOT NULL,
+    IncidentLocation NVARCHAR(200) NOT NULL,
+    Description      NVARCHAR(1000) NOT NULL,
+    IncidentDate     DATETIME2(7) NOT NULL,
+    Status           NVARCHAR(40) NOT NULL
+        CONSTRAINT DF_Complaints_Status DEFAULT (N'Pending'),
+    DateSubmitted    DATETIME2(7) NOT NULL
+        CONSTRAINT DF_Complaints_DateSubmitted DEFAULT (SYSDATETIME()),
+    ReferenceID      VARCHAR(30) NULL,
+
+    CONSTRAINT PK_Complaints PRIMARY KEY CLUSTERED (ComplaintID),
+    CONSTRAINT FK_Complaints_Residents
+        FOREIGN KEY (ResidentID) REFERENCES dbo.Residents (ResidentID)
+);
+GO
+
+-- Stores resident requests to borrow/reserve barangay equipment.
+-- ResidentID identifies who made the request; EquipmentID identifies the item.
+-- Quantity is the amount requested; EventName/EventDate/Purpose describe its use.
+-- Status tracks approval/return progress; ReturnDate records the expected/actual return date.
+-- ReferenceID is the tracking code for this reservation.
+CREATE TABLE dbo.EquipmentReservations
+(
+    ReservationID INT IDENTITY(1,1) NOT NULL,
+    ResidentID    INT NOT NULL,
+    EquipmentID   INT NOT NULL,
+    Quantity      INT NOT NULL,
+    EventName     NVARCHAR(150) NOT NULL,
+    EventDate     DATE NOT NULL,
+    Purpose       NVARCHAR(255) NOT NULL,
+    DateRequested DATETIME2(7) NOT NULL
+        CONSTRAINT DF_EquipmentReservations_DateRequested DEFAULT (SYSDATETIME()),
+    Status        NVARCHAR(20) NOT NULL
+        CONSTRAINT DF_EquipmentReservations_Status DEFAULT (N'Pending'),
+    ReferenceID   VARCHAR(30) NULL,
+    ReturnDate    DATE NULL,
+
+    CONSTRAINT PK_EquipmentReservations PRIMARY KEY CLUSTERED (ReservationID),
+    CONSTRAINT FK_EquipmentReservations_Equipment
+        FOREIGN KEY (EquipmentID) REFERENCES dbo.Equipment (EquipmentID),
+    CONSTRAINT FK_EquipmentReservations_Residents
+        FOREIGN KEY (ResidentID) REFERENCES dbo.Residents (ResidentID)
+);
+GO
+
+/* =========================================================
+   3. UNIQUE REFERENCE NUMBER INDEXES
+   Multiple NULL values are allowed; non-NULL references
+   must be unique within each request table.
+   ========================================================= */
+
+-- Prevents duplicate certificate tracking codes.
+-- The filter allows multiple rows to have NULL ReferenceID while requiring
+-- every populated ReferenceID to be unique.
+CREATE UNIQUE INDEX UX_CertificateRequests_ReferenceID
+    ON dbo.CertificateRequests (ReferenceID)
+    WHERE ReferenceID IS NOT NULL;
+GO
+
+-- Prevents two complaints from sharing the same non-NULL tracking code.
+CREATE UNIQUE INDEX UX_Complaints_ReferenceID
+    ON dbo.Complaints (ReferenceID)
+    WHERE ReferenceID IS NOT NULL;
+GO
+
+-- Prevents two equipment reservations from sharing the same non-NULL tracking code.
+CREATE UNIQUE INDEX UX_EquipmentReservations_ReferenceID
+    ON dbo.EquipmentReservations (ReferenceID)
+    WHERE ReferenceID IS NOT NULL;
+GO
+
+/* =========================================================
+   4. DEFAULT ADMIN ACCOUNT
+   ========================================================= */
+
+-- Creates the default Barangay Administrator account.
+-- Stores the password exactly as plain text, as requested.
+-- Default login:
+--     Username: admin
+--     Password: admin123@
+-- WARNING: Plain-text passwords are not secure. Use only if your current
+-- application compares plain-text passwords and this is a controlled test system.
+
+SET IDENTITY_INSERT dbo.Admins ON;
+
+INSERT INTO dbo.Admins
+    (AdminID, FullName, Username, PasswordHash, CreatedAt, IsActive)
+VALUES
+    (1, N'Barangay Administrator', N'admin',
+     N'admin123@', SYSDATETIME(), 1);
+
+SET IDENTITY_INSERT dbo.Admins OFF;
+GO
+
+/* =========================================================
+   5. STARTER EQUIPMENT DATA
+   ========================================================= */
+
+-- Inserts the starter equipment inventory with the original EquipmentID values.
+-- IDENTITY_INSERT is enabled temporarily so SQL Server accepts those explicit IDs.
+SET IDENTITY_INSERT dbo.Equipment ON;
+
+INSERT INTO dbo.Equipment
+    (EquipmentID, EquipmentName, TotalQuantity, AvailableQuantity, Description, IsActive)
+VALUES
+    (1, N'Monobloc Chairs', 100, 100, NULL, 1),
+    (2, N'Table',           20,  20, NULL, 1),
+    (3, N'Tent',             7,   7, NULL, 1),
+    (5, N'Mic',              5,   5, NULL, 1);
+
+SET IDENTITY_INSERT dbo.Equipment OFF;
+GO
+
+/* =========================================================
+   5. ALL RESIDENT REQUESTS
+   ========================================================= */
+
+-- dbo.AllResidentRequests is intentionally created without sample rows.
+-- The application will add real request records when residents submit requests.
+GO
+
+/* =========================================================
+   5. POST-IMPORT CHECKS
+   These queries report the tables and row counts created.
+   ========================================================= */
+
+-- Lists the tables created under the dbo schema so you can confirm the schema exists.
+SELECT
+    s.name AS SchemaName,
+    t.name AS TableName
+FROM sys.tables AS t
+INNER JOIN sys.schemas AS s
+    ON s.schema_id = t.schema_id
+WHERE s.name = N'dbo'
+ORDER BY t.name;
+GO
+
+-- Displays the number of rows in each main table after the script runs.
+-- Zero rows in Admins/Residents/request tables is expected because account records
+-- containing plaintext passwords/personal details were intentionally not copied.
+SELECT N'Admins' AS TableName, COUNT_BIG(*) AS [RowCount] FROM dbo.Admins
+UNION ALL SELECT N'AllResidentRequests', COUNT_BIG(*) FROM dbo.AllResidentRequests
+UNION ALL SELECT N'CertificateRequests', COUNT_BIG(*) FROM dbo.CertificateRequests
+UNION ALL SELECT N'Complaints', COUNT_BIG(*) FROM dbo.Complaints
+UNION ALL SELECT N'Equipment', COUNT_BIG(*) FROM dbo.Equipment
+UNION ALL SELECT N'EquipmentReservations', COUNT_BIG(*) FROM dbo.EquipmentReservations
+UNION ALL SELECT N'Residents', COUNT_BIG(*) FROM dbo.Residents
+ORDER BY TableName;
+GO
