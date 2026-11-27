@@ -109,7 +109,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             dgvRecentActivities.BackgroundColor = Color.Gainsboro;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 52, 86);
-            dataGridViewCellStyle2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.Padding = new Padding(10, 0, 10, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(18, 52, 86);
@@ -120,11 +120,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             dgvRecentActivities.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, RequestType, DateSubmitted, Status, btnView, cmbAction });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(51, 65, 85);
+            dataGridViewCellStyle3.Padding = new Padding(6, 0, 10, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Teal;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvRecentActivities.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRecentActivities.GridColor = Color.FromArgb(226, 232, 240);
@@ -140,11 +140,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             dgvRecentActivities.ThemeStyle.BackColor = Color.Gainsboro;
             dgvRecentActivities.ThemeStyle.GridColor = Color.FromArgb(226, 232, 240);
             dgvRecentActivities.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 52, 86);
-            dgvRecentActivities.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dgvRecentActivities.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dgvRecentActivities.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvRecentActivities.ThemeStyle.HeaderStyle.Height = 35;
-            dgvRecentActivities.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvRecentActivities.ThemeStyle.RowsStyle.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvRecentActivities.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(51, 65, 85);
             dgvRecentActivities.ThemeStyle.RowsStyle.Height = 30;
+            dgvRecentActivities.ThemeStyle.RowsStyle.SelectionBackColor = Color.Teal;
+            dgvRecentActivities.ThemeStyle.RowsStyle.SelectionForeColor = Color.White;
             dgvRecentActivities.CellContentClick += dgvRecentActivities_CellContentClick;
             // 
             // ReferenceID
@@ -173,6 +176,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             // btnView
             // 
+            btnView.FlatStyle = FlatStyle.Flat;
             btnView.HeaderText = "View";
             btnView.Name = "btnView";
             btnView.Text = "View";
@@ -180,6 +184,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             // cmbAction
             // 
+            cmbAction.FlatStyle = FlatStyle.Flat;
             cmbAction.HeaderText = "Action";
             cmbAction.Items.AddRange(new object[] { "Approve", "Reject" });
             cmbAction.Name = "cmbAction";

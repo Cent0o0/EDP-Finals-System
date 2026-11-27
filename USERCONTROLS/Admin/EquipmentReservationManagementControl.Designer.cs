@@ -162,7 +162,7 @@
             dgvEquipment.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 52, 86);
-            dataGridViewCellStyle2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.Padding = new Padding(10, 0, 10, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(18, 52, 86);
@@ -173,11 +173,11 @@
             dgvEquipment.Columns.AddRange(new DataGridViewColumn[] { EquipmentID, EquipmentName, TotalQuantity, AvailableQuantity, Status, btnEdit, btnDelete });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(51, 65, 85);
             dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Teal;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvEquipment.DefaultCellStyle = dataGridViewCellStyle3;
             dgvEquipment.GridColor = Color.FromArgb(226, 232, 240);
@@ -192,11 +192,14 @@
             dgvEquipment.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvEquipment.ThemeStyle.GridColor = Color.FromArgb(226, 232, 240);
             dgvEquipment.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 52, 86);
-            dgvEquipment.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dgvEquipment.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dgvEquipment.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvEquipment.ThemeStyle.HeaderStyle.Height = 35;
-            dgvEquipment.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvEquipment.ThemeStyle.RowsStyle.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvEquipment.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(51, 65, 85);
             dgvEquipment.ThemeStyle.RowsStyle.Height = 30;
+            dgvEquipment.ThemeStyle.RowsStyle.SelectionBackColor = Color.Teal;
+            dgvEquipment.ThemeStyle.RowsStyle.SelectionForeColor = Color.White;
             dgvEquipment.CellContentClick += dgvEquipment_CellContentClick;
             // 
             // EquipmentID
@@ -232,6 +235,7 @@
             // 
             // btnEdit
             // 
+            btnEdit.FlatStyle = FlatStyle.Flat;
             btnEdit.HeaderText = "Edit";
             btnEdit.Name = "btnEdit";
             btnEdit.Text = "Edit";
@@ -239,6 +243,7 @@
             // 
             // btnDelete
             // 
+            btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.HeaderText = "Delete";
             btnDelete.Name = "btnDelete";
             btnDelete.Text = "Delete";

@@ -1,5 +1,6 @@
 using Barangay_E_Service_System;
 using Barangay_E_Service_System.DATA;
+using Barangay_E_Service_System.DATA.Barangay_E_Service_System.DATA;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         public ResidentLoginControl()
         {
             InitializeComponent();
+            txtPassword.PasswordChar = '●';
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -40,9 +42,12 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 {
                     conn.Open();
 
+
                     // Check Admin account first
-                    string adminQuery = @"SELECT AdminID FROM dbo.Admins WHERE Username = @Username AND PasswordHash = @Password AND IsActive = 1";
+                    string adminQuery = @"SELECT AdminID, Username FROM dbo.Admins WHERE Username = @Username AND PasswordHash = @Password AND IsActive = 1";
                     bool isAdmin;
+                    int adminID = 0;
+                    string adminUsername = "";
 
                     using (SqlCommand adminCmd = new SqlCommand(adminQuery, conn))
                     {
@@ -52,11 +57,19 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                         using (SqlDataReader adminReader = adminCmd.ExecuteReader())
                         {
                             isAdmin = adminReader.Read();
+
+                            if (isAdmin)
+                            {
+                                adminID = Convert.ToInt32(adminReader["AdminID"]);
+                                adminUsername = adminReader["Username"].ToString();
+                            }
                         }
                     }
 
                     if (isAdmin)
                     {
+                        UserSession.SetSession(adminID, adminUsername, "Administrator", UserRole.Admin);
+
                         MessageBox.Show("Admin login successful!");
 
                         MainForm main = (MainForm)this.FindForm();
@@ -64,6 +77,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
 
                         return;
                     }
+
                     string query = "SELECT ResidentID, FullName, Username FROM dbo.Residents WHERE [Username] = @Username AND [PasswordHash] = @Password";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -76,6 +90,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                                 string residentID = Convert.ToInt32(reader["ResidentID"]).ToString();
                                 string fullName = reader["FullName"].ToString();
                                 string loggedInUsername = reader["Username"].ToString();
+                                UserSession.SetSession(Convert.ToInt32(residentID), loggedInUsername, fullName, UserRole.Resident);
 
                                 MessageBox.Show("Login successful!");
                                 MainForm main = (MainForm)this.FindForm();
@@ -123,6 +138,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         {
             MainForm main = (MainForm)this.FindForm();
             main.ShowResidentForgotPasswordControl();
+        }
+
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = chkShowPassword.Checked ? '\0' : '●';
         }
     }
 }

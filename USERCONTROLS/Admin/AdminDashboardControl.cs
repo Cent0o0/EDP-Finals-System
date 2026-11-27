@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Barangay_E_Service_System.DATA;
+using Barangay_E_Service_System.DATA.Barangay_E_Service_System.DATA;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,16 +28,25 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             homeP.Dock = DockStyle.Fill;
             pnlDashboardContent.Controls.Add(homeP);
         }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
             if (result == DialogResult.Yes)
             {
-                MainForm main = (MainForm)this.FindForm();
+                UserSession.ClearSession();
 
+                MainForm main = (MainForm)this.FindForm();
                 main.ShowResidentLoginControl();
             }
         }
+
 
         private void btnResident_Click(object sender, EventArgs e)
         {

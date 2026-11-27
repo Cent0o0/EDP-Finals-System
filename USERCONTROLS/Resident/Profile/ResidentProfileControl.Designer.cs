@@ -89,10 +89,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblUsername
             // 
             lblUsername.BackColor = Color.Transparent;
-            lblUsername.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblUsername.Location = new Point(36, 344);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(67, 18);
+            lblUsername.Size = new Size(70, 17);
             lblUsername.TabIndex = 8;
             lblUsername.Text = "Username";
             // 
@@ -100,40 +100,40 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblContactNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblContactNumber.BackColor = Color.Transparent;
-            lblContactNumber.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblContactNumber.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblContactNumber.Location = new Point(443, 188);
             lblContactNumber.Name = "lblContactNumber";
-            lblContactNumber.Size = new Size(105, 18);
+            lblContactNumber.Size = new Size(110, 17);
             lblContactNumber.TabIndex = 6;
             lblContactNumber.Text = "Contact Number";
             // 
             // lblAddress
             // 
             lblAddress.BackColor = Color.Transparent;
-            lblAddress.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAddress.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblAddress.Location = new Point(36, 266);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(53, 18);
+            lblAddress.Size = new Size(56, 17);
             lblAddress.TabIndex = 10;
             lblAddress.Text = "Address";
             // 
             // lblMiddleInitial
             // 
             lblMiddleInitial.BackColor = Color.Transparent;
-            lblMiddleInitial.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblMiddleInitial.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblMiddleInitial.Location = new Point(36, 188);
             lblMiddleInitial.Name = "lblMiddleInitial";
-            lblMiddleInitial.Size = new Size(22, 18);
+            lblMiddleInitial.Size = new Size(22, 17);
             lblMiddleInitial.TabIndex = 4;
             lblMiddleInitial.Text = "M.I";
             // 
             // lblSuffix
             // 
             lblSuffix.BackColor = Color.Transparent;
-            lblSuffix.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblSuffix.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblSuffix.Location = new Point(210, 188);
             lblSuffix.Name = "lblSuffix";
-            lblSuffix.Size = new Size(40, 18);
+            lblSuffix.Size = new Size(39, 17);
             lblSuffix.TabIndex = 11;
             lblSuffix.Text = "Suffix";
             // 
@@ -141,20 +141,20 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLastName.BackColor = Color.Transparent;
-            lblLastName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblLastName.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblLastName.Location = new Point(443, 110);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(70, 18);
+            lblLastName.Size = new Size(72, 17);
             lblLastName.TabIndex = 2;
             lblLastName.Text = "Last Name";
             // 
             // lblFirstName
             // 
             lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblFirstName.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblFirstName.Location = new Point(36, 110);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(71, 18);
+            lblFirstName.Size = new Size(74, 17);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "First Name";
             // 
@@ -169,7 +169,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnSaveChanges.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSaveChanges.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSaveChanges.FillColor = Color.FromArgb(18, 52, 86);
-            btnSaveChanges.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSaveChanges.Font = new Font("Arial Rounded MT Bold", 9.75F);
             btnSaveChanges.ForeColor = Color.White;
             btnSaveChanges.Location = new Point(564, 425);
             btnSaveChanges.Name = "btnSaveChanges";
@@ -183,7 +183,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblUsernameValue.AutoSize = false;
             lblUsernameValue.BackColor = Color.Transparent;
-            lblUsernameValue.Font = new Font("Arial", 12F, FontStyle.Bold);
+            lblUsernameValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblUsernameValue.ForeColor = Color.Red;
             lblUsernameValue.Location = new Point(36, 366);
             lblUsernameValue.Name = "lblUsernameValue";
@@ -198,7 +198,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblContactNumberValue.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblContactNumberValue.AutoSize = false;
             lblContactNumberValue.BackColor = Color.Transparent;
-            lblContactNumberValue.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblContactNumberValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblContactNumberValue.ForeColor = Color.Red;
             lblContactNumberValue.Location = new Point(443, 210);
             lblContactNumberValue.Name = "lblContactNumberValue";
@@ -212,7 +212,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblAddressValue.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblAddressValue.AutoSize = false;
             lblAddressValue.BackColor = Color.Transparent;
-            lblAddressValue.Font = new Font("Arial", 12F, FontStyle.Bold);
+            lblAddressValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblAddressValue.ForeColor = Color.Red;
             lblAddressValue.Location = new Point(36, 288);
             lblAddressValue.Name = "lblAddressValue";
@@ -225,7 +225,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblMiddleInitialValue.AutoSize = false;
             lblMiddleInitialValue.BackColor = Color.Transparent;
-            lblMiddleInitialValue.Font = new Font("Arial", 12F, FontStyle.Bold);
+            lblMiddleInitialValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblMiddleInitialValue.ForeColor = Color.Red;
             lblMiddleInitialValue.Location = new Point(36, 210);
             lblMiddleInitialValue.Name = "lblMiddleInitialValue";
@@ -238,7 +238,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblSuffixValue.AutoSize = false;
             lblSuffixValue.BackColor = Color.Transparent;
-            lblSuffixValue.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSuffixValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblSuffixValue.ForeColor = Color.Red;
             lblSuffixValue.Location = new Point(210, 210);
             lblSuffixValue.Name = "lblSuffixValue";
@@ -252,7 +252,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             lblLastNameValue.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLastNameValue.AutoSize = false;
             lblLastNameValue.BackColor = Color.Transparent;
-            lblLastNameValue.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLastNameValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblLastNameValue.ForeColor = Color.Red;
             lblLastNameValue.Location = new Point(443, 132);
             lblLastNameValue.Name = "lblLastNameValue";
@@ -265,7 +265,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblFirstNameValue.AutoSize = false;
             lblFirstNameValue.BackColor = Color.Transparent;
-            lblFirstNameValue.Font = new Font("Arial", 12F, FontStyle.Bold);
+            lblFirstNameValue.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblFirstNameValue.ForeColor = Color.Red;
             lblFirstNameValue.Location = new Point(36, 132);
             lblFirstNameValue.Name = "lblFirstNameValue";
@@ -301,7 +301,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnDeleteAccount.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnDeleteAccount.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnDeleteAccount.FillColor = Color.Red;
-            btnDeleteAccount.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeleteAccount.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDeleteAccount.ForeColor = Color.White;
             btnDeleteAccount.Location = new Point(547, 82);
             btnDeleteAccount.Name = "btnDeleteAccount";
@@ -315,6 +315,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblDeleteAccountDescription.AutoSize = false;
             lblDeleteAccountDescription.BackColor = Color.Transparent;
+            lblDeleteAccountDescription.Font = new Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDeleteAccountDescription.Location = new Point(20, 59);
             lblDeleteAccountDescription.Name = "lblDeleteAccountDescription";
             lblDeleteAccountDescription.Size = new Size(870, 17);
@@ -324,10 +325,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblDeleteAccountTitle
             // 
             lblDeleteAccountTitle.BackColor = Color.Transparent;
-            lblDeleteAccountTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDeleteAccountTitle.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDeleteAccountTitle.Location = new Point(20, 18);
             lblDeleteAccountTitle.Name = "lblDeleteAccountTitle";
-            lblDeleteAccountTitle.Size = new Size(190, 23);
+            lblDeleteAccountTitle.Size = new Size(202, 20);
             lblDeleteAccountTitle.TabIndex = 0;
             lblDeleteAccountTitle.Text = "Delete Personal Account";
             // 

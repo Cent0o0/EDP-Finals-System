@@ -220,7 +220,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
                 return;
             }
 
-            DialogResult confirmation = MessageBox.Show("Save these changes to your profile?","Confirm Profile Changes",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+            DialogResult confirmation = MessageBox.Show("Save these changes to your profile?", "Confirm Profile Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (confirmation != DialogResult.Yes)
             {
                 return;
@@ -309,6 +309,25 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             catch (Exception ex)
             {
                 MessageBox.Show("Could not update your profile: " + ex.Message);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (HasProfileChanged())
+            {
+                DialogResult result = MessageBox.Show("Discard your unsaved changes?","Cancel Editing", MessageBoxButtons.YesNo,MessageBoxIcon.Question
+                );
+
+                if (result != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
+            if (dashboardControl != null)
+            {
+                dashboardControl.ShowProfileControl();
             }
         }
     }

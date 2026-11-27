@@ -113,10 +113,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblNewPassword
             // 
             lblNewPassword.BackColor = Color.Transparent;
-            lblNewPassword.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblNewPassword.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNewPassword.Location = new Point(52, 182);
             lblNewPassword.Name = "lblNewPassword";
-            lblNewPassword.Size = new Size(96, 18);
+            lblNewPassword.Size = new Size(99, 17);
             lblNewPassword.TabIndex = 2;
             lblNewPassword.Text = "New Password";
             // 
@@ -140,10 +140,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblConfirmPassword
             // 
             lblConfirmPassword.BackColor = Color.Transparent;
-            lblConfirmPassword.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblConfirmPassword.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblConfirmPassword.Location = new Point(52, 267);
             lblConfirmPassword.Name = "lblConfirmPassword";
-            lblConfirmPassword.Size = new Size(118, 18);
+            lblConfirmPassword.Size = new Size(122, 17);
             lblConfirmPassword.TabIndex = 4;
             lblConfirmPassword.Text = "Confirm Password";
             // 
@@ -169,7 +169,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnSavePassword.BorderRadius = 5;
             btnSavePassword.CustomizableEdges = customizableEdges7;
             btnSavePassword.FillColor = Color.FromArgb(18, 52, 86);
-            btnSavePassword.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnSavePassword.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSavePassword.ForeColor = Color.White;
             btnSavePassword.Location = new Point(52, 360);
             btnSavePassword.Name = "btnSavePassword";
@@ -185,7 +185,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnBackToLogin.BorderRadius = 5;
             btnBackToLogin.CustomizableEdges = customizableEdges9;
             btnBackToLogin.FillColor = Color.Transparent;
-            btnBackToLogin.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnBackToLogin.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBackToLogin.ForeColor = Color.FromArgb(18, 52, 86);
             btnBackToLogin.Location = new Point(170, 427);
             btnBackToLogin.Name = "btnBackToLogin";

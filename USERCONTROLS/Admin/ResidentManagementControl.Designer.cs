@@ -261,6 +261,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             // 
             // btnView
             // 
+            btnView.FlatStyle = FlatStyle.Flat;
             btnView.HeaderText = "Actions";
             btnView.Name = "btnView";
             btnView.ReadOnly = true;

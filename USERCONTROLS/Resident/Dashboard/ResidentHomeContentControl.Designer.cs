@@ -80,7 +80,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             dgvRecentRequests.BackgroundColor = Color.Gainsboro;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 52, 86);
-            dataGridViewCellStyle2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.Padding = new Padding(10, 0, 10, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(18, 52, 86);
@@ -92,11 +92,11 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             dgvRecentRequests.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, colRequestType, colDateRequested, colStatus, btnView });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle4.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(51, 65, 85);
             dataGridViewCellStyle4.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle4.SelectionBackColor = Color.Teal;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             dgvRecentRequests.DefaultCellStyle = dataGridViewCellStyle4;
             dgvRecentRequests.GridColor = Color.FromArgb(226, 232, 240);
@@ -112,11 +112,14 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             dgvRecentRequests.ThemeStyle.BackColor = Color.Gainsboro;
             dgvRecentRequests.ThemeStyle.GridColor = Color.FromArgb(226, 232, 240);
             dgvRecentRequests.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 52, 86);
-            dgvRecentRequests.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dgvRecentRequests.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dgvRecentRequests.ThemeStyle.HeaderStyle.Height = 35;
             dgvRecentRequests.ThemeStyle.ReadOnly = true;
-            dgvRecentRequests.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvRecentRequests.ThemeStyle.RowsStyle.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvRecentRequests.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(51, 65, 85);
             dgvRecentRequests.ThemeStyle.RowsStyle.Height = 30;
+            dgvRecentRequests.ThemeStyle.RowsStyle.SelectionBackColor = Color.Teal;
+            dgvRecentRequests.ThemeStyle.RowsStyle.SelectionForeColor = Color.White;
             dgvRecentRequests.CellContentClick += dgvRecentRequests_CellContentClick;
             // 
             // ReferenceID
@@ -157,6 +160,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // btnView
             // 
             btnView.FillWeight = 18F;
+            btnView.FlatStyle = FlatStyle.Flat;
             btnView.HeaderText = "View";
             btnView.Name = "btnView";
             btnView.ReadOnly = true;

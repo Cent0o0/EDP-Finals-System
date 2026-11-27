@@ -1,4 +1,4 @@
-﻿namespace Barangay_E_Service_System.USERCONTROLS.Resident
+namespace Barangay_E_Service_System.USERCONTROLS.Resident
 {
     partial class ResidentLoginControl
     {
@@ -55,6 +55,7 @@
             guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             btnForgot = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            chkShowPassword = new Guna.UI2.WinForms.Guna2CheckBox();
             guna2CustomGradientPanel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             txtPassword.Font = new Font("Arial", 9.75F);
             txtPassword.ForeColor = Color.Black;
             txtPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPassword.Location = new Point(541, 278);
+            txtPassword.Location = new Point(541, 273);
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderForeColor = Color.Transparent;
@@ -96,11 +97,11 @@
             txtUsername.Font = new Font("Arial", 9.75F);
             txtUsername.ForeColor = Color.Black;
             txtUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsername.Location = new Point(541, 207);
+            txtUsername.Location = new Point(541, 200);
             txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Name = "txtUsername";
-            txtUsername.PlaceholderForeColor = Color.Transparent;
-            txtUsername.PlaceholderText = "Enter your username";
+            txtUsername.PlaceholderForeColor = Color.DimGray;
+            txtUsername.PlaceholderText = "e.g. juan123";
             txtUsername.SelectedText = "";
             txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtUsername.Size = new Size(366, 38);
@@ -116,7 +117,7 @@
             btnLogin.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLogin.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnLogin.FillColor = Color.FromArgb(18, 52, 86);
-            btnLogin.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnLogin.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(541, 352);
             btnLogin.Name = "btnLogin";
@@ -137,7 +138,7 @@
             btnRegister.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnRegister.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnRegister.FillColor = Color.Transparent;
-            btnRegister.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnRegister.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnRegister.ForeColor = Color.FromArgb(18, 52, 86);
             btnRegister.Location = new Point(207, 429);
             btnRegister.Name = "btnRegister";
@@ -169,20 +170,20 @@
             // lblusername
             // 
             lblusername.BackColor = Color.Transparent;
-            lblusername.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblusername.Location = new Point(541, 182);
+            lblusername.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblusername.Location = new Point(541, 177);
             lblusername.Name = "lblusername";
-            lblusername.Size = new Size(67, 18);
+            lblusername.Size = new Size(70, 17);
             lblusername.TabIndex = 4;
             lblusername.Text = "Username";
             // 
             // lblpassword
             // 
             lblpassword.BackColor = Color.Transparent;
-            lblpassword.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblpassword.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblpassword.Location = new Point(544, 253);
             lblpassword.Name = "lblpassword";
-            lblpassword.Size = new Size(64, 18);
+            lblpassword.Size = new Size(67, 17);
             lblpassword.TabIndex = 5;
             lblpassword.Text = "Password";
             // 
@@ -205,6 +206,7 @@
             guna2CustomGradientPanel2.BorderColor = Color.Black;
             guna2CustomGradientPanel2.BorderRadius = 10;
             guna2CustomGradientPanel2.BorderThickness = 1;
+            guna2CustomGradientPanel2.Controls.Add(chkShowPassword);
             guna2CustomGradientPanel2.Controls.Add(btnForgot);
             guna2CustomGradientPanel2.Controls.Add(guna2HtmlLabel6);
             guna2CustomGradientPanel2.Controls.Add(btnRegister);
@@ -229,10 +231,10 @@
             btnForgot.FillColor = Color.Transparent;
             btnForgot.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnForgot.ForeColor = Color.FromArgb(18, 52, 86);
-            btnForgot.Location = new Point(314, 358);
+            btnForgot.Location = new Point(308, 358);
             btnForgot.Name = "btnForgot";
             btnForgot.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnForgot.Size = new Size(134, 17);
+            btnForgot.Size = new Size(142, 17);
             btnForgot.TabIndex = 20;
             btnForgot.Text = "Forgot Passoword?";
             btnForgot.UseTransparentBackground = true;
@@ -242,14 +244,34 @@
             // 
             guna2HtmlLabel6.Anchor = AnchorStyles.Top;
             guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2HtmlLabel6.ForeColor = SystemColors.ControlDarkDark;
             guna2HtmlLabel6.Location = new Point(176, 403);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(149, 18);
+            guna2HtmlLabel6.Size = new Size(150, 17);
             guna2HtmlLabel6.TabIndex = 19;
             guna2HtmlLabel6.Text = "Dont have an account?";
             guna2HtmlLabel6.TextAlignment = ContentAlignment.MiddleCenter;
+            // 
+            // chkShowPassword
+            // 
+            chkShowPassword.AutoSize = true;
+            chkShowPassword.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkShowPassword.CheckedState.BorderRadius = 0;
+            chkShowPassword.CheckedState.BorderThickness = 0;
+            chkShowPassword.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkShowPassword.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkShowPassword.ForeColor = Color.FromArgb(18, 52, 86);
+            chkShowPassword.Location = new Point(322, 269);
+            chkShowPassword.Name = "chkShowPassword";
+            chkShowPassword.Size = new Size(111, 16);
+            chkShowPassword.TabIndex = 21;
+            chkShowPassword.Text = "Show Password";
+            chkShowPassword.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkShowPassword.UncheckedState.BorderRadius = 0;
+            chkShowPassword.UncheckedState.BorderThickness = 0;
+            chkShowPassword.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
             // 
             // ResidentLoginControl
             // 
@@ -287,5 +309,6 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2Button btnForgot;
+        private Guna.UI2.WinForms.Guna2CheckBox chkShowPassword;
     }
 }

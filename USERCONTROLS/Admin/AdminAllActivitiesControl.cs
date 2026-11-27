@@ -22,6 +22,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
 
             txtSearchActivities.TextChanged += txtSearchActivities_TextChanged;
 
+            dgvAllActivities.CellPainting += dgvAllActivities_CellPainting;
+
             LoadAllActivities();
         }
 
@@ -52,6 +54,22 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
                             adapter.Fill(dt);
 
                             dgvAllActivities.DataSource = dt;
+
+                            foreach (DataGridViewRow row in dgvAllActivities.Rows)
+                            {
+                                string referenceID = row.Cells["ReferenceID"].Value?.ToString();
+                                string status = row.Cells["Status"].Value?.ToString();
+
+                                if (referenceID != null && referenceID.StartsWith("RSV-") && status == "Approved")
+                                {
+                                    row.Cells["btnReturn"].Value = "Return";
+                                }
+                                else
+                                {
+                                    row.Cells["btnReturn"].Value = "";
+                                }
+                            }
+
                             lblNoActivitiesFound.Visible = dt.Rows.Count == 0;
                         }
                     }
@@ -252,6 +270,16 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
             {
                 LoadActivityDetails(referenceID);
             }
+            else if (columnName == "btnReturn")
+            {
+                string status = dgvAllActivities.Rows[e.RowIndex]
+                    .Cells["Status"].Value?.ToString();
+
+                if (referenceID.StartsWith("RSV-") && status == "Approved")
+                {
+                    ReturnEquipment(referenceID);
+                }
+            }
 
             // DELETE REQUEST
             else if (columnName == "btnDelete")
@@ -314,7 +342,124 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
                 }
             }
         }
+        private void ReturnEquipment(string referenceID)
+        {
+            DialogResult confirmation = MessageBox.Show(
+                "Are you sure you want to return the equipment for reservation " + referenceID + "?",
+                "Confirm Equipment Return",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
+            if (confirmation != DialogResult.Yes)
+                return;
+
+            try
+            {
+                using (SqlConnection connection = DatabaseConnection.GetConnection())
+                {
+                    connection.Open();
+
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            string reservationQuery = @"
+                        SELECT EquipmentID, Quantity, Status
+                        FROM dbo.EquipmentReservations WITH (UPDLOCK, HOLDLOCK)
+                        WHERE ReferenceID = @ReferenceID";
+
+                            int equipmentID;
+                            int quantity;
+                            string currentStatus;
+
+                            using (SqlCommand command = new SqlCommand(reservationQuery, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@ReferenceID", referenceID);
+
+                                using (SqlDataReader reader = command.ExecuteReader())
+                                {
+                                    if (!reader.Read())
+                                        throw new Exception("Reservation not found.");
+
+                                    equipmentID = Convert.ToInt32(reader["EquipmentID"]);
+                                    quantity = Convert.ToInt32(reader["Quantity"]);
+                                    currentStatus = reader["Status"].ToString();
+                                }
+                            }
+
+                            if (currentStatus != "Approved")
+                                throw new Exception("Only approved reservations can be returned.");
+
+                            string equipmentQuery = @"
+                        UPDATE dbo.Equipment
+                        SET AvailableQuantity = AvailableQuantity + @Quantity
+                        WHERE EquipmentID = @EquipmentID
+                        AND AvailableQuantity + @Quantity <= TotalQuantity";
+
+                            using (SqlCommand command = new SqlCommand(equipmentQuery, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@EquipmentID", equipmentID);
+                                command.Parameters.AddWithValue("@Quantity", quantity);
+
+                                if (command.ExecuteNonQuery() == 0)
+                                    throw new Exception("Unable to restore equipment quantity. Please check the inventory.");
+                            }
+
+                            string updateReservation = @"
+                        UPDATE dbo.EquipmentReservations
+                        SET Status = 'Returned'
+                        WHERE ReferenceID = @ReferenceID
+                        AND Status = 'Approved'";
+
+                            using (SqlCommand command = new SqlCommand(updateReservation, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@ReferenceID", referenceID);
+
+                                if (command.ExecuteNonQuery() == 0)
+                                    throw new Exception("Reservation status could not be updated.");
+                            }
+
+                            string updateDashboard = @"
+                        UPDATE dbo.AllResidentRequests
+                        SET Status = 'Returned'
+                        WHERE ReferenceID = @ReferenceID";
+
+                            using (SqlCommand command = new SqlCommand(updateDashboard, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@ReferenceID", referenceID);
+                                command.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+
+                MessageBox.Show(
+                    "Equipment for reservation " + referenceID + " has been returned successfully.",
+                    "Return Successful",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                LoadAllActivities(txtSearchActivities.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Unable to return equipment: " + ex.Message,
+                    "Equipment Return",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
         // LOAD REQUEST DETAILS
         private void LoadActivityDetails(string referenceID)
         {
@@ -409,6 +554,28 @@ namespace Barangay_E_Service_System.USERCONTROLS.Admin
                 MessageBox.Show(
                     "Unable to load request details: " + ex.Message,
                     "Request Details");
+            }
+        }
+        private void dgvAllActivities_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+
+            if (dgvAllActivities.Columns[e.ColumnIndex].Name != "btnReturn")
+                return;
+
+            string referenceID = dgvAllActivities.Rows[e.RowIndex]
+                .Cells["ReferenceID"].Value?.ToString();
+
+            string status = dgvAllActivities.Rows[e.RowIndex]
+                .Cells["Status"].Value?.ToString();
+
+            if (referenceID == null ||
+                !referenceID.StartsWith("RSV-") ||
+                status != "Approved")
+            {
+                e.PaintBackground(e.CellBounds, true);
+                e.Handled = true;
             }
         }
     }

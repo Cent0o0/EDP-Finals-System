@@ -38,18 +38,18 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
 
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlHeader = new Panel();
             lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblSubtitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -107,10 +107,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             // lblContactNumber
             // 
             lblContactNumber.BackColor = Color.Transparent;
-            lblContactNumber.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblContactNumber.Location = new Point(463, 208);
+            lblContactNumber.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblContactNumber.Location = new Point(437, 139);
             lblContactNumber.Name = "lblContactNumber";
-            lblContactNumber.Size = new Size(105, 18);
+            lblContactNumber.Size = new Size(110, 17);
             lblContactNumber.TabIndex = 9;
             lblContactNumber.Text = "Contact Number";
             // 
@@ -118,39 +118,40 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             // 
             txtContactNumber.BorderColor = Color.Black;
             txtContactNumber.BorderRadius = 5;
-            txtContactNumber.CustomizableEdges = customizableEdges13;
+            txtContactNumber.CustomizableEdges = customizableEdges1;
             txtContactNumber.DefaultText = "";
             txtContactNumber.FillColor = Color.FromArgb(245, 245, 245);
-            txtContactNumber.Font = new Font("Arial", 10F);
+            txtContactNumber.Font = new Font("Arial Rounded MT Bold", 9.75F);
             txtContactNumber.ForeColor = Color.Black;
-            txtContactNumber.Location = new Point(463, 230);
+            txtContactNumber.Location = new Point(437, 161);
+            txtContactNumber.Margin = new Padding(3, 2, 3, 2);
             txtContactNumber.Name = "txtContactNumber";
             txtContactNumber.PlaceholderText = "";
             txtContactNumber.ReadOnly = true;
             txtContactNumber.SelectedText = "";
-            txtContactNumber.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            txtContactNumber.Size = new Size(350, 36);
+            txtContactNumber.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtContactNumber.Size = new Size(348, 36);
             txtContactNumber.TabIndex = 10;
             txtContactNumber.TabStop = false;
             // 
             // lblBusinessInformation
             // 
             lblBusinessInformation.BackColor = Color.Transparent;
-            lblBusinessInformation.Font = new Font("Arial", 12F, FontStyle.Bold);
+            lblBusinessInformation.Font = new Font("Arial Rounded MT Bold", 9.75F);
             lblBusinessInformation.ForeColor = Color.Black;
             lblBusinessInformation.Location = new Point(30, 100);
             lblBusinessInformation.Name = "lblBusinessInformation";
-            lblBusinessInformation.Size = new Size(166, 21);
+            lblBusinessInformation.Size = new Size(139, 17);
             lblBusinessInformation.TabIndex = 1;
             lblBusinessInformation.Text = "Business Information";
             // 
             // lblBusinessName
             // 
             lblBusinessName.BackColor = Color.Transparent;
-            lblBusinessName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblBusinessName.Location = new Point(57, 140);
+            lblBusinessName.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblBusinessName.Location = new Point(31, 139);
             lblBusinessName.Name = "lblBusinessName";
-            lblBusinessName.Size = new Size(99, 18);
+            lblBusinessName.Size = new Size(102, 17);
             lblBusinessName.TabIndex = 9;
             lblBusinessName.Text = "Business Name";
             // 
@@ -158,26 +159,27 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             // 
             txtBusinessName.BorderColor = Color.Black;
             txtBusinessName.BorderRadius = 5;
-            txtBusinessName.CustomizableEdges = customizableEdges15;
+            txtBusinessName.CustomizableEdges = customizableEdges3;
             txtBusinessName.DefaultText = "";
-            txtBusinessName.Font = new Font("Arial", 10F);
+            txtBusinessName.Font = new Font("Arial Rounded MT Bold", 9.75F);
             txtBusinessName.ForeColor = Color.Black;
-            txtBusinessName.Location = new Point(57, 162);
+            txtBusinessName.Location = new Point(31, 161);
+            txtBusinessName.Margin = new Padding(3, 2, 3, 2);
             txtBusinessName.MaxLength = 150;
             txtBusinessName.Name = "txtBusinessName";
             txtBusinessName.PlaceholderText = "";
             txtBusinessName.SelectedText = "";
-            txtBusinessName.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtBusinessName.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtBusinessName.Size = new Size(380, 36);
             txtBusinessName.TabIndex = 0;
             // 
             // lblBusinessOwner
             // 
             lblBusinessOwner.BackColor = Color.Transparent;
-            lblBusinessOwner.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblBusinessOwner.Location = new Point(57, 208);
+            lblBusinessOwner.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblBusinessOwner.Location = new Point(31, 207);
             lblBusinessOwner.Name = "lblBusinessOwner";
-            lblBusinessOwner.Size = new Size(104, 18);
+            lblBusinessOwner.Size = new Size(107, 17);
             lblBusinessOwner.TabIndex = 10;
             lblBusinessOwner.Text = "Business Owner";
             // 
@@ -186,18 +188,19 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             txtBusinessOwner.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtBusinessOwner.BorderColor = Color.Black;
             txtBusinessOwner.BorderRadius = 5;
-            txtBusinessOwner.CustomizableEdges = customizableEdges17;
+            txtBusinessOwner.CustomizableEdges = customizableEdges5;
             txtBusinessOwner.DefaultText = "";
             txtBusinessOwner.FillColor = Color.FromArgb(245, 245, 245);
-            txtBusinessOwner.Font = new Font("Arial", 10F);
+            txtBusinessOwner.Font = new Font("Arial Rounded MT Bold", 9.75F);
             txtBusinessOwner.ForeColor = Color.Black;
-            txtBusinessOwner.Location = new Point(57, 230);
+            txtBusinessOwner.Location = new Point(31, 229);
+            txtBusinessOwner.Margin = new Padding(3, 2, 3, 2);
             txtBusinessOwner.MaxLength = 100;
             txtBusinessOwner.Name = "txtBusinessOwner";
             txtBusinessOwner.PlaceholderText = "";
             txtBusinessOwner.ReadOnly = true;
             txtBusinessOwner.SelectedText = "";
-            txtBusinessOwner.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtBusinessOwner.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtBusinessOwner.Size = new Size(380, 36);
             txtBusinessOwner.TabIndex = 11;
             txtBusinessOwner.TabStop = false;
@@ -205,10 +208,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             // lblBusinessAddress
             // 
             lblBusinessAddress.BackColor = Color.Transparent;
-            lblBusinessAddress.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblBusinessAddress.Location = new Point(57, 344);
+            lblBusinessAddress.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblBusinessAddress.Location = new Point(31, 343);
             lblBusinessAddress.Name = "lblBusinessAddress";
-            lblBusinessAddress.Size = new Size(112, 18);
+            lblBusinessAddress.Size = new Size(117, 17);
             lblBusinessAddress.TabIndex = 12;
             lblBusinessAddress.Text = "Business Address";
             // 
@@ -217,26 +220,27 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             txtBusinessAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBusinessAddress.BorderColor = Color.Black;
             txtBusinessAddress.BorderRadius = 5;
-            txtBusinessAddress.CustomizableEdges = customizableEdges19;
+            txtBusinessAddress.CustomizableEdges = customizableEdges7;
             txtBusinessAddress.DefaultText = "";
-            txtBusinessAddress.Font = new Font("Arial", 10F);
+            txtBusinessAddress.Font = new Font("Arial Rounded MT Bold", 9.75F);
             txtBusinessAddress.ForeColor = Color.Black;
-            txtBusinessAddress.Location = new Point(57, 366);
+            txtBusinessAddress.Location = new Point(40, 365);
+            txtBusinessAddress.Margin = new Padding(3, 2, 3, 2);
             txtBusinessAddress.MaxLength = 200;
             txtBusinessAddress.Name = "txtBusinessAddress";
             txtBusinessAddress.PlaceholderText = "";
             txtBusinessAddress.SelectedText = "";
-            txtBusinessAddress.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            txtBusinessAddress.Size = new Size(756, 36);
+            txtBusinessAddress.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtBusinessAddress.Size = new Size(721, 36);
             txtBusinessAddress.TabIndex = 1;
             // 
             // lblNatureOfBusiness
             // 
             lblNatureOfBusiness.BackColor = Color.Transparent;
-            lblNatureOfBusiness.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblNatureOfBusiness.Location = new Point(57, 278);
+            lblNatureOfBusiness.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblNatureOfBusiness.Location = new Point(31, 277);
             lblNatureOfBusiness.Name = "lblNatureOfBusiness";
-            lblNatureOfBusiness.Size = new Size(120, 18);
+            lblNatureOfBusiness.Size = new Size(124, 17);
             lblNatureOfBusiness.TabIndex = 13;
             lblNatureOfBusiness.Text = "Nature of Business";
             // 
@@ -244,56 +248,57 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             // 
             txtNatureOfBusiness.BorderColor = Color.Black;
             txtNatureOfBusiness.BorderRadius = 5;
-            txtNatureOfBusiness.CustomizableEdges = customizableEdges21;
+            txtNatureOfBusiness.CustomizableEdges = customizableEdges9;
             txtNatureOfBusiness.DefaultText = "";
-            txtNatureOfBusiness.Font = new Font("Arial", 10F);
+            txtNatureOfBusiness.Font = new Font("Arial Rounded MT Bold", 9.75F);
             txtNatureOfBusiness.ForeColor = Color.Black;
-            txtNatureOfBusiness.Location = new Point(57, 300);
+            txtNatureOfBusiness.Location = new Point(31, 299);
+            txtNatureOfBusiness.Margin = new Padding(3, 2, 3, 2);
             txtNatureOfBusiness.MaxLength = 150;
             txtNatureOfBusiness.Name = "txtNatureOfBusiness";
             txtNatureOfBusiness.PlaceholderText = "";
             txtNatureOfBusiness.SelectedText = "";
-            txtNatureOfBusiness.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            txtNatureOfBusiness.Size = new Size(380, 36);
+            txtNatureOfBusiness.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtNatureOfBusiness.Size = new Size(376, 36);
             txtNatureOfBusiness.TabIndex = 2;
             // 
             // lblBusinessType
             // 
             lblBusinessType.BackColor = Color.Transparent;
-            lblBusinessType.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblBusinessType.Location = new Point(463, 290);
+            lblBusinessType.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblBusinessType.Location = new Point(437, 221);
             lblBusinessType.Name = "lblBusinessType";
-            lblBusinessType.Size = new Size(93, 18);
+            lblBusinessType.Size = new Size(95, 17);
             lblBusinessType.TabIndex = 14;
             lblBusinessType.Text = "Business Type";
             // 
             // cmbBusinessType
             // 
             cmbBusinessType.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbBusinessType.Font = new Font("Arial", 10F);
+            cmbBusinessType.Font = new Font("Arial Rounded MT Bold", 9.75F);
             cmbBusinessType.FormattingEnabled = true;
             cmbBusinessType.Items.AddRange(new object[] { "Sole Proprietorship", "Partnership", "Corporation", "Cooperative" });
-            cmbBusinessType.Location = new Point(463, 312);
+            cmbBusinessType.Location = new Point(437, 243);
             cmbBusinessType.Name = "cmbBusinessType";
-            cmbBusinessType.Size = new Size(348, 24);
+            cmbBusinessType.Size = new Size(348, 23);
             cmbBusinessType.TabIndex = 3;
             // 
             // lblDateEstablished
             // 
             lblDateEstablished.BackColor = Color.Transparent;
-            lblDateEstablished.Font = new Font("Arial", 9.75F, FontStyle.Bold);
-            lblDateEstablished.Location = new Point(57, 408);
+            lblDateEstablished.Font = new Font("Arial Rounded MT Bold", 9.75F);
+            lblDateEstablished.Location = new Point(31, 407);
             lblDateEstablished.Name = "lblDateEstablished";
-            lblDateEstablished.Size = new Size(108, 18);
+            lblDateEstablished.Size = new Size(113, 17);
             lblDateEstablished.TabIndex = 15;
             lblDateEstablished.Text = "Date Established";
             // 
             // dtpDateEstablished
             // 
             dtpDateEstablished.CustomFormat = "MMMM yyyy";
-            dtpDateEstablished.Font = new Font("Arial", 10F);
+            dtpDateEstablished.Font = new Font("Arial Rounded MT Bold", 9.75F);
             dtpDateEstablished.Format = DateTimePickerFormat.Custom;
-            dtpDateEstablished.Location = new Point(57, 430);
+            dtpDateEstablished.Location = new Point(31, 429);
             dtpDateEstablished.Name = "dtpDateEstablished";
             dtpDateEstablished.Size = new Size(350, 23);
             dtpDateEstablished.TabIndex = 4;
@@ -302,13 +307,13 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             // 
             btnSubmitRequest.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSubmitRequest.BorderRadius = 5;
-            btnSubmitRequest.CustomizableEdges = customizableEdges23;
+            btnSubmitRequest.CustomizableEdges = customizableEdges11;
             btnSubmitRequest.FillColor = Color.FromArgb(18, 52, 86);
-            btnSubmitRequest.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnSubmitRequest.Font = new Font("Arial Rounded MT Bold", 9.75F);
             btnSubmitRequest.ForeColor = Color.White;
-            btnSubmitRequest.Location = new Point(592, 500);
+            btnSubmitRequest.Location = new Point(586, 577);
             btnSubmitRequest.Name = "btnSubmitRequest";
-            btnSubmitRequest.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btnSubmitRequest.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnSubmitRequest.Size = new Size(225, 42);
             btnSubmitRequest.TabIndex = 5;
             btnSubmitRequest.Text = "Submit Request";
@@ -339,7 +344,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident.CertificateRequests
             Controls.Add(btnSubmitRequest);
             Controls.Add(pnlHeader);
             Name = "CertificateForBusinessControl";
-            Size = new Size(871, 570);
+            Size = new Size(871, 650);
             Load += CertificateForBusinessControl_Load;
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();

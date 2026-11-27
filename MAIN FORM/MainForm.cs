@@ -1,3 +1,5 @@
+using Barangay_E_Service_System.DATA;
+using Barangay_E_Service_System.DATA.Barangay_E_Service_System.DATA;
 using Barangay_E_Service_System.USERCONTROLS.Admin;
 using Barangay_E_Service_System.USERCONTROLS.Resident;
 using System;
@@ -30,11 +32,23 @@ namespace Barangay_E_Service_System
         }
         public void ShowResidentDashboardControl(string residentID, string fullName, string username)
         {
+            if (!UserSession.IsAuthenticated || UserSession.Role != UserRole.Resident)
+            {
+                MessageBox.Show("Unauthorized access. Please log in as a Resident.");
+                UserSession.ClearSession();
+                ShowResidentLoginControl();
+                return;
+            }
+
             pnlContent.Controls.Clear();
 
-            ResidentDashboardControl residentDashboard = new ResidentDashboardControl(residentID, fullName, username);
-            residentDashboard.Dock = DockStyle.Fill;
+            ResidentDashboardControl residentDashboard = new ResidentDashboardControl(
+                UserSession.UserID.ToString(),
+                UserSession.FullName,
+                UserSession.Username
+            );
 
+            residentDashboard.Dock = DockStyle.Fill;
             pnlContent.Controls.Add(residentDashboard);
         }
         public void ShowResidentRegisterControl()
@@ -86,6 +100,14 @@ namespace Barangay_E_Service_System
         }
         public void ShowAdminDashboardControl()
         {
+            if (!UserSession.IsAuthenticated || UserSession.Role != UserRole.Admin)
+            {
+                MessageBox.Show("Unauthorized access. Please log in as an Admin.");
+                UserSession.ClearSession();
+                ShowResidentLoginControl();
+                return;
+            }
+
             pnlContent.Controls.Clear();
 
             AdminDashboardControl adminDashboard = new AdminDashboardControl();

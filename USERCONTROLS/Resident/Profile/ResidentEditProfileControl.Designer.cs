@@ -36,6 +36,8 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlHeader = new Panel();
             lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblSubtitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -54,6 +56,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             cmbSuffix = new ComboBox();
             txtLastName = new Guna.UI2.WinForms.Guna2TextBox();
             txtFirstName = new Guna.UI2.WinForms.Guna2TextBox();
+            btnCancel = new Guna.UI2.WinForms.Guna2Button();
             pnlHeader.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,10 +95,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblUsername
             // 
             lblUsername.BackColor = Color.Transparent;
-            lblUsername.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUsername.Location = new Point(38, 344);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(67, 18);
+            lblUsername.Size = new Size(70, 17);
             lblUsername.TabIndex = 8;
             lblUsername.Text = "Username";
             // 
@@ -103,40 +106,40 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblContactNumber.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblContactNumber.BackColor = Color.Transparent;
-            lblContactNumber.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblContactNumber.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblContactNumber.Location = new Point(451, 188);
             lblContactNumber.Name = "lblContactNumber";
-            lblContactNumber.Size = new Size(105, 18);
+            lblContactNumber.Size = new Size(110, 17);
             lblContactNumber.TabIndex = 6;
             lblContactNumber.Text = "Contact Number";
             // 
             // lblAddress
             // 
             lblAddress.BackColor = Color.Transparent;
-            lblAddress.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAddress.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAddress.Location = new Point(37, 266);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(53, 18);
+            lblAddress.Size = new Size(56, 17);
             lblAddress.TabIndex = 10;
             lblAddress.Text = "Address";
             // 
             // lblMiddleInitial
             // 
             lblMiddleInitial.BackColor = Color.Transparent;
-            lblMiddleInitial.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblMiddleInitial.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblMiddleInitial.Location = new Point(39, 188);
             lblMiddleInitial.Name = "lblMiddleInitial";
-            lblMiddleInitial.Size = new Size(22, 18);
+            lblMiddleInitial.Size = new Size(22, 17);
             lblMiddleInitial.TabIndex = 4;
             lblMiddleInitial.Text = "M.I";
             // 
             // lblSuffix
             // 
             lblSuffix.BackColor = Color.Transparent;
-            lblSuffix.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblSuffix.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSuffix.Location = new Point(210, 188);
             lblSuffix.Name = "lblSuffix";
-            lblSuffix.Size = new Size(40, 18);
+            lblSuffix.Size = new Size(39, 17);
             lblSuffix.TabIndex = 11;
             lblSuffix.Text = "Suffix";
             // 
@@ -144,20 +147,20 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // 
             lblLastName.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLastName.BackColor = Color.Transparent;
-            lblLastName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblLastName.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLastName.Location = new Point(453, 110);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(70, 18);
+            lblLastName.Size = new Size(72, 17);
             lblLastName.TabIndex = 2;
             lblLastName.Text = "Last Name";
             // 
             // lblFirstName
             // 
             lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblFirstName.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFirstName.Location = new Point(36, 110);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(71, 18);
+            lblFirstName.Size = new Size(74, 17);
             lblFirstName.TabIndex = 0;
             lblFirstName.Text = "First Name";
             // 
@@ -172,12 +175,12 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnSaveChanges.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSaveChanges.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSaveChanges.FillColor = Color.FromArgb(18, 52, 86);
-            btnSaveChanges.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSaveChanges.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSaveChanges.ForeColor = Color.White;
-            btnSaveChanges.Location = new Point(576, 490);
+            btnSaveChanges.Location = new Point(665, 490);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnSaveChanges.Size = new Size(225, 45);
+            btnSaveChanges.Size = new Size(136, 45);
             btnSaveChanges.TabIndex = 10;
             btnSaveChanges.Text = "Save Changes";
             btnSaveChanges.Click += btnSaveChanges_Click;
@@ -295,6 +298,29 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             txtFirstName.Size = new Size(350, 36);
             txtFirstName.TabIndex = 1;
             // 
+            // btnCancel
+            // 
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancel.BackColor = Color.Transparent;
+            btnCancel.BorderColor = Color.Red;
+            btnCancel.BorderRadius = 5;
+            btnCancel.BorderThickness = 1;
+            btnCancel.CustomizableEdges = customizableEdges15;
+            btnCancel.DisabledState.BorderColor = Color.DarkGray;
+            btnCancel.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCancel.FillColor = Color.Transparent;
+            btnCancel.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCancel.ForeColor = Color.Red;
+            btnCancel.Location = new Point(502, 490);
+            btnCancel.Name = "btnCancel";
+            btnCancel.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnCancel.Size = new Size(136, 45);
+            btnCancel.TabIndex = 12;
+            btnCancel.Text = "Cancel";
+            btnCancel.Click += btnCancel_Click;
+            // 
             // ResidentEditProfileControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -302,6 +328,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             AutoScroll = true;
             AutoScrollMinSize = new Size(871, 650);
             BackColor = Color.White;
+            Controls.Add(btnCancel);
             Controls.Add(txtFirstName);
             Controls.Add(txtLastName);
             Controls.Add(txtMiddleInitial);
@@ -341,5 +368,6 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
         private ComboBox cmbSuffix;
         private Guna.UI2.WinForms.Guna2TextBox txtLastName;
         private Guna.UI2.WinForms.Guna2TextBox txtFirstName;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
     }
 }

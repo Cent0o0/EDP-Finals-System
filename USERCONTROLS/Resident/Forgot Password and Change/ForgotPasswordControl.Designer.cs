@@ -113,10 +113,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblUsername
             // 
             lblUsername.BackColor = Color.Transparent;
-            lblUsername.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblUsername.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUsername.Location = new Point(52, 182);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(67, 18);
+            lblUsername.Size = new Size(70, 17);
             lblUsername.TabIndex = 2;
             lblUsername.Text = "Username";
             // 
@@ -139,10 +139,10 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             // lblContactNumber
             // 
             lblContactNumber.BackColor = Color.Transparent;
-            lblContactNumber.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            lblContactNumber.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblContactNumber.Location = new Point(52, 267);
             lblContactNumber.Name = "lblContactNumber";
-            lblContactNumber.Size = new Size(105, 18);
+            lblContactNumber.Size = new Size(110, 17);
             lblContactNumber.TabIndex = 4;
             lblContactNumber.Text = "Contact Number";
             // 
@@ -167,7 +167,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnContinue.BorderRadius = 5;
             btnContinue.CustomizableEdges = customizableEdges7;
             btnContinue.FillColor = Color.FromArgb(18, 52, 86);
-            btnContinue.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnContinue.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnContinue.ForeColor = Color.White;
             btnContinue.Location = new Point(52, 360);
             btnContinue.Name = "btnContinue";
@@ -183,7 +183,7 @@ namespace Barangay_E_Service_System.USERCONTROLS.Resident
             btnBackToLogin.BorderRadius = 5;
             btnBackToLogin.CustomizableEdges = customizableEdges9;
             btnBackToLogin.FillColor = Color.Transparent;
-            btnBackToLogin.Font = new Font("Arial", 9.75F, FontStyle.Bold);
+            btnBackToLogin.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnBackToLogin.ForeColor = Color.FromArgb(18, 52, 86);
             btnBackToLogin.Location = new Point(170, 427);
             btnBackToLogin.Name = "btnBackToLogin";

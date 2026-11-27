@@ -44,6 +44,7 @@
             Status = new DataGridViewTextBoxColumn();
             btnView = new DataGridViewButtonColumn();
             cmbAction = new DataGridViewComboBoxColumn();
+            btnReturn = new DataGridViewButtonColumn();
             btnDelete = new DataGridViewButtonColumn();
             lblNoActivitiesFound = new Guna.UI2.WinForms.Guna2HtmlLabel();
             pnlWelcome.SuspendLayout();
@@ -116,24 +117,25 @@
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvAllActivities.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvAllActivities.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dgvAllActivities.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 52, 86);
-            dataGridViewCellStyle2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.Padding = new Padding(10, 0, 10, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(18, 52, 86);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvAllActivities.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvAllActivities.ColumnHeadersHeight = 35;
-            dgvAllActivities.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, RequestType, DateSubmitted, Status, btnView, cmbAction, btnDelete });
+            dgvAllActivities.ColumnHeadersHeight = 45;
+            dgvAllActivities.Columns.AddRange(new DataGridViewColumn[] { ReferenceID, RequestType, DateSubmitted, Status, btnView, cmbAction, btnReturn, btnDelete });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.Padding = new Padding(10, 0, 10, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(51, 65, 85);
+            dataGridViewCellStyle3.Padding = new Padding(6, 0, 10, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Teal;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvAllActivities.DefaultCellStyle = dataGridViewCellStyle3;
             dgvAllActivities.GridColor = Color.FromArgb(226, 232, 240);
@@ -148,57 +150,87 @@
             dgvAllActivities.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvAllActivities.ThemeStyle.GridColor = Color.FromArgb(226, 232, 240);
             dgvAllActivities.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(18, 52, 86);
-            dgvAllActivities.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dgvAllActivities.ThemeStyle.HeaderStyle.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dgvAllActivities.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvAllActivities.ThemeStyle.HeaderStyle.Height = 35;
-            dgvAllActivities.ThemeStyle.RowsStyle.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvAllActivities.ThemeStyle.HeaderStyle.Height = 45;
+            dgvAllActivities.ThemeStyle.RowsStyle.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvAllActivities.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(51, 65, 85);
             dgvAllActivities.ThemeStyle.RowsStyle.Height = 30;
+            dgvAllActivities.ThemeStyle.RowsStyle.SelectionBackColor = Color.Teal;
+            dgvAllActivities.ThemeStyle.RowsStyle.SelectionForeColor = Color.White;
             // 
             // ReferenceID
             // 
             ReferenceID.DataPropertyName = "ReferenceID";
+            ReferenceID.FillWeight = 67.87527F;
             ReferenceID.HeaderText = "Reference ID";
             ReferenceID.Name = "ReferenceID";
+            ReferenceID.Width = 115;
             // 
             // RequestType
             // 
             RequestType.DataPropertyName = "RequestType";
+            RequestType.FillWeight = 67.87527F;
             RequestType.HeaderText = "Request Type";
             RequestType.Name = "RequestType";
+            RequestType.Width = 140;
             // 
             // DateSubmitted
             // 
             DateSubmitted.DataPropertyName = "DateSubmitted";
+            DateSubmitted.FillWeight = 67.87527F;
             DateSubmitted.HeaderText = "Date Submitted";
             DateSubmitted.Name = "DateSubmitted";
+            DateSubmitted.Width = 135;
             // 
             // Status
             // 
             Status.DataPropertyName = "Status";
+            Status.FillWeight = 67.87527F;
             Status.HeaderText = "Status";
             Status.Name = "Status";
+            Status.Width = 95;
             // 
             // btnView
             // 
+            btnView.FillWeight = 67.87527F;
+            btnView.FlatStyle = FlatStyle.Flat;
             btnView.HeaderText = "View";
             btnView.Name = "btnView";
             btnView.Text = "View";
             btnView.UseColumnTextForButtonValue = true;
+            btnView.Width = 75;
             // 
             // cmbAction
             // 
+            cmbAction.FillWeight = 67.87527F;
+            cmbAction.FlatStyle = FlatStyle.Flat;
             cmbAction.HeaderText = "Action";
             cmbAction.Items.AddRange(new object[] { "Approve", "Reject" });
             cmbAction.Name = "cmbAction";
             cmbAction.Resizable = DataGridViewTriState.True;
             cmbAction.ToolTipText = "Approve / Reject";
+            cmbAction.Width = 110;
+            // 
+            // btnReturn
+            // 
+            btnReturn.FillWeight = 324.8731F;
+            btnReturn.FlatStyle = FlatStyle.Flat;
+            btnReturn.HeaderText = "Return";
+            btnReturn.Name = "btnReturn";
+            btnReturn.Text = "Return";
+            btnReturn.UseColumnTextForButtonValue = true;
+            btnReturn.Width = 85;
             // 
             // btnDelete
             // 
+            btnDelete.FillWeight = 67.87527F;
+            btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.HeaderText = "Delete";
             btnDelete.Name = "btnDelete";
             btnDelete.Text = "Delete";
             btnDelete.UseColumnTextForButtonValue = true;
+            btnDelete.Width = 85;
             // 
             // lblNoActivitiesFound
             // 
@@ -242,6 +274,7 @@
         private DataGridViewTextBoxColumn Status;
         private DataGridViewButtonColumn btnView;
         private DataGridViewComboBoxColumn cmbAction;
+        private DataGridViewButtonColumn btnReturn;
         private DataGridViewButtonColumn btnDelete;
     }
 }
